@@ -1,0 +1,866 @@
+{
+  "users": [
+    {
+      "id": "8016",
+      "fullName": "Jane Doe",
+      "dob": "1998-09-09",
+      "ssn": "11111111111",
+      "email": "danieludeh0077@yahoo.com",
+      "phone": "09048947208",
+      "address": "20 bale Street, Orile iganmu",
+      "employment": "employed",
+      "income": "100000",
+      "employerName": "Daniel",
+      "initialDeposit": 100,
+      "debitCard": true,
+      "onlineBanking": true,
+      "accountType": "Checking Account",
+      "accountNumber": "1066747311",
+      "accountBalance": 14630.87,
+      "notifications": [
+        {
+          "id": "f77277c7-d0d6-4dfd-ad93-86b4d7dd681b",
+          "type": "success",
+          "message": "You successfully transferred $500 to darren smith",
+          "date": "2025-09-25T05:13:12.549Z",
+          "read": true
+        },
+        {
+          "id": "1fd0b2a9-d975-4428-8165-88cf4063897f",
+          "type": "success",
+          "message": "You received $100 from darren smith",
+          "date": "2025-09-25T05:11:52.242Z",
+          "read": true
+        },
+        {
+          "id": "4c477bab-8edd-4554-8c97-38cd3d40b776",
+          "type": "success",
+          "message": "You successfully transferred $5000 to darren smith",
+          "date": "2025-09-25T05:03:35.777Z",
+          "read": true
+        },
+        {
+          "id": "85d0e3a5-35ec-4aff-b4f0-871316f2b096",
+          "type": "success",
+          "message": "Beneficiary darren smith added successfully!",
+          "date": "2025-09-25T05:03:11.103Z",
+          "read": true
+        },
+        {
+          "id": "90b5cb74-7ad6-4580-a9ee-eff43f72fe98",
+          "type": "success",
+          "message": "You received $88200 from DANIEL UDEH",
+          "date": "2025-09-25T03:14:53.087Z",
+          "read": true
+        },
+        {
+          "id": "55da8f6a-2b48-4a91-a6f8-26f03fe8085e",
+          "type": "success",
+          "message": "You received $100 from DANIEL UDEH",
+          "date": "2025-09-25T02:44:50.773Z",
+          "read": true
+        },
+        {
+          "id": "cf1ee0a4-b7c5-4ecc-8798-40f5e5ea0c72",
+          "type": "success",
+          "message": "You received $120 from DANIEL UDEH",
+          "date": "2025-09-25T02:41:34.507Z",
+          "read": true
+        },
+        {
+          "id": "cf6d49f0-d4c8-4cd6-929d-7bb7e8826b27",
+          "type": "success",
+          "message": "Beneficiary John Doe added successfully!",
+          "date": "2025-09-25T02:35:02.076Z",
+          "read": true
+        },
+        {
+          "id": "883650d0-0a10-4c2e-9739-87cc99f377a1",
+          "type": "success",
+          "message": "You received $3000 from DANIEL UDEH",
+          "date": "2025-09-25T02:22:29.042Z",
+          "read": true
+        },
+        {
+          "id": "5098ee98-0841-4c9a-ac80-5cf6cb46a7dd",
+          "type": "success",
+          "message": "You successfully transferred $10000 to DANIEL UDEH",
+          "date": "2025-09-25T02:19:32.411Z",
+          "read": true
+        },
+        {
+          "id": "767cea25-7f51-4502-ad5b-1af6e3a0681a",
+          "type": "success",
+          "message": "You received $5000 from DANIEL UDEH",
+          "date": "2025-09-25T02:18:14.437Z",
+          "read": true
+        },
+        {
+          "id": "5d01fe9b-1aa5-41e6-bc5e-9b3ff904cda3",
+          "type": "success",
+          "message": "You received $200 from DANIEL UDEH",
+          "date": "2025-09-25T02:04:52.921Z",
+          "read": true
+        },
+        {
+          "id": "c329c54b-e70d-460a-9b32-5a010c8a741a",
+          "type": "success",
+          "message": "You received $10000 from DANIEL UDEH",
+          "date": "2025-09-25T01:51:50.091Z",
+          "read": true
+        },
+        {
+          "id": "d3ffee2c-4fae-45c3-9dd6-c38612fed923",
+          "type": "success",
+          "message": "You successfully transferred $100 to DANIEL UDEH",
+          "date": "2025-09-25T01:44:38.210Z",
+          "read": true
+        },
+        {
+          "id": "efcc3b5b-1430-4dd9-bb26-26f5eb8ba8a4",
+          "type": "success",
+          "message": "You successfully transferred $1000 to DANIEL UDEH",
+          "date": "2025-09-25T01:39:14.113Z",
+          "read": true
+        },
+        {
+          "id": "c86fa17c-f2dd-4fc2-bc32-3e4af15a6e5c",
+          "type": "success",
+          "message": "You received $100 from DYLAN MASON",
+          "date": "2025-09-25T08:14:39.231Z",
+          "read": false
+        },
+        {
+          "id": "01151e25-1454-4721-8411-e05034a66f59",
+          "type": "success",
+          "message": "You received $110.87 from DYLAN MASON",
+          "date": "2025-09-26T06:45:42.192Z",
+          "read": false
+        },
+        {
+          "id": "bb989989-102f-48ce-bfff-a9d886dcae2b",
+          "type": "success",
+          "message": "Your password was changed. If you didn't recognize this change, please contact customer support immediately!",
+          "date": "2025-09-26T07:05:55.903Z",
+          "read": false
+        },
+        {
+          "id": "237fc26c-c2d4-4b14-b53a-2247d18aa43d",
+          "type": "success",
+          "message": "You received $100 from DYLAN MASON",
+          "date": "2025-09-26T08:02:39.347Z",
+          "read": false
+        },
+        {
+          "id": "9a6f9a12-b7fd-4dbe-80a6-6652a16263ac",
+          "type": "success",
+          "message": "You received $100 from DYLAN MASON",
+          "date": "2025-09-26T10:56:59.471Z",
+          "read": false
+        }
+      ],
+      "beneficiaries": [
+        {
+          "accountNumber": "1009633753",
+          "name": "darren smith",
+          "addedAt": "2025-09-25T05:03:11.103Z"
+        }
+      ],
+      "card": [
+        {
+          "cardId": 1758722961424,
+          "cardNumber": "7868799586222421",
+          "cardType": "Visa",
+          "expiryDate": "11/30",
+          "createdAt": "2025-09-24T14:09:21.424Z"
+        }
+      ]
+    },
+    {
+      "id": "bb46",
+      "fullName": "DANIEL UDEH",
+      "dob": "1998-09-09",
+      "ssn": "22222222222",
+      "email": "danieludeh0077@yahoo.com",
+      "phone": "09048947208",
+      "address": "20 bale Street, Orile iganmu",
+      "employment": "self-employed",
+      "income": "1000000",
+      "employerName": "DANIEL",
+      "initialDeposit": 100000,
+      "debitCard": true,
+      "onlineBanking": true,
+      "accountType": "High-Yield Savings",
+      "accountNumber": "1068397691",
+      "accountBalance": 80086.73999999999,
+      "beneficiaries": [
+        {
+          "accountNumber": "1066747311",
+          "name": "Jane Doe",
+          "addedAt": "2025-09-25T02:22:06.299Z"
+        }
+      ],
+      "card": [
+        {
+          "cardId": 1758728994039,
+          "cardNumber": "1765330406447991",
+          "cardType": "Mastercard",
+          "expiryDate": "12/30",
+          "createdAt": "2025-09-24T15:49:54.039Z"
+        }
+      ],
+      "notifications": [
+        {
+          "id": "2148323f-e120-4316-9212-13ab09df2496",
+          "type": "success",
+          "message": "You received $80000 from Jane Doe",
+          "date": "2025-09-25T03:27:05.350Z",
+          "read": true
+        },
+        {
+          "id": "d75a4479-c407-4192-a621-4317dd6b5f0a",
+          "type": "warning",
+          "message": "Your account balance is below $100!",
+          "date": "2025-09-25T03:17:06.816Z",
+          "read": true
+        },
+        {
+          "id": "83050a25-c6b4-459f-a490-af1ace99cec0",
+          "type": "success",
+          "message": "You successfully transferred $100 to Jane Doe",
+          "date": "2025-09-25T02:44:50.773Z",
+          "read": true
+        },
+        {
+          "id": "3d7d9b4e-a84d-4481-ba7d-3fc6473635d1",
+          "type": "success",
+          "message": "You successfully transferred $120 to Jane Doe",
+          "date": "2025-09-25T02:41:34.506Z",
+          "read": true
+        },
+        {
+          "id": "955f9e9a-767b-4eb1-9e0e-13151ebe5586",
+          "type": "success",
+          "message": "You successfully transferred $3000 to Jane Doe",
+          "date": "2025-09-25T02:22:29.042Z",
+          "read": true
+        },
+        {
+          "id": "999d5934-694d-45d3-aca1-0175ac8960a0",
+          "type": "success",
+          "message": "You received $10000 from Jane Doe",
+          "date": "2025-09-25T02:19:32.411Z",
+          "read": true
+        },
+        {
+          "id": "1df3f207-355f-4b75-af99-d527c697b6ef",
+          "type": "success",
+          "message": "You successfully transferred $5000 to Jane Doe",
+          "date": "2025-09-25T02:18:14.437Z",
+          "read": true
+        },
+        {
+          "id": "15ba5d94-4973-4404-8e72-ce6b42cf380b",
+          "type": "success",
+          "message": "You successfully transferred $200 to Jane Doe",
+          "date": "2025-09-25T02:04:52.921Z",
+          "read": true
+        },
+        {
+          "id": "08616790-c147-4afa-a928-32b8db3ee7d5",
+          "type": "success",
+          "message": "You successfully transferred $10000 to Jane Doe",
+          "date": "2025-09-25T01:51:50.091Z",
+          "read": true
+        },
+        {
+          "id": "3a3a89ce-0604-4646-8f86-2c267c3c150a",
+          "type": "success",
+          "message": "You received $100 from Jane Doe",
+          "date": "2025-09-25T01:44:38.210Z",
+          "read": true
+        },
+        {
+          "id": "7443dc5b-cad7-4a7b-a461-d21dc1d40cdf",
+          "type": "success",
+          "message": "You successfully transferred $1000 to Jane Doe",
+          "date": "2025-09-25T01:40:46.156Z",
+          "read": true
+        },
+        {
+          "id": "f5d9f372-9e6e-41ca-8463-07ae2671135b",
+          "type": "success",
+          "message": "You successfully transferred $100 to Jane Doe",
+          "date": "2025-09-25T01:32:59.007Z",
+          "read": true
+        }
+      ]
+    },
+    {
+      "id": "546c",
+      "fullName": "darren smith",
+      "dob": "1997-09-09",
+      "ssn": "22222222222",
+      "email": "danieludeh0077@yahoo.com",
+      "phone": "09048947208",
+      "address": "20 bale Street, Orile iganmu",
+      "employment": "self-employed",
+      "income": "1000000",
+      "employerName": "daniel",
+      "initialDeposit": 100,
+      "debitCard": true,
+      "onlineBanking": true,
+      "accountType": "Checking Account",
+      "accountNumber": "1009633753",
+      "accountBalance": 500,
+      "beneficiaries": [
+        {
+          "accountNumber": "1066747311",
+          "name": "Jane Doe",
+          "addedAt": "2025-09-25T05:11:43.190Z"
+        }
+      ],
+      "notifications": [
+        {
+          "id": "1f5e9602-18b6-4ef9-8870-07d956ce9208",
+          "type": "success",
+          "message": "You received $500 from Jane Doe",
+          "date": "2025-09-25T05:13:12.549Z",
+          "read": true
+        },
+        {
+          "id": "26ddd2c8-b908-4db5-b3ca-51cf58ae7e17",
+          "type": "warning",
+          "message": "Your account balance is below $100!",
+          "date": "2025-09-25T05:11:57.421Z",
+          "read": true
+        },
+        {
+          "id": "80484977-24a4-47b3-b2ae-3faaa61deec9",
+          "type": "success",
+          "message": "Beneficiary Jane Doe added successfully!",
+          "date": "2025-09-25T05:11:43.191Z",
+          "read": true
+        },
+        {
+          "id": "9ed4ce39-f34e-428a-a8d7-8467155046b3",
+          "type": "success",
+          "message": "You received $5000 from Jane Doe",
+          "date": "2025-09-25T05:03:35.777Z",
+          "read": true
+        }
+      ],
+      "card": [
+        {
+          "cardId": 1758756828722,
+          "cardNumber": "1250527199031397",
+          "cardType": "Visa",
+          "expiryDate": "10/29",
+          "createdAt": "2025-09-24T23:33:48.722Z"
+        }
+      ]
+    },
+    {
+      "id": "913d",
+      "fullName": "DYLAN MASON",
+      "dob": "1998-09-09",
+      "ssn": "11111111111",
+      "email": "danieludeh007@yahoo.com",
+      "phone": "+2349048947208",
+      "address": "20 bale Street, Orile iganmu",
+      "employment": "employed",
+      "income": "100000",
+      "employerName": "DYLAN",
+      "initialDeposit": 200,
+      "debitCard": "",
+      "onlineBanking": "",
+      "accountType": "Business Savings",
+      "accountNumber": "1081276232",
+      "beneficiaries": [
+        {
+          "accountNumber": "1066747311",
+          "name": "Jane Doe",
+          "addedAt": "2025-09-25T08:14:24.672Z"
+        }
+      ],
+      "notifications": [
+        {
+          "id": "bacaf617-2779-4318-8c62-4afe40889771",
+          "type": "success",
+          "message": "You received $500 from JOHN DOE",
+          "date": "2025-09-26T11:01:08.842Z",
+          "read": true
+        },
+        {
+          "id": "4cfdb234-2383-4d17-8eb1-80aeb2f4bbe0",
+          "type": "success",
+          "message": "You successfully transferred $100 to Jane Doe",
+          "date": "2025-09-26T10:56:59.471Z",
+          "read": true
+        },
+        {
+          "id": "1e7735fe-962d-48be-a8ed-d73001fe8df5",
+          "type": "success",
+          "message": "Your security question was changed. If you didn't recognize this change, please contact customer support immediately!",
+          "date": "2025-09-26T10:05:03.464Z",
+          "read": true
+        },
+        {
+          "id": "b499b39e-eb6e-4f90-a3ae-421571888807",
+          "type": "success",
+          "message": "You successfully transferred $100 to Jane Doe",
+          "date": "2025-09-26T08:02:39.347Z",
+          "read": true
+        },
+        {
+          "id": "5ac4597a-5613-4018-b607-21755841f107",
+          "type": "success",
+          "message": "Your password was changed. If you didn't recognize this change, please contact customer support immediately!",
+          "date": "2025-09-26T07:07:33.713Z",
+          "read": true
+        },
+        {
+          "id": "cf994c23-0654-4acc-a644-84bceb22439a",
+          "type": "success",
+          "message": "You successfully transferred $110.87 to Jane Doe",
+          "date": "2025-09-26T06:45:42.192Z",
+          "read": true
+        },
+        {
+          "id": "f01d23b8-ebf3-4877-a90d-ef5beb3aef81",
+          "type": "success",
+          "message": "A change was made to your profile. If you didn't recognize this change, please contact customer support immediately!",
+          "date": "2025-09-26T00:26:57.222Z",
+          "read": true
+        },
+        {
+          "id": "f2fd037b-9e91-4a46-b9c7-2c1b4f73e57f",
+          "type": "success",
+          "message": "You successfully transferred $100 to Jane Doe",
+          "date": "2025-09-25T08:14:39.231Z",
+          "read": true
+        },
+        {
+          "id": "2d2a9ab2-75d3-47c8-8f4f-40aa41b3c97e",
+          "type": "success",
+          "message": "Beneficiary Jane Doe added successfully!",
+          "date": "2025-09-25T08:14:24.672Z",
+          "read": true
+        }
+      ],
+      "accountBalance": 8189.13,
+      "card": [
+        {
+          "cardId": 1758787599197,
+          "cardNumber": "7123308669963043",
+          "cardType": "Mastercard",
+          "expiryDate": "06/28",
+          "createdAt": "2025-09-25T08:06:39.197Z"
+        }
+      ],
+      "lastLogin": "2025-09-25T22:51:32.492Z"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "1bc9",
+      "fromUserId": "bb46",
+      "fromUserName": "DANIEL UDEH",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "100",
+      "date": "2025-09-24T23:21:43.605Z",
+      "balanceAfterSender": 98306.73999999999,
+      "balanceAfterReceiver": 1400
+    },
+    {
+      "id": "ae45",
+      "fromUserId": "bb46",
+      "fromUserName": "DANIEL UDEH",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "500",
+      "date": "2025-09-24T23:27:23.926Z",
+      "balanceAfterSender": 97806.73999999999,
+      "balanceAfterReceiver": 1900
+    },
+    {
+      "id": "ddc4",
+      "fromUserId": "bb46",
+      "fromUserName": "DANIEL UDEH",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "1000",
+      "date": "2025-09-24T23:48:21.500Z",
+      "balanceAfterSender": 96806.73999999999,
+      "balanceAfterReceiver": 2900
+    },
+    {
+      "id": "9121",
+      "fromUserId": "bb46",
+      "fromUserName": "DANIEL UDEH",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "100",
+      "date": "2025-09-25T00:19:39.700Z",
+      "balanceAfterSender": 96706.73999999999,
+      "balanceAfterReceiver": 3000
+    },
+    {
+      "id": "c97d",
+      "fromUserId": "bb46",
+      "fromUserName": "DANIEL UDEH",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "100",
+      "date": "2025-09-25T01:32:59.024Z",
+      "balanceAfterSender": 96606.73999999999,
+      "balanceAfterReceiver": 3100
+    },
+    {
+      "id": "427b",
+      "fromUserId": "8016",
+      "fromUserName": "Jane Doe",
+      "toUserId": "bb46",
+      "toUserName": "DANIEL UDEH",
+      "amount": "1000",
+      "date": "2025-09-25T01:39:14.147Z",
+      "balanceAfterSender": 2100,
+      "balanceAfterReceiver": 97606.73999999999
+    },
+    {
+      "id": "3350",
+      "fromUserId": "bb46",
+      "fromUserName": "DANIEL UDEH",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "1000",
+      "date": "2025-09-25T01:40:46.178Z",
+      "balanceAfterSender": 96606.73999999999,
+      "balanceAfterReceiver": 3100
+    },
+    {
+      "id": "78f0",
+      "fromUserId": "8016",
+      "fromUserName": "Jane Doe",
+      "toUserId": "bb46",
+      "toUserName": "DANIEL UDEH",
+      "amount": "100",
+      "date": "2025-09-25T01:44:38.246Z",
+      "balanceAfterSender": 3000,
+      "balanceAfterReceiver": 96706.73999999999
+    },
+    {
+      "id": "0244",
+      "fromUserId": "bb46",
+      "fromUserName": "DANIEL UDEH",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "10000",
+      "date": "2025-09-25T01:51:50.118Z",
+      "balanceAfterSender": 86706.73999999999,
+      "balanceAfterReceiver": 13000
+    },
+    {
+      "id": "0fef",
+      "fromUserId": "bb46",
+      "fromUserName": "DANIEL UDEH",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "200",
+      "date": "2025-09-25T02:04:52.953Z",
+      "balanceAfterSender": 86506.73999999999,
+      "balanceAfterReceiver": 13200
+    },
+    {
+      "id": "074c",
+      "fromUserId": "bb46",
+      "fromUserName": "DANIEL UDEH",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "5000",
+      "date": "2025-09-25T02:18:14.505Z",
+      "balanceAfterSender": 81506.73999999999,
+      "balanceAfterReceiver": 18200
+    },
+    {
+      "id": "9e69",
+      "fromUserId": "8016",
+      "fromUserName": "Jane Doe",
+      "toUserId": "bb46",
+      "toUserName": "DANIEL UDEH",
+      "amount": "10000",
+      "date": "2025-09-25T02:19:32.478Z",
+      "balanceAfterSender": 8200,
+      "balanceAfterReceiver": 91506.73999999999
+    },
+    {
+      "id": "18b9",
+      "fromUserId": "bb46",
+      "fromUserName": "DANIEL UDEH",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "3000",
+      "date": "2025-09-25T02:22:29.121Z",
+      "balanceAfterSender": 88506.73999999999,
+      "balanceAfterReceiver": 11200
+    },
+    {
+      "id": "cc9a",
+      "fromUserId": "bb46",
+      "fromUserName": "DANIEL UDEH",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "120",
+      "date": "2025-09-25T02:41:34.700Z",
+      "balanceAfterSender": 88386.73999999999,
+      "balanceAfterReceiver": 11320
+    },
+    {
+      "id": "0442",
+      "fromUserId": "bb46",
+      "fromUserName": "DANIEL UDEH",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "100",
+      "date": "2025-09-25T02:44:50.886Z",
+      "balanceAfterSender": 88286.73999999999,
+      "balanceAfterReceiver": 11420
+    },
+    {
+      "id": "1161",
+      "fromUserId": "bb46",
+      "fromUserName": "DANIEL UDEH",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "88200",
+      "date": "2025-09-25T03:14:53.138Z",
+      "balanceAfterSender": 86.73999999999069,
+      "balanceAfterReceiver": 99620
+    },
+    {
+      "id": "6dca",
+      "fromUserId": "8016",
+      "fromUserName": "Jane Doe",
+      "toUserId": "bb46",
+      "toUserName": "DANIEL UDEH",
+      "amount": "80000",
+      "date": "2025-09-25T03:27:05.394Z",
+      "balanceAfterSender": 19620,
+      "balanceAfterReceiver": 80086.73999999999
+    },
+    {
+      "id": "9d83",
+      "fromUserId": "8016",
+      "fromUserName": "Jane Doe",
+      "toUserId": "546c",
+      "toUserName": "darren smith",
+      "amount": "5000",
+      "date": "2025-09-25T05:03:35.834Z",
+      "balanceAfterSender": 14620,
+      "balanceAfterReceiver": 5100
+    },
+    {
+      "id": "9311",
+      "fromUserId": "546c",
+      "fromUserName": "darren smith",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "100",
+      "date": "2025-09-25T05:11:52.305Z",
+      "balanceAfterSender": 0,
+      "balanceAfterReceiver": 14720
+    },
+    {
+      "id": "f8cb",
+      "fromUserId": "8016",
+      "fromUserName": "Jane Doe",
+      "toUserId": "546c",
+      "toUserName": "darren smith",
+      "amount": "500",
+      "date": "2025-09-25T05:13:12.619Z",
+      "balanceAfterSender": 14220,
+      "balanceAfterReceiver": 500
+    },
+    {
+      "id": "638a",
+      "fromUserId": "913d",
+      "fromUserName": "DYLAN MASON",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "100",
+      "date": "2025-09-25T08:14:39.277Z",
+      "balanceAfterSender": 100,
+      "balanceAfterReceiver": 14320
+    },
+    {
+      "id": "cc87",
+      "fromUserId": "913d",
+      "fromUserName": "DYLAN MASON",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "110.87",
+      "date": "2025-09-26T06:45:42.256Z",
+      "balanceAfterSender": 7889.13,
+      "balanceAfterReceiver": 14430.87
+    },
+    {
+      "id": "c2e4",
+      "fromUserId": "913d",
+      "fromUserName": "DYLAN MASON",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "100",
+      "date": "2025-09-26T08:02:39.420Z",
+      "balanceAfterSender": 7789.13,
+      "balanceAfterReceiver": 14530.87
+    },
+    {
+      "id": "eced",
+      "fromUserId": "913d",
+      "fromUserName": "DYLAN MASON",
+      "toUserId": "8016",
+      "toUserName": "Jane Doe",
+      "amount": "100",
+      "date": "2025-09-26T10:56:59.524Z",
+      "balanceAfterSender": 7689.13,
+      "balanceAfterReceiver": 14630.87
+    },
+    {
+      "id": "0a3b",
+      "fromUserId": "1f6f",
+      "fromUserName": "JOHN DOE",
+      "toUserId": "913d",
+      "toUserName": "DYLAN MASON",
+      "amount": "500",
+      "date": "2025-09-26T11:01:08.887Z",
+      "balanceAfterSender": 0,
+      "balanceAfterReceiver": 8189.13
+    }
+  ],
+  "onlineAccessUsers": [
+    {
+      "id": "49ac",
+      "userId": "8016",
+      "username": "janedoe97",
+      "password": "123456",
+      "securityQuestion": "pet",
+      "securityAnswer": "Dylan",
+      "termsAccepted": true,
+      "lastLogin": "2025-09-26T06:47:47.584Z"
+    },
+    {
+      "id": "ca1d",
+      "userId": "bb46",
+      "username": "Blessedsinner",
+      "password": "123456",
+      "securityQuestion": "pet",
+      "securityAnswer": "DYLAN",
+      "termsAccepted": true,
+      "lastLogin": "2025-09-25T06:56:26.925Z"
+    },
+    {
+      "id": "2b1f",
+      "userId": "546c",
+      "username": "darrensmith",
+      "password": "123456",
+      "securityQuestion": "pet",
+      "securityAnswer": "darren",
+      "termsAccepted": true,
+      "lastLogin": "2025-09-25T05:13:29.227Z"
+    },
+    {
+      "id": "a6e4",
+      "userId": "913d",
+      "username": "dylanmason",
+      "password": "1234567",
+      "securityQuestion": "In what city were you born?",
+      "securityAnswer": "New york",
+      "termsAccepted": true,
+      "lastLogin": "2025-09-26T18:22:22.983Z"
+    }
+  ],
+  "accountTypes": [
+    {
+      "id": 1,
+      "name": "Checking Account",
+      "description": "A flexible everyday account for managing daily expenses and deposits. No limits on withdrawals.",
+      "minDeposit": 1000,
+      "monthlyFee": 0,
+      "interestRate": 0.01,
+      "features": [
+        "Unlimited deposits and withdrawals",
+        "Free debit card",
+        "Online and mobile banking"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "High-Yield Savings",
+      "description": "An account designed to grow your savings faster with higher interest rates.",
+      "minDeposit": 5000,
+      "monthlyFee": 0,
+      "interestRate": 0.04,
+      "features": [
+        "Higher interest rate compared to regular savings",
+        "Limited monthly withdrawals",
+        "FDIC insured"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Savings Account",
+      "description": "A simple savings account for short-term or emergency funds.",
+      "minDeposit": 500,
+      "monthlyFee": 0,
+      "interestRate": 0.02,
+      "features": [
+        "Earns modest interest",
+        "Easy access to funds",
+        "Secure online banking"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Business Checking",
+      "description": "Designed for small and medium-sized businesses to manage cash flow and expenses.",
+      "minDeposit": 2000,
+      "monthlyFee": 15,
+      "interestRate": 0.005,
+      "features": [
+        "Unlimited transactions",
+        "Free business debit card",
+        "Payroll integration"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Business Savings",
+      "description": "Helps businesses set aside funds while earning competitive interest.",
+      "minDeposit": 2500,
+      "monthlyFee": 10,
+      "interestRate": 0.03,
+      "features": [
+        "Higher balance = higher interest",
+        "Limited monthly withdrawals",
+        "Cash management services"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Credit Card Account",
+      "description": "A revolving credit account that allows you to borrow funds up to a set limit and pay back over time.",
+      "minDeposit": 0,
+      "monthlyFee": 5,
+      "interestRate": 0.18,
+      "creditLimit": 5000,
+      "features": [
+        "Earn cashback on every purchase",
+        "Up to 45 days interest-free period",
+        "Flexible repayment options",
+        "Fraud protection and alerts",
+        "Free virtual card for online shopping"
+      ]
+    }
+  ]
+}
