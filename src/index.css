@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@theme {
+  --font-sans:"Poppins", sans-serif;
+}
+
+/* in index.css or App.css */
+.Toastify__toast--custom {
+  background-color: #dc2626 !important; /* Tailwind red-600 */
+  color: #fff !important;
+  font-weight: 600;
+  border-radius: 0.5rem; /* match your rounded style */
+}
+.Toastify__progress-bar--custom {
+  background-color: #fff !important; /* white progress bar */
+}
+
+/* Hide scrollbar globally */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
