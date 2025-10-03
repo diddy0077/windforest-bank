@@ -2,10 +2,11 @@
   "users": [
     {
       "id": "8016",
+      "isTransferEnabled": false,
       "fullName": "Jane Doe",
       "dob": "1998-09-09",
       "ssn": "11111111111",
-      "email": "danieludeh0077@yahoo.com",
+      "email": "danieludeh007@yahoo.com",
       "phone": "09048947208",
       "address": "20 bale Street, Orile iganmu",
       "employment": "employed",
@@ -16,154 +17,286 @@
       "onlineBanking": true,
       "accountType": "Checking Account",
       "accountNumber": "1066747311",
-      "accountBalance": 14630.87,
+      "accountBalance": 10030.999999999996,
+      "role": "user",
+      "loans": [],
       "notifications": [
         {
-          "id": "f77277c7-d0d6-4dfd-ad93-86b4d7dd681b",
-          "type": "success",
-          "message": "You successfully transferred $500 to darren smith",
-          "date": "2025-09-25T05:13:12.549Z",
-          "read": true
-        },
-        {
-          "id": "1fd0b2a9-d975-4428-8165-88cf4063897f",
-          "type": "success",
-          "message": "You received $100 from darren smith",
-          "date": "2025-09-25T05:11:52.242Z",
-          "read": true
-        },
-        {
-          "id": "4c477bab-8edd-4554-8c97-38cd3d40b776",
-          "type": "success",
-          "message": "You successfully transferred $5000 to darren smith",
-          "date": "2025-09-25T05:03:35.777Z",
-          "read": true
-        },
-        {
-          "id": "85d0e3a5-35ec-4aff-b4f0-871316f2b096",
-          "type": "success",
-          "message": "Beneficiary darren smith added successfully!",
-          "date": "2025-09-25T05:03:11.103Z",
-          "read": true
-        },
-        {
-          "id": "90b5cb74-7ad6-4580-a9ee-eff43f72fe98",
-          "type": "success",
-          "message": "You received $88200 from DANIEL UDEH",
-          "date": "2025-09-25T03:14:53.087Z",
-          "read": true
-        },
-        {
-          "id": "55da8f6a-2b48-4a91-a6f8-26f03fe8085e",
-          "type": "success",
-          "message": "You received $100 from DANIEL UDEH",
-          "date": "2025-09-25T02:44:50.773Z",
-          "read": true
-        },
-        {
-          "id": "cf1ee0a4-b7c5-4ecc-8798-40f5e5ea0c72",
-          "type": "success",
-          "message": "You received $120 from DANIEL UDEH",
-          "date": "2025-09-25T02:41:34.507Z",
-          "read": true
-        },
-        {
-          "id": "cf6d49f0-d4c8-4cd6-929d-7bb7e8826b27",
-          "type": "success",
-          "message": "Beneficiary John Doe added successfully!",
-          "date": "2025-09-25T02:35:02.076Z",
-          "read": true
-        },
-        {
-          "id": "883650d0-0a10-4c2e-9739-87cc99f377a1",
-          "type": "success",
-          "message": "You received $3000 from DANIEL UDEH",
-          "date": "2025-09-25T02:22:29.042Z",
-          "read": true
-        },
-        {
-          "id": "5098ee98-0841-4c9a-ac80-5cf6cb46a7dd",
-          "type": "success",
-          "message": "You successfully transferred $10000 to DANIEL UDEH",
-          "date": "2025-09-25T02:19:32.411Z",
-          "read": true
-        },
-        {
-          "id": "767cea25-7f51-4502-ad5b-1af6e3a0681a",
-          "type": "success",
-          "message": "You received $5000 from DANIEL UDEH",
-          "date": "2025-09-25T02:18:14.437Z",
-          "read": true
-        },
-        {
-          "id": "5d01fe9b-1aa5-41e6-bc5e-9b3ff904cda3",
-          "type": "success",
-          "message": "You received $200 from DANIEL UDEH",
-          "date": "2025-09-25T02:04:52.921Z",
-          "read": true
-        },
-        {
-          "id": "c329c54b-e70d-460a-9b32-5a010c8a741a",
-          "type": "success",
-          "message": "You received $10000 from DANIEL UDEH",
-          "date": "2025-09-25T01:51:50.091Z",
-          "read": true
-        },
-        {
-          "id": "d3ffee2c-4fae-45c3-9dd6-c38612fed923",
+          "id": "09f5e218-7b06-4307-9efb-6895f8a30bdf",
           "type": "success",
           "message": "You successfully transferred $100 to DANIEL UDEH",
-          "date": "2025-09-25T01:44:38.210Z",
+          "date": "2025-10-01T02:15:03.474Z",
           "read": true
         },
         {
-          "id": "efcc3b5b-1430-4dd9-bb26-26f5eb8ba8a4",
+          "id": "6a06cb69-47d2-41d8-bfbe-8479cff02b7d",
           "type": "success",
-          "message": "You successfully transferred $1000 to DANIEL UDEH",
-          "date": "2025-09-25T01:39:14.113Z",
+          "message": "You successfully transferred $100 to undefined",
+          "date": "2025-10-01T02:12:42.474Z",
           "read": true
         },
         {
-          "id": "c86fa17c-f2dd-4fc2-bc32-3e4af15a6e5c",
+          "id": "97e57b94-b45d-4b65-842b-f79ce294ed40",
+          "type": "success",
+          "message": "Beneficiary DANIEL UDEH added successfully!",
+          "date": "2025-10-01T02:12:29.632Z",
+          "read": true
+        },
+        {
+          "id": "b88f8d32-09eb-4eae-b407-7822fbc82039",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T02:30:46.890Z",
+          "read": true
+        },
+        {
+          "id": "02b4b59b-a51b-4d72-8bf6-9368e3527bc4",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T02:26:25.368Z",
+          "read": true
+        },
+        {
+          "id": "f1cc81ca-5e82-4ba1-8030-95595b970f21",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T02:20:00.638Z",
+          "read": true
+        },
+        {
+          "id": "0233dbcf-3afd-4368-816a-0bd0aaf816ef",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T02:00:22.610Z",
+          "read": true
+        },
+        {
+          "id": "967377da-79eb-4b7b-8a07-817377c95cca",
+          "type": "success",
+          "message": "You received $500 from DYLAN MASON",
+          "date": "2025-09-29T01:59:54.619Z",
+          "read": true
+        },
+        {
+          "id": "f1accaa0-8a04-4d7d-8d87-a1e80a22ff16",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T01:55:01.319Z",
+          "read": true
+        },
+        {
+          "id": "881b9389-07a9-4b91-8a77-a0bccd498458",
           "type": "success",
           "message": "You received $100 from DYLAN MASON",
-          "date": "2025-09-25T08:14:39.231Z",
+          "date": "2025-09-29T01:53:59.779Z",
+          "read": true
+        },
+        {
+          "id": "d056e118-2a1c-42fc-9c9f-ed1aab10ba5f",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T01:52:41.719Z",
+          "read": true
+        },
+        {
+          "id": "a932ae3a-0633-4c1e-8e5d-767c2a196a91",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T01:50:04.950Z",
+          "read": true
+        },
+        {
+          "id": "7bdd306a-5632-4401-9665-c1ab3f5453a7",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T01:49:27.283Z",
+          "read": true
+        },
+        {
+          "id": "69a13c87-ceb8-4c2e-af3b-666383e59322",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T01:27:17.893Z",
+          "read": true
+        },
+        {
+          "id": "e4dfc1e8-69d8-439d-bf9a-56d16bef14a8",
+          "type": "success",
+          "message": "You received $0.24 from WindForest Bank.",
+          "date": "2025-09-28T22:44:35.646Z",
+          "read": true
+        },
+        {
+          "id": "434108ce-c40e-49e8-94b9-2f8ab95b85f9",
+          "type": "success",
+          "message": "You received $0.53 from WindForest Bank.",
+          "date": "2025-09-28T22:44:35.646Z",
+          "read": true
+        },
+        {
+          "id": "e77e7989-5bf6-4db7-abc2-82ac99e2ddf0",
+          "type": "success",
+          "message": "You received $0.03 from WindForest Bank.",
+          "date": "2025-09-28T21:08:25.165Z",
+          "read": true
+        },
+        {
+          "id": "b32e95d3-82ca-4e73-bf22-6d0ca1e3dce5",
+          "type": "success",
+          "message": "You received $0.09 from WindForest Bank.",
+          "date": "2025-09-28T21:08:25.165Z",
+          "read": true
+        },
+        {
+          "id": "eca9301e-749c-4cf8-aa4f-2c3d4ad115a8",
+          "type": "success",
+          "message": "You received $0.5 from WindForest Bank.",
+          "date": "2025-09-28T21:08:14.586Z",
+          "read": true
+        },
+        {
+          "id": "40ac4d9f-ea6d-473e-b54d-fee82240b0f8",
+          "type": "success",
+          "message": "You received $0.87 from WindForest Bank.",
+          "date": "2025-09-28T21:08:14.586Z",
+          "read": true
+        },
+        {
+          "id": "a3f6f7b0-ed05-415b-ba13-187000a140fd",
+          "type": "success",
+          "message": "You received $0.34 from WindForest Bank.",
+          "date": "2025-09-28T21:08:03.662Z",
+          "read": true
+        },
+        {
+          "id": "937c7aae-f492-42b6-b406-b42880df0cf4",
+          "type": "success",
+          "message": "You received $0.36 from WindForest Bank.",
+          "date": "2025-09-28T21:08:03.662Z",
+          "read": true
+        },
+        {
+          "id": "d92d9288-361e-4ae4-bae6-d6178936a3c7",
+          "type": "success",
+          "message": "You received $0.19 from WindForest Bank.",
+          "date": "2025-09-28T20:46:46.074Z",
+          "read": true
+        },
+        {
+          "id": "e3112db1-3d43-4932-a5ad-fad0c7abcf2f",
+          "type": "success",
+          "message": "You received $0.11 from WindForest Bank.",
+          "date": "2025-09-28T20:46:46.074Z",
+          "read": true
+        },
+        {
+          "id": "3bcf1c3c-5201-447e-be1b-1e5fca2e04f3",
+          "type": "success",
+          "message": "You received $0.56 from WindForest Bank.",
+          "date": "2025-09-28T20:46:35.174Z",
+          "read": true
+        },
+        {
+          "id": "8f9ce177-9514-4a1d-920f-5bca3538c100",
+          "type": "success",
+          "message": "You received $0.32 from WindForest Bank.",
+          "date": "2025-09-28T20:46:35.174Z",
+          "read": true
+        },
+        {
+          "id": "8b6eee06-5c07-438b-a952-0a663fc3a0ce",
+          "type": "success",
+          "message": "You received $0.44 from WindForest Bank.",
+          "date": "2025-09-28T20:46:21.182Z",
+          "read": true
+        },
+        {
+          "id": "c80bc41c-0946-472b-bf8a-70633d40aeae",
+          "type": "success",
+          "message": "You received $0.73 from WindForest Bank.",
+          "date": "2025-09-28T20:46:21.182Z",
+          "read": true
+        },
+        {
+          "id": 1759286492772,
+          "type": "success",
+          "message": "Your account is now unrestricted and you can make transfers again.",
+          "read": false,
+          "date": "2025-10-01T02:41:32.772Z"
+        },
+        {
+          "id": 1759286504686,
+          "type": "alert",
+          "message": "Your account has been restricted from making transfers by admin.",
+          "read": false,
+          "date": "2025-10-01T02:41:44.686Z"
+        },
+        {
+          "id": 1759286511134,
+          "type": "success",
+          "message": "Your account is now unrestricted and you can make transfers again.",
+          "read": false,
+          "date": "2025-10-01T02:41:51.134Z"
+        },
+        {
+          "id": 1759286696100,
+          "type": "success",
+          "message": "Your account is now unrestricted and you can make transfers again.",
+          "read": false,
+          "date": "2025-10-01T02:44:56.100Z"
+        },
+        {
+          "id": 1759287146338,
+          "type": "alert",
+          "message": "Your account has been restricted from making transfers by admin.",
+          "read": false,
+          "date": "2025-10-01T02:52:26.338Z"
+        },
+        {
+          "id": "616a6567-a4a6-45ce-9c22-186522523849",
+          "type": "info",
+          "message": "A reversal of $100 has been debited from your account and returned to DANIEL UDEH.",
+          "date": "2025-10-02T21:45:25.327Z",
           "read": false
         },
         {
-          "id": "01151e25-1454-4721-8411-e05034a66f59",
-          "type": "success",
-          "message": "You received $110.87 from DYLAN MASON",
-          "date": "2025-09-26T06:45:42.192Z",
+          "id": "6cb58c06-50b2-4927-afd8-91918ca0e671",
+          "type": "info",
+          "message": "A reversal of $120 has been debited from your account and returned to DANIEL UDEH.",
+          "date": "2025-10-02T21:53:46.533Z",
           "read": false
         },
         {
-          "id": "bb989989-102f-48ce-bfff-a9d886dcae2b",
-          "type": "success",
-          "message": "Your password was changed. If you didn't recognize this change, please contact customer support immediately!",
-          "date": "2025-09-26T07:05:55.903Z",
+          "id": "195efc83-c730-4be2-ad49-fd9c514b2ad3",
+          "type": "info",
+          "message": "A reversal of $3000 has been debited from your account and returned to DANIEL UDEH.",
+          "date": "2025-10-02T21:54:01.587Z",
           "read": false
         },
         {
-          "id": "237fc26c-c2d4-4b14-b53a-2247d18aa43d",
+          "id": "ae9bdd0e-07f2-4376-9c47-76f168d8c70c",
           "type": "success",
-          "message": "You received $100 from DYLAN MASON",
-          "date": "2025-09-26T08:02:39.347Z",
-          "read": false
-        },
-        {
-          "id": "9a6f9a12-b7fd-4dbe-80a6-6652a16263ac",
-          "type": "success",
-          "message": "You received $100 from DYLAN MASON",
-          "date": "2025-09-26T10:56:59.471Z",
+          "message": "A reversal of $10000 has been credited back to your account from DANIEL UDEH.",
+          "date": "2025-10-02T21:55:41.359Z",
           "read": false
         }
       ],
+      "linkedAccounts": [],
       "beneficiaries": [
         {
           "accountNumber": "1009633753",
           "name": "darren smith",
           "addedAt": "2025-09-25T05:03:11.103Z"
+        },
+        {
+          "accountNumber": "1066747311",
+          "name": "Jane Doe",
+          "addedAt": "2025-10-01T02:08:27.139Z"
+        },
+        {
+          "accountNumber": "1068397691",
+          "name": "DANIEL UDEH",
+          "addedAt": "2025-10-01T02:12:29.632Z"
         }
       ],
       "card": [
@@ -178,26 +311,126 @@
     },
     {
       "id": "bb46",
+      "isTransferEnabled": true,
       "fullName": "DANIEL UDEH",
       "dob": "1998-09-09",
       "ssn": "22222222222",
-      "email": "danieludeh0077@yahoo.com",
+      "email": "danieludeh007@yahoo.com",
       "phone": "09048947208",
       "address": "20 bale Street, Orile iganmu",
       "employment": "self-employed",
       "income": "1000000",
       "employerName": "DANIEL",
       "initialDeposit": 100000,
+      "role": "user",
       "debitCard": true,
       "onlineBanking": true,
       "accountType": "High-Yield Savings",
       "accountNumber": "1068397691",
-      "accountBalance": 80086.73999999999,
+      "accountBalance": 82606.73999999999,
+      "linkedAccounts": [],
+      "loans": [
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:00:30.686Z"
+        },
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:05:57.188Z"
+        },
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:36:01.173Z"
+        },
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:48:36.113Z"
+        },
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:49:52.411Z"
+        },
+        {
+          "loanId": 1,
+          "loanName": "Personal Loan",
+          "amount": 20000,
+          "years": 19,
+          "monthlyPayment": 169.67493251746004,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:54:10.766Z"
+        },
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:55:27.683Z"
+        },
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:56:49.341Z"
+        },
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:58:25.595Z"
+        },
+        {
+          "loanId": 10,
+          "loanName": "Green Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 186.43019241516996,
+          "status": "pending",
+          "appliedAt": "2025-09-30T21:16:14.734Z"
+        }
+      ],
       "beneficiaries": [
         {
           "accountNumber": "1066747311",
           "name": "Jane Doe",
           "addedAt": "2025-09-25T02:22:06.299Z"
+        },
+        {
+          "accountNumber": "1009633753",
+          "name": "darren smith",
+          "addedAt": "2025-09-30T23:45:46.390Z"
         }
       ],
       "card": [
@@ -210,6 +443,118 @@
         }
       ],
       "notifications": [
+        {
+          "id": "f140c2b9-7b5c-42ba-bbe1-cacca38a4438",
+          "type": "success",
+          "message": "Your transfer access has been restored!",
+          "date": "2025-10-02T23:19:13.880Z",
+          "read": true
+        },
+        {
+          "id": "29d81e0a-77f6-4bb9-b48a-bf1f73578650",
+          "type": "info",
+          "message": "A reversal of $10000 has been debited from your account and returned to Jane Doe.",
+          "date": "2025-10-02T21:55:41.359Z",
+          "read": true
+        },
+        {
+          "id": "4702b229-ccf7-49be-af57-704335cec05a",
+          "type": "success",
+          "message": "A reversal of $3000 has been credited back to your account from Jane Doe.",
+          "date": "2025-10-02T21:54:01.587Z",
+          "read": true
+        },
+        {
+          "id": "f8842092-61e7-4ae0-b331-64f858aaf307",
+          "type": "success",
+          "message": "A reversal of $120 has been credited back to your account from Jane Doe.",
+          "date": "2025-10-02T21:53:46.533Z",
+          "read": true
+        },
+        {
+          "id": "f77f96b2-62aa-4673-9c62-f5a75f31b77e",
+          "type": "success",
+          "message": "A reversal of $100 has been credited back to your account from Jane Doe.",
+          "date": "2025-10-02T21:45:25.327Z",
+          "read": true
+        },
+        {
+          "id": "f677d3d3-920a-4a94-a5e1-41949dd22468",
+          "type": "warning",
+          "message": "Your account balance is below $100!",
+          "date": "2025-10-02T16:32:26.171Z",
+          "read": true
+        },
+        {
+          "id": "953fc03f-161b-419a-bacd-115ef274d630",
+          "type": "success",
+          "message": "You successfully transferred $100 to Jane Doe",
+          "date": "2025-10-01T16:46:43.088Z",
+          "read": true
+        },
+        {
+          "id": 1759287477332,
+          "type": "alert",
+          "message": "Your account has been restricted from making transfers by admin.",
+          "read": true,
+          "date": "2025-10-01T02:57:57.332Z"
+        },
+        {
+          "id": "7ccb61c9-fdda-4a08-9be7-0b6a7156d076",
+          "type": "success",
+          "message": "Beneficiary darren smith added successfully!",
+          "date": "2025-09-30T23:45:46.391Z",
+          "read": true
+        },
+        {
+          "id": "628ee3a3-e0b2-47e9-8ed1-4d3b8a44078d",
+          "type": "success",
+          "message": "You received $0.89 from WindForest Bank.",
+          "date": "2025-09-29T02:16:05.470Z",
+          "read": true
+        },
+        {
+          "id": "e53d8d70-5537-4f43-a9e6-3ee548d2c9c4",
+          "type": "success",
+          "message": "You received $0.6 from WindForest Bank.",
+          "date": "2025-09-29T02:16:05.470Z",
+          "read": true
+        },
+        {
+          "id": "a9092035-c39c-41da-9336-ddc64c4cd97f",
+          "type": "success",
+          "message": "You successfully made an external transfer of $20 to DYLAN MASON",
+          "date": "2025-09-29T02:02:04.538Z",
+          "read": true
+        },
+        {
+          "id": "b9e4fcd6-6489-41d2-8e97-77068a4eea5d",
+          "type": "success",
+          "message": "You received $0.21 from WindForest Bank.",
+          "date": "2025-09-29T02:01:09.613Z",
+          "read": true
+        },
+        {
+          "id": "d191ebf0-96cd-4ab4-83e8-d677029cc4ba",
+          "type": "success",
+          "message": "You received $0.04 from WindForest Bank.",
+          "date": "2025-09-29T02:01:09.613Z",
+          "read": true
+        },
+        {
+          "id": "a59b47e0-feae-42e3-88c3-3eb268901968",
+          "type": "success",
+          "message": "You received $0.71 from WindForest Bank.",
+          "date": "2025-09-28T22:46:07.882Z",
+          "read": true
+        },
+        {
+          "id": "820c0a50-4798-493d-a5c1-af39787abbf6",
+          "type": "success",
+          "message": "You received $0.78 from WindForest Bank.",
+          "date": "2025-09-28T22:46:07.882Z",
+          "read": true
+        },
         {
           "id": "2148323f-e120-4316-9212-13ab09df2496",
           "type": "success",
@@ -298,6 +643,7 @@
     },
     {
       "id": "546c",
+      "isTransferEnabled": true,
       "fullName": "darren smith",
       "dob": "1997-09-09",
       "ssn": "22222222222",
@@ -308,11 +654,14 @@
       "income": "1000000",
       "employerName": "daniel",
       "initialDeposit": 100,
+      "role": "user",
       "debitCard": true,
       "onlineBanking": true,
       "accountType": "Checking Account",
       "accountNumber": "1009633753",
-      "accountBalance": 500,
+      "accountBalance": 100,
+      "linkedAccounts": [],
+      "loans": [],
       "beneficiaries": [
         {
           "accountNumber": "1066747311",
@@ -348,6 +697,20 @@
           "message": "You received $5000 from Jane Doe",
           "date": "2025-09-25T05:03:35.777Z",
           "read": true
+        },
+        {
+          "id": "8895990d-a6ea-4849-b7de-c5a2ff369c2f",
+          "type": "success",
+          "message": "You received $0.62 from WindForest Bank.",
+          "date": "2025-09-28T21:17:09.810Z",
+          "read": false
+        },
+        {
+          "id": "cf6bb946-3c16-450b-86a1-162fc633970d",
+          "type": "success",
+          "message": "You received $0.11 from WindForest Bank.",
+          "date": "2025-09-28T21:17:09.810Z",
+          "read": false
         }
       ],
       "card": [
@@ -362,6 +725,7 @@
     },
     {
       "id": "913d",
+      "isTransferEnabled": true,
       "fullName": "DYLAN MASON",
       "dob": "1998-09-09",
       "ssn": "11111111111",
@@ -372,10 +736,22 @@
       "income": "100000",
       "employerName": "DYLAN",
       "initialDeposit": 200,
+      "role": "user",
       "debitCard": "",
       "onlineBanking": "",
       "accountType": "Business Savings",
       "accountNumber": "1081276232",
+      "loans": [],
+      "linkedAccounts": [
+        {
+          "id": "5f69ef3d-4ec9-408b-b9a2-74f2d1a531e7",
+          "linkedUserId": "bb46",
+          "linkedUserName": "DANIEL UDEH",
+          "accountNumber": "1068397691",
+          "status": "verified",
+          "linkedDate": "2025-09-29T02:01:34.943Z"
+        }
+      ],
       "beneficiaries": [
         {
           "accountNumber": "1066747311",
@@ -384,6 +760,153 @@
         }
       ],
       "notifications": [
+        {
+          "id": "f3909a31-92e2-4465-a174-582a5a241a56",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(****7311) is successful.",
+          "date": "2025-09-29T02:30:46.890Z",
+          "read": true
+        },
+        {
+          "id": "377d98ee-7b31-4fbe-b1c3-43b70c3b6b67",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(****7311) is successful.",
+          "date": "2025-09-29T02:26:25.368Z",
+          "read": true
+        },
+        {
+          "id": "a326cd45-944f-4950-ad5d-e2e66f6dcabc",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(****7311) is successful.",
+          "date": "2025-09-29T02:20:00.638Z",
+          "read": true
+        },
+        {
+          "id": "21c23b53-bfe2-4660-8839-23537f6bee2c",
+          "type": "success",
+          "message": "Your incoming external transfer of $20 from DANIEL UDEH(****7691) is successful.",
+          "date": "2025-09-29T02:02:04.538Z",
+          "read": true
+        },
+        {
+          "id": "a5041b25-c3a6-4a9b-8dbc-4a883b92c7c7",
+          "type": "success",
+          "message": "External account linked successfully!",
+          "date": "2025-09-29T02:01:34.943Z",
+          "read": true
+        },
+        {
+          "id": "27777c75-cd0e-4cba-8a4f-43395f652c84",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(****7311) is successful.",
+          "date": "2025-09-29T02:00:22.610Z",
+          "read": true
+        },
+        {
+          "id": "80f09f75-6da2-4f57-adc7-2f5a59bf596d",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(****7311) is successful.",
+          "date": "2025-09-29T01:55:01.319Z",
+          "read": true
+        },
+        {
+          "id": "bb0a7226-b8d8-4802-b30a-01084a8dd69b",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(7311) is successful.",
+          "date": "2025-09-29T01:52:41.719Z",
+          "read": true
+        },
+        {
+          "id": "5b24a18f-9737-4c80-baf8-b8da2915797f",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(7311) is successful.",
+          "date": "2025-09-29T01:50:04.950Z",
+          "read": true
+        },
+        {
+          "id": "2ee1c0e2-24f7-4195-970e-7cdbb273b7d1",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(7311) is successful.",
+          "date": "2025-09-29T01:49:27.283Z",
+          "read": true
+        },
+        {
+          "id": "274ab3a9-041e-4b0c-9b29-0b0ebdad5dd2",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(7311) is successful.",
+          "date": "2025-09-29T01:49:11.395Z",
+          "read": true
+        },
+        {
+          "id": "c5bf7a20-7dfc-441d-b548-d97a59492560",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe is successful.",
+          "date": "2025-09-29T01:27:17.893Z",
+          "read": true
+        },
+        {
+          "id": "120f20a4-a1c5-4f0b-b39a-dd706a779fed",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe is successful.",
+          "date": "2025-09-29T01:25:56.591Z",
+          "read": true
+        },
+        {
+          "id": "b5fad8d4-e0b0-4814-8cb3-1355e7dd8f63",
+          "type": "success",
+          "message": "External account linked successfully!",
+          "date": "2025-09-28T22:46:32.819Z",
+          "read": true
+        },
+        {
+          "id": "01369b69-f9ca-4d09-9d9e-41e8796c5649",
+          "type": "success",
+          "message": "External account linked successfully!",
+          "date": "2025-09-28T22:45:04.886Z",
+          "read": true
+        },
+        {
+          "id": "933ff8ee-196a-494a-a136-bbfefc90d67c",
+          "type": "success",
+          "message": "External account linked successfully!",
+          "date": "2025-09-28T21:17:34.317Z",
+          "read": true
+        },
+        {
+          "id": "61bb196b-4be7-4fe1-952b-4222a8e41850",
+          "type": "success",
+          "message": "External account linked successfully!",
+          "date": "2025-09-28T21:15:06.571Z",
+          "read": true
+        },
+        {
+          "id": "04f5dc5d-4e1d-41f4-ae46-d0c979d9a838",
+          "type": "success",
+          "message": "You received $0.03 as a micro deposit for external account linking.",
+          "date": "2025-09-28T04:20:01.215Z",
+          "read": true
+        },
+        {
+          "id": "6747e7c4-9a8d-416a-adbe-d831aef0846c",
+          "type": "success",
+          "message": "You received $0.02 as a micro deposit for external account linking.",
+          "date": "2025-09-28T04:20:01.215Z",
+          "read": true
+        },
+        {
+          "id": "21716650-1f7e-406a-a67f-3d75df1c5e1f",
+          "type": "success",
+          "message": "You received $0.07 as a micro deposit for external account linking.",
+          "date": "2025-09-28T04:17:31.370Z",
+          "read": true
+        },
+        {
+          "id": "98ca449f-8c1e-44d3-9d8d-bcee440eb06e",
+          "type": "success",
+          "message": "You received $0.05 as a micro deposit for external account linking.",
+          "date": "2025-09-28T04:17:31.370Z",
+          "read": true
+        },
         {
           "id": "bacaf617-2779-4318-8c62-4afe40889771",
           "type": "success",
@@ -446,9 +969,23 @@
           "message": "Beneficiary Jane Doe added successfully!",
           "date": "2025-09-25T08:14:24.672Z",
           "read": true
+        },
+        {
+          "id": "2bf255be-de0b-4bb0-b6d8-0eadcc6a8e98",
+          "type": "success",
+          "message": "You successfully transferred $100 to undefined",
+          "date": "2025-10-01T00:05:40.678Z",
+          "read": false
+        },
+        {
+          "id": "a1990c50-4b6f-4fe7-b3ee-03d669e0aedc",
+          "type": "success",
+          "message": "You successfully transferred $100 to undefined",
+          "date": "2025-10-01T00:07:04.644Z",
+          "read": false
         }
       ],
-      "accountBalance": 8189.13,
+      "accountBalance": 5331.000000000001,
       "card": [
         {
           "cardId": 1758787599197,
@@ -471,7 +1008,8 @@
       "amount": "100",
       "date": "2025-09-24T23:21:43.605Z",
       "balanceAfterSender": 98306.73999999999,
-      "balanceAfterReceiver": 1400
+      "balanceAfterReceiver": 1400,
+      "reversed": false
     },
     {
       "id": "ae45",
@@ -482,7 +1020,8 @@
       "amount": "500",
       "date": "2025-09-24T23:27:23.926Z",
       "balanceAfterSender": 97806.73999999999,
-      "balanceAfterReceiver": 1900
+      "balanceAfterReceiver": 1900,
+      "reversed": false
     },
     {
       "id": "ddc4",
@@ -493,7 +1032,8 @@
       "amount": "1000",
       "date": "2025-09-24T23:48:21.500Z",
       "balanceAfterSender": 96806.73999999999,
-      "balanceAfterReceiver": 2900
+      "balanceAfterReceiver": 2900,
+      "reversed": false
     },
     {
       "id": "9121",
@@ -504,7 +1044,8 @@
       "amount": "100",
       "date": "2025-09-25T00:19:39.700Z",
       "balanceAfterSender": 96706.73999999999,
-      "balanceAfterReceiver": 3000
+      "balanceAfterReceiver": 3000,
+      "reversed": false
     },
     {
       "id": "c97d",
@@ -515,7 +1056,8 @@
       "amount": "100",
       "date": "2025-09-25T01:32:59.024Z",
       "balanceAfterSender": 96606.73999999999,
-      "balanceAfterReceiver": 3100
+      "balanceAfterReceiver": 3100,
+      "reversed": false
     },
     {
       "id": "427b",
@@ -526,7 +1068,8 @@
       "amount": "1000",
       "date": "2025-09-25T01:39:14.147Z",
       "balanceAfterSender": 2100,
-      "balanceAfterReceiver": 97606.73999999999
+      "balanceAfterReceiver": 97606.73999999999,
+      "reversed": false
     },
     {
       "id": "3350",
@@ -537,7 +1080,8 @@
       "amount": "1000",
       "date": "2025-09-25T01:40:46.178Z",
       "balanceAfterSender": 96606.73999999999,
-      "balanceAfterReceiver": 3100
+      "balanceAfterReceiver": 3100,
+      "reversed": false
     },
     {
       "id": "78f0",
@@ -548,7 +1092,8 @@
       "amount": "100",
       "date": "2025-09-25T01:44:38.246Z",
       "balanceAfterSender": 3000,
-      "balanceAfterReceiver": 96706.73999999999
+      "balanceAfterReceiver": 96706.73999999999,
+      "reversed": false
     },
     {
       "id": "0244",
@@ -559,7 +1104,8 @@
       "amount": "10000",
       "date": "2025-09-25T01:51:50.118Z",
       "balanceAfterSender": 86706.73999999999,
-      "balanceAfterReceiver": 13000
+      "balanceAfterReceiver": 13000,
+      "reversed": false
     },
     {
       "id": "0fef",
@@ -570,7 +1116,8 @@
       "amount": "200",
       "date": "2025-09-25T02:04:52.953Z",
       "balanceAfterSender": 86506.73999999999,
-      "balanceAfterReceiver": 13200
+      "balanceAfterReceiver": 13200,
+      "reversed": false
     },
     {
       "id": "074c",
@@ -581,7 +1128,8 @@
       "amount": "5000",
       "date": "2025-09-25T02:18:14.505Z",
       "balanceAfterSender": 81506.73999999999,
-      "balanceAfterReceiver": 18200
+      "balanceAfterReceiver": 18200,
+      "reversed": false
     },
     {
       "id": "9e69",
@@ -592,7 +1140,8 @@
       "amount": "10000",
       "date": "2025-09-25T02:19:32.478Z",
       "balanceAfterSender": 8200,
-      "balanceAfterReceiver": 91506.73999999999
+      "balanceAfterReceiver": 91506.73999999999,
+      "reversed": true
     },
     {
       "id": "18b9",
@@ -603,7 +1152,8 @@
       "amount": "3000",
       "date": "2025-09-25T02:22:29.121Z",
       "balanceAfterSender": 88506.73999999999,
-      "balanceAfterReceiver": 11200
+      "balanceAfterReceiver": 11200,
+      "reversed": true
     },
     {
       "id": "cc9a",
@@ -614,7 +1164,8 @@
       "amount": "120",
       "date": "2025-09-25T02:41:34.700Z",
       "balanceAfterSender": 88386.73999999999,
-      "balanceAfterReceiver": 11320
+      "balanceAfterReceiver": 11320,
+      "reversed": true
     },
     {
       "id": "0442",
@@ -625,7 +1176,8 @@
       "amount": "100",
       "date": "2025-09-25T02:44:50.886Z",
       "balanceAfterSender": 88286.73999999999,
-      "balanceAfterReceiver": 11420
+      "balanceAfterReceiver": 11420,
+      "reversed": true
     },
     {
       "id": "1161",
@@ -636,7 +1188,8 @@
       "amount": "88200",
       "date": "2025-09-25T03:14:53.138Z",
       "balanceAfterSender": 86.73999999999069,
-      "balanceAfterReceiver": 99620
+      "balanceAfterReceiver": 99620,
+      "reversed": false
     },
     {
       "id": "6dca",
@@ -647,7 +1200,8 @@
       "amount": "80000",
       "date": "2025-09-25T03:27:05.394Z",
       "balanceAfterSender": 19620,
-      "balanceAfterReceiver": 80086.73999999999
+      "balanceAfterReceiver": 80086.73999999999,
+      "reversed": false
     },
     {
       "id": "9d83",
@@ -658,7 +1212,8 @@
       "amount": "5000",
       "date": "2025-09-25T05:03:35.834Z",
       "balanceAfterSender": 14620,
-      "balanceAfterReceiver": 5100
+      "balanceAfterReceiver": 5100,
+      "reversed": false
     },
     {
       "id": "9311",
@@ -669,7 +1224,8 @@
       "amount": "100",
       "date": "2025-09-25T05:11:52.305Z",
       "balanceAfterSender": 0,
-      "balanceAfterReceiver": 14720
+      "balanceAfterReceiver": 14720,
+      "reversed": false
     },
     {
       "id": "f8cb",
@@ -680,7 +1236,8 @@
       "amount": "500",
       "date": "2025-09-25T05:13:12.619Z",
       "balanceAfterSender": 14220,
-      "balanceAfterReceiver": 500
+      "balanceAfterReceiver": 500,
+      "reversed": false
     },
     {
       "id": "638a",
@@ -691,7 +1248,8 @@
       "amount": "100",
       "date": "2025-09-25T08:14:39.277Z",
       "balanceAfterSender": 100,
-      "balanceAfterReceiver": 14320
+      "balanceAfterReceiver": 14320,
+      "reversed": false
     },
     {
       "id": "cc87",
@@ -702,40 +1260,8 @@
       "amount": "110.87",
       "date": "2025-09-26T06:45:42.256Z",
       "balanceAfterSender": 7889.13,
-      "balanceAfterReceiver": 14430.87
-    },
-    {
-      "id": "c2e4",
-      "fromUserId": "913d",
-      "fromUserName": "DYLAN MASON",
-      "toUserId": "8016",
-      "toUserName": "Jane Doe",
-      "amount": "100",
-      "date": "2025-09-26T08:02:39.420Z",
-      "balanceAfterSender": 7789.13,
-      "balanceAfterReceiver": 14530.87
-    },
-    {
-      "id": "eced",
-      "fromUserId": "913d",
-      "fromUserName": "DYLAN MASON",
-      "toUserId": "8016",
-      "toUserName": "Jane Doe",
-      "amount": "100",
-      "date": "2025-09-26T10:56:59.524Z",
-      "balanceAfterSender": 7689.13,
-      "balanceAfterReceiver": 14630.87
-    },
-    {
-      "id": "0a3b",
-      "fromUserId": "1f6f",
-      "fromUserName": "JOHN DOE",
-      "toUserId": "913d",
-      "toUserName": "DYLAN MASON",
-      "amount": "500",
-      "date": "2025-09-26T11:01:08.887Z",
-      "balanceAfterSender": 0,
-      "balanceAfterReceiver": 8189.13
+      "balanceAfterReceiver": 14430.87,
+      "reversed": false
     }
   ],
   "onlineAccessUsers": [
@@ -747,7 +1273,15 @@
       "securityQuestion": "pet",
       "securityAnswer": "Dylan",
       "termsAccepted": true,
-      "lastLogin": "2025-09-26T06:47:47.584Z"
+      "lastLogin": "2025-10-01T02:43:27.553Z",
+      "role": "user"
+    },
+    {
+      "id": 99,
+      "username": "admin",
+      "email": "admin@bank.com",
+      "password": "admin",
+      "role": "admin"
     },
     {
       "id": "ca1d",
@@ -757,7 +1291,8 @@
       "securityQuestion": "pet",
       "securityAnswer": "DYLAN",
       "termsAccepted": true,
-      "lastLogin": "2025-09-25T06:56:26.925Z"
+      "lastLogin": "2025-10-02T23:04:48.981Z",
+      "role": "user"
     },
     {
       "id": "2b1f",
@@ -767,7 +1302,8 @@
       "securityQuestion": "pet",
       "securityAnswer": "darren",
       "termsAccepted": true,
-      "lastLogin": "2025-09-25T05:13:29.227Z"
+      "lastLogin": "2025-09-25T05:13:29.227Z",
+      "role": "user"
     },
     {
       "id": "a6e4",
@@ -777,7 +1313,8 @@
       "securityQuestion": "In what city were you born?",
       "securityAnswer": "New york",
       "termsAccepted": true,
-      "lastLogin": "2025-09-26T18:22:22.983Z"
+      "lastLogin": "2025-10-01T00:00:43.381Z",
+      "role": "user"
     }
   ],
   "accountTypes": [
@@ -861,6 +1398,197 @@
         "Fraud protection and alerts",
         "Free virtual card for online shopping"
       ]
+    },
+    {
+      "id": 7,
+      "name": "Student Savings Account",
+      "description": "Designed for students to start building good financial habits with no monthly fees and low deposit requirements.",
+      "minDeposit": 50,
+      "monthlyFee": 0,
+      "interestRate": 0.005,
+      "features": [
+        "No monthly maintenance fees",
+        "Free online and mobile banking",
+        "Parental oversight tools"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Money Market Savings",
+      "description": "A savings account with higher interest rates and limited check-writing privileges, best for those keeping larger balances.",
+      "minDeposit": 2500,
+      "monthlyFee": 10,
+      "interestRate": 0.025,
+      "features": [
+        "Tiered interest rates based on balance",
+        "Limited check-writing privileges",
+        "FDIC insured"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Retirement Savings Account",
+      "description": "A tax-advantaged savings option to help prepare for retirement with long-term growth.",
+      "minDeposit": 500,
+      "monthlyFee": 0,
+      "interestRate": 0.03,
+      "features": [
+        "Tax benefits on contributions",
+        "Penalty-free withdrawals at retirement age",
+        "Automatic contribution scheduling"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Kids’ Savings Account",
+      "description": "A safe and simple account for children to learn about money management and saving.",
+      "minDeposit": 25,
+      "monthlyFee": 0,
+      "interestRate": 0.004,
+      "features": [
+        "No monthly fees",
+        "Joint account with parent/guardian",
+        "Rewards for regular deposits"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Premium Savings Account",
+      "description": "An exclusive savings account for high-net-worth customers, offering higher interest and personalized support.",
+      "minDeposit": 10000,
+      "monthlyFee": 20,
+      "interestRate": 0.04,
+      "features": [
+        "Dedicated financial advisor",
+        "Higher withdrawal limits",
+        "Priority customer service"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Student Checking",
+      "description": "A no-fee account designed for students with flexible banking and low minimums.",
+      "minDeposit": 0,
+      "monthlyFee": 0,
+      "interestRate": 0,
+      "features": [
+        "No monthly maintenance fee",
+        "Free online and mobile banking",
+        "One overdraft fee waiver per semester"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Premium Checking",
+      "description": "An exclusive account with higher benefits for customers maintaining larger balances.",
+      "minDeposit": 5000,
+      "monthlyFee": 25,
+      "interestRate": 0.02,
+      "features": [
+        "Earns interest on balances",
+        "Free checks and money orders",
+        "Dedicated customer support line"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Senior Checking",
+      "description": "A checking account tailored for seniors, offering perks and low fees.",
+      "minDeposit": 500,
+      "monthlyFee": 5,
+      "interestRate": 0.01,
+      "features": [
+        "Discounted fees for seniors 60+",
+        "Free paper statements",
+        "Free debit card replacement"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Rewards Checking",
+      "description": "A checking account that rewards everyday spending with cashback and bonuses.",
+      "minDeposit": 100,
+      "monthlyFee": 10,
+      "interestRate": 0.01,
+      "features": [
+        "Cashback on debit card purchases",
+        "ATM fee reimbursements",
+        "Higher interest with qualifying activities"
+      ]
+    }
+  ],
+  "loans": [
+    {
+      "id": 1,
+      "name": "Personal Loan",
+      "rate": 7.9,
+      "maxAmount": 50000,
+      "term": "60 Months",
+      "icon": null,
+      "description": "Flexible financing for major purchases, debt consolidation, or unexpected expenses."
+    },
+    {
+      "id": 2,
+      "name": "Education Loan",
+      "rate": 5.5,
+      "maxAmount": 150000,
+      "term": "120 Months",
+      "icon": null,
+      "description": "Cover tuition, books, and living costs with competitive rates designed for students."
+    },
+    {
+      "id": 3,
+      "name": "Car Loan",
+      "rate": 4.2,
+      "maxAmount": 80000,
+      "term": "72 Months",
+      "icon": null,
+      "description": "Drive away with the best rates on new or used vehicles. Quick approval process."
+    },
+    {
+      "id": 4,
+      "name": "Home Loan",
+      "rate": 3.9,
+      "maxAmount": 300000,
+      "term": "30 months",
+      "icon": null,
+      "description": "Affordable financing for your dream home with flexible repayment options."
+    },
+    {
+      "id": 7,
+      "name": "Business Loan",
+      "rate": 7.2,
+      "maxAmount": 100000,
+      "term": "15 months",
+      "icon": null,
+      "description": "Fuel your business growth with tailored financing solutions."
+    },
+    {
+      "id": 8,
+      "name": "Travel Loan",
+      "rate": 6,
+      "maxAmount": 15000,
+      "term": "3 months",
+      "icon": null,
+      "description": "Make your dream vacation a reality with easy repayment options."
+    },
+    {
+      "id": 9,
+      "name": "Medical Loan",
+      "rate": 5.9,
+      "maxAmount": 25000,
+      "term": "7 months",
+      "icon": null,
+      "description": "Quick access to funds for medical emergencies and healthcare needs."
+    },
+    {
+      "id": 10,
+      "name": "Green Loan",
+      "rate": 4.5,
+      "maxAmount": 40000,
+      "term": "10 months",
+      "icon": null,
+      "description": "Support eco-friendly projects like solar panels or energy-efficient upgrades."
     }
   ]
 }
