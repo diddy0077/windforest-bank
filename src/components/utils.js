@@ -4,10 +4,7 @@ export const addNotification = async (userId, notification) => {
     const res = await fetch(`http://localhost:5000/users/${userId}`);
     const user = await res.json();
 
-    const updatedNotifications = [
-      ...(user.notifications || []),
-      notification,
-    ];
+    const updatedNotifications = [...(user.notifications || []), notification];
 
     // PATCH updated notifications array
     await fetch(`http://localhost:5000/users/${userId}`, {

@@ -14,6 +14,15 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ForgotPassword from './pages/ForgotPassword'
 import About from './pages/About'
+import LinkAccounts from './pages/LinkAccounts'
+import Savings from './pages/Savings'
+import OpenAccountInfoPage from './pages/OpenAccountInfoPage'
+import Checking from './pages/Checking'
+import LoanProductsPage from './pages/Loans'
+import UserLoanDashboard from './components/UserLoanDashboard'
+import AdminRoute from './components/AdminRoute'
+import AdminDashboard from './pages/AdminDashboard'
+import AdminLogin from './pages/AdminLogin'
 
 const App = () => {
  
@@ -25,12 +34,20 @@ const App = () => {
        <Route path="account-types" element={<AccountTypes />} />
        <Route path="open-account/:name" element={<OpenAccount />} />
        <Route path="online-enrollment" element={<OnlineEnrollment />} />
-       <Route path="about-us" element={<About/>} />
-       <Route path='account-dashboard' element={<ProtectedRoute/>}>
+       <Route path="about-us" element={<About />} />
+       <Route path="savings" element={<Savings />} />
+       <Route path="checking" element={<Checking />} />
+       <Route path="loans" element={<LoanProductsPage />} />
+       <Route path="learn-more" element={<OpenAccountInfoPage />} />
+       <Route path="admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+       <Route path="admin-login" element={<AdminLogin/>}/>
+       <Route path='account-dashboard' element={<ProtectedRoute />}>
          <Route index element={<AccountDashboard />} />
          <Route path='transactions' element={<Transactions />} />
          <Route path='transfer' element={<Transfer />} />
          <Route path='profile' element={<Profile />} />
+         <Route path='my-loans' element={<UserLoanDashboard />} />
+         <Route path='/account-dashboard/link-accounts' element={<LinkAccounts />} />
        </Route>
        <Route path='forgot-password' element={<ForgotPassword/>}/>
      </Route>

@@ -2,7 +2,12 @@ import React, { useState, useContext } from "react";
 import NotificationDetailModal from "./NotificationDetailModal";
 import { UserContext } from "./UserContext";
 
-export default function NotificationsModal({ isOpen, onClose, notifications, setNotifications }) {
+export default function NotificationsModal({
+  isOpen,
+  onClose,
+  notifications,
+  setNotifications,
+}) {
   const { currentUser } = useContext(UserContext);
   const [selectedNotification, setSelectedNotification] = useState(null);
   const [detailOpen, setDetailOpen] = useState(false);
@@ -25,7 +30,10 @@ export default function NotificationsModal({ isOpen, onClose, notifications, set
   };
 
   const markAllAsRead = () => {
-    const updatedNotifications = notifications.map((n) => ({ ...n, read: true }));
+    const updatedNotifications = notifications.map((n) => ({
+      ...n,
+      read: true,
+    }));
     setNotifications(updatedNotifications);
 
     fetch(`http://localhost:5000/users/${currentUser.id}`, {
@@ -39,7 +47,9 @@ export default function NotificationsModal({ isOpen, onClose, notifications, set
     <>
       <div
         className={`fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-300 ${
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          isOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
       >
         {/* Overlay */}
@@ -47,17 +57,19 @@ export default function NotificationsModal({ isOpen, onClose, notifications, set
           className="absolute inset-0 bg-black/40 backdrop-blur-sm"
           onClick={onClose}
         ></div>
-        
+
         {/* Modal */}
         <div className="relative z-10 bg-white mx-2 rounded-2xl shadow-2xl w-full max-w-lg max-h-[80vh] overflow-y-auto p-6 transform transition-all duration-300 scale-100">
-           <button
+          <button
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700 text-2xl font-bold cursor-pointer absolute top-2 right-4"
           >
             &times;
           </button>
           <div className="flex justify-between items-center my-4">
-            <h2 className="text-xl font-semibold text-gray-800">Notifications</h2>
+            <h2 className="text-xl font-semibold text-gray-800">
+              Notifications
+            </h2>
             <button
               onClick={markAllAsRead}
               className="text-sm text-red-600 font-medium hover:underline cursor-pointer"
@@ -92,7 +104,11 @@ export default function NotificationsModal({ isOpen, onClose, notifications, set
                       >
                         {n.type.charAt(0).toUpperCase() + n.type.slice(1)}
                       </p>
-                      <p className={`text-gray-700 text-sm ${!n.read ? "font-medium" : ""}`}>
+                      <p
+                        className={`text-gray-700 text-sm ${
+                          !n.read ? "font-medium" : ""
+                        }`}
+                      >
                         {n.message}
                       </p>
                     </div>

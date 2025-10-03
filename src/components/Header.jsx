@@ -1,14 +1,13 @@
-import React, { useState, useContext } from 'react';
-import { UserContext } from './UserContext';
-import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
-
+import React, { useState, useContext } from "react";
+import { UserContext } from "./UserContext";
+import { motion } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
-  const [otp, setOtp] = useState('');
-  const [error, setError] = useState('');
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [otp, setOtp] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showOtpInput, setShowOtpInput] = useState(false);
   const [tempUser, setTempUser] = useState(null);
@@ -18,129 +17,138 @@ const Header = () => {
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
   };
 
   // --- Step 1: Username & Password submit ---
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setError("");
 
     if (!userName) {
-      setError('Username is required');
+      setError("Username is required");
       setLoading(false);
       return;
     }
     if (!password) {
-      setError('Password is required');
+      setError("Password is required");
       setLoading(false);
       return;
     }
 
     try {
-      const res = await fetch('http://localhost:5000/onlineAccessUsers');
-      if (!res.ok) throw new Error('Error fetching online users');
+      const res = await fetch("http://localhost:5000/onlineAccessUsers");
+      if (!res.ok) throw new Error("Error fetching online users");
       const onlineUsers = await res.json();
 
       const matchedUser = onlineUsers.find(
         (user) =>
-          user.username.toLowerCase().trim() === userName.toLowerCase().trim() &&
+          user.username.toLowerCase().trim() ===
+            userName.toLowerCase().trim() &&
           user.password.toLowerCase().trim() === password.toLowerCase().trim()
       );
 
       if (!matchedUser) {
-        setError('Invalid username or password');
+        setError("Invalid username or password");
         setLoading(false);
         return;
       }
 
-      const usersRes = await fetch('http://localhost:5000/users');
+      const usersRes = await fetch("http://localhost:5000/users");
       const users = await usersRes.json();
       const fullUser = users.find((u) => u.id === matchedUser.userId);
 
       // Send OTP
-      const otpRes = await fetch('https://windforest-bank.onrender.com/send-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const otpRes = await fetch("http://localhost:7000/send-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: fullUser.email }),
       });
 
-      if (!otpRes.ok) throw new Error('Failed to send OTP');
+      if (!otpRes.ok) throw new Error("Failed to send OTP");
 
       setTempUser({ fullUser, matchedUser }); // store both users temporarily
       setShowOtpInput(true);
       setLoading(false);
     } catch (err) {
-      console.log('Login error:', err);
+      console.log("Login error:", err);
       setError(err.message);
       setLoading(false);
     }
   };
 
   // --- Step 2: OTP verification ---
- const handleOtpSubmit = async () => {
-  if (!otp) {
-    setError("Please enter the OTP");
-    return;
-  }
+  const handleOtpSubmit = async () => {
+    if (!otp) {
+      setError("Please enter the OTP");
+      return;
+    }
 
-  setLoading(true);
-  setError("");
+    setLoading(true);
+    setError("");
 
-  try {
-    const { fullUser, matchedUser } = tempUser;
+    try {
+      const { fullUser, matchedUser } = tempUser;
 
-    const res = await fetch("https://windforest-bank.onrender.com/verify-otp", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: fullUser.email, otp }),
-    });
+      const res = await fetch("http://localhost:7000/verify-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: fullUser.email, otp }),
+      });
 
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.message || "OTP verification failed");
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "OTP verification failed");
 
-    // ✅ OTP verified → update lastLogin
-    const lastLogin = new Date().toISOString();
-    await fetch(`http://localhost:5000/onlineAccessUsers/${matchedUser.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ lastLogin }),
-    });
+      // ✅ OTP verified → update lastLogin
+      const lastLogin = new Date().toISOString();
+      await fetch(`http://localhost:5000/onlineAccessUsers/${matchedUser.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lastLogin }),
+      });
 
-    // — Add a 2-second delay to show loading
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+      // — Add a 2-second delay to show loading
+      await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    login({ ...fullUser, lastLogin });
-    nav("/account-dashboard");
-  } catch (err) {
-    console.log("OTP error:", err);
-    setError(err.message);
-  } finally {
-    setLoading(false);
-  }
-};
+      login({ ...fullUser, lastLogin });
+      nav("/account-dashboard");
+    } catch (err) {
+      console.log("OTP error:", err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   function maskEmail(email) {
-  const [local, domain] = email.split("@");
-  
-  if (local.length <= 2) {
-    return local[0] + "*@" + domain;
-  }
+    const [local, domain] = email.split("@");
 
-  return (
-    local[0] +
-    "*".repeat(local.length - 2) +
-    local[local.length - 1] +
-    "@" +
-    domain
-  );
-}
+    if (local.length <= 2) {
+      return local[0] + "*@" + domain;
+    }
+
+    return (
+      local[0] +
+      "*".repeat(local.length - 2) +
+      local[local.length - 1] +
+      "@" +
+      domain
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 font-sans antialiased">
@@ -156,7 +164,12 @@ const Header = () => {
               {!showOtpInput ? (
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
-                    <label htmlFor="username" className="block text-sm text-gray-400 mb-1">Username</label>
+                    <label
+                      htmlFor="username"
+                      className="block text-sm text-gray-400 mb-1"
+                    >
+                      Username
+                    </label>
                     <input
                       value={userName}
                       onChange={(e) => setUserName(e.target.value)}
@@ -167,7 +180,12 @@ const Header = () => {
                     />
                   </div>
                   <div className="mb-4">
-                    <label htmlFor="password" className="block text-sm text-gray-400 mb-1">Password</label>
+                    <label
+                      htmlFor="password"
+                      className="block text-sm text-gray-400 mb-1"
+                    >
+                      Password
+                    </label>
                     <input
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -196,7 +214,8 @@ const Header = () => {
               ) : (
                 <div className="space-y-4">
                   <p className="text-gray-400">
-                    Enter the OTP sent to your email: {tempUser && maskEmail(tempUser.fullUser.email)}
+                    Enter the OTP sent to your email:{" "}
+                    {tempUser && maskEmail(tempUser.fullUser.email)}
                   </p>
                   <input
                     type="text"
@@ -215,9 +234,24 @@ const Header = () => {
               )}
 
               <div className="mt-6 text-sm text-gray-400 space-y-2">
-                <Link to='/forgot-password' className="block hover:underline hover:text-red-700">Forgot username or password?</Link>
-                <Link to='' className="block hover:underline hover:text-red-700">Security Center</Link>
-                <Link to='' className="block hover:underline hover:text-red-700">Privacy, Cookies, and Legal</Link>
+                <Link
+                  to="/forgot-password"
+                  className="block hover:underline hover:text-red-700"
+                >
+                  Forgot username or password?
+                </Link>
+                <Link
+                  to=""
+                  className="block hover:underline hover:text-red-700"
+                >
+                  Security Center
+                </Link>
+                <Link
+                  to=""
+                  className="block hover:underline hover:text-red-700"
+                >
+                  Privacy, Cookies, and Legal
+                </Link>
               </div>
             </aside>
           </div>
@@ -230,7 +264,10 @@ const Header = () => {
                 alt="Financial professional working with a client"
                 className="w-full h-full object-cover object-center"
                 // This handler ensures a reliable image loads if the external URL fails.
-                onError={(e) => { e.target.onerror = null; e.target.src=FALLBACK_IMAGE_URL; }} 
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = FALLBACK_IMAGE_URL;
+                }}
               />
               <div className="absolute inset-0 bg-red-900 opacity-60"></div>
             </div>
@@ -248,12 +285,13 @@ const Header = () => {
               >
                 Your Future is Our Focus.
               </h1>
-              
+
               <p
                 className="mt-4 text-lg md:text-xl max-w-xl mx-auto"
                 /* variants={itemVariants} */
               >
-                Partner with us to achieve your financial goals with confidence and ease.
+                Partner with us to achieve your financial goals with confidence
+                and ease.
               </p>
               {/* FIX: Replaced motion.button with standard button */}
               <button

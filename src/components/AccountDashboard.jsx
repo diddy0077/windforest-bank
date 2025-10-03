@@ -13,11 +13,14 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import NotificationsModal from "./NotificationsModal";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
+
 
 const AccountDashboard = () => {
-  const { setIsSidebarOpen, notifications, setNotifications } =
+  const { setIsSidebarOpen, notifications, setNotifications,transactions } =
     useOutletContext();
-  const { currentUser} = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   const [openNotifications, setOpenNotifications] = useState(false);
   console.log(currentUser);
@@ -30,31 +33,35 @@ const AccountDashboard = () => {
   ];
 
   useEffect(() => {
-  const threshold = 100;
-  if (currentUser.accountBalance < threshold) {
-    // Prevent duplicate low-balance notifications
-    const exists = notifications.some(
-      n => n.type === 'warning' && n.message.includes('low balance')
-    );
-    if (!exists) {
-      const lowBalanceNotification = {
-        id: crypto.randomUUID(),
-        type: 'warning',
-        message: `Your account balance is below $${threshold}!`,
-        date: new Date().toISOString(),
-        read: false,
-      };
-      setNotifications(prev => [...prev, lowBalanceNotification]);
+    const threshold = 100;
+    if (currentUser.accountBalance < threshold) {
+      // Prevent duplicate low-balance notifications
+      const exists = notifications.some(
+        (n) => n.type === "warning" && n.message.includes("low balance")
+      );
+      if (!exists) {
+        const lowBalanceNotification = {
+          id: crypto.randomUUID(),
+          type: "warning",
+          message: `Your account balance is below $${threshold}!`,
+          date: new Date().toISOString(),
+          read: false,
+        };
+        setNotifications((prev) => [...prev, lowBalanceNotification]);
 
-      fetch(`http://localhost:5000/users/${currentUser.id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ notifications: [...currentUser.notifications, lowBalanceNotification] }),
-      });
+        fetch(`http://localhost:5000/users/${currentUser.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            notifications: [
+              ...currentUser.notifications,
+              lowBalanceNotification,
+            ],
+          }),
+        });
+      }
     }
-  }
-}, [currentUser]);
-
+  }, [currentUser]);
 
   function mask(num) {
     const str = num.toString();
@@ -80,11 +87,146 @@ const AccountDashboard = () => {
 
     fetchNotifications();
   }, [currentUser, setNotifications]);
-
+console.log(currentUser)
   const unreadCount = notifications.filter((n) => !n.read).length;
 
+  const statement = {
+    "accountHolder": {
+    "fullName": currentUser.fullName,
+    "address": currentUser.address,
+    "email": currentUser.email,
+    "phone": currentUser.phone,
+    "accountNumber": currentUser.accountNumber,
+    "accountType": currentUser.accountType
+  },
+  "summary": {
+    "currentBalance": currentUser.accountBalance,
+    "initialDeposit": currentUser.initialDeposit,
+    "income": currentUser.income,
+    "employer": currentUser.employerName
+  },
+  "transactions": transactions || [],
+  "loans": currentUser.loans || []
+  }
+
+const downloadStatement = () => {
+  const doc = new jsPDF();
+
+  // ---- Bank Header ----
+  doc.setFontSize(22);
+  doc.setTextColor(220, 38, 38); // Tailwind red-600
+  doc.text("WindForst Bank", 105, 20, { align: "center" });
+
+  doc.setFontSize(12);
+  doc.setTextColor(0, 0, 0);
+  doc.text("Official Account Statement", 105, 28, { align: "center" });
+  doc.line(14, 32, 196, 32); // separator line
+
+  // ---- Account Holder Info ----
+  doc.setFontSize(14);
+  doc.setTextColor(220, 38, 38);
+  doc.text("Account Holder Details", 14, 42);
+
+  doc.setFontSize(11);
+  doc.setTextColor(0, 0, 0);
+  doc.text(`Name: ${statement.accountHolder.fullName}`, 14, 50);
+  doc.text(`Account Number: ${statement.accountHolder.accountNumber}`, 14, 56);
+  doc.text(`Account Type: ${statement.accountHolder.accountType}`, 14, 62);
+  doc.text(`Email: ${statement.accountHolder.email}`, 14, 68);
+  doc.text(`Phone: ${statement.accountHolder.phone}`, 14, 74);
+  doc.text(`Address: ${statement.accountHolder.address}`, 14, 80);
+
+  // ---- Account Summary ----
+  doc.setFontSize(14);
+  doc.setTextColor(220, 38, 38);
+  doc.text("Account Summary", 14, 95);
+
+  autoTable(doc, {
+    startY: 100,
+    headStyles: { fillColor: [220, 38, 38], halign: "center" },
+    bodyStyles: { halign: "center" },
+    head: [["Current Balance", "Initial Deposit", "Income", "Employer"]],
+    body: [
+      [
+        `$${statement.summary.currentBalance.toLocaleString()}`,
+        `$${statement.summary.initialDeposit.toLocaleString()}`,
+        `$${statement.summary.income.toLocaleString()}`,
+        statement.summary.employer,
+      ],
+    ],
+  });
+
+  // ---- Transactions ----
+  doc.setFontSize(14);
+  doc.setTextColor(220, 38, 38);
+  doc.text("Transactions", 14, doc.lastAutoTable.finalY + 15);
+
+  const transactionRows = (statement.transactions || []).slice(0,10).map((tx) => [
+    new Date(tx.date).toLocaleDateString(),
+    tx.isDebit ? `Transfer to ${tx.toUserName}` : `Received from ${tx.fromUserName}`,
+    tx.isDebit ? `$${tx.amount}` : "-",
+    !tx.isDebit ? `$${tx.amount}` : "-",
+    `$${tx.balanceAfter.toLocaleString()}`,
+  ]);
+
+  autoTable(doc, {
+    startY: doc.lastAutoTable.finalY + 20,
+    headStyles: { fillColor: [220, 38, 38], halign: "center" },
+    bodyStyles: { halign: "center" },
+    head: [["Date", "Description", "Debit", "Credit", "Balance"]],
+    body: transactionRows.length ? transactionRows : [["-", "-", "-", "-", "-"]],
+  });
+
+  // ---- Loans ----
+  doc.setFontSize(14);
+  doc.setTextColor(220, 38, 38);
+  doc.text("Loans", 14, doc.lastAutoTable.finalY + 15);
+
+  const loanRows = (statement.loans || []).map((loan) => [
+    loan.loanId,
+    loan.loanName,
+    `$${loan.amount.toLocaleString()}`,
+    `${loan.years} years`,
+    `$${loan.monthlyPayment.toFixed(2)}`,
+    loan.status,
+    new Date(loan.appliedAt).toLocaleDateString(),
+  ]);
+
+  autoTable(doc, {
+    startY: doc.lastAutoTable.finalY + 20,
+    headStyles: { fillColor: [220, 38, 38], halign: "center" },
+    bodyStyles: { halign: "center" },
+    head: [
+      [
+        "Loan ID",
+        "Loan Name",
+        "Amount",
+        "Years",
+        "Monthly Payment",
+        "Status",
+        "Applied At",
+      ],
+    ],
+    body: loanRows.length ? loanRows : [["-", "-", "-", "-", "-", "-", "-"]],
+  });
+
+  // ---- Footer ----
+  const pageHeight = doc.internal.pageSize.height;
+  doc.setFontSize(10);
+  doc.setTextColor(100);
+  doc.text(
+    "This is a system-generated statement. For assistance, contact support@windforstbank.com",
+    105,
+    pageHeight - 10,
+    { align: "center" }
+  );
+
+  // ---- Save ----
+  doc.save("WindForst_Bank_Statement.pdf");
+};
+
   return (
-    <div className="">
+    <div className="min-h-screen">
       {/* Main Content */}
       <div className="flex-1 p-4 sm:p-6 lg:p-10 transition-all duration-300">
         {/* Header */}
@@ -150,7 +292,7 @@ const AccountDashboard = () => {
                   Total Balance
                 </h2>
                 <p className="text-3xl sm:text-5xl font-extrabold text-red-700 mt-2">
-                  ${currentUser.accountBalance.toLocaleString()}
+                  ${Number(currentUser?.accountBalance || 0).toLocaleString()}
                 </p>
                 <p className="text-sm text-gray-500 mt-1">
                   Last Login: {new Date(currentUser.lastLogin).toLocaleString()}
@@ -165,11 +307,11 @@ const AccountDashboard = () => {
                 <p className="text-gray-700">
                   Balance:{" "}
                   <span className="font-bold text-lg">
-                    ${currentUser.accountBalance.toLocaleString()}
+                    ${currentUser?.accountBalance?.toLocaleString()}
                   </span>{" "}
                 </p>
                 <p className="text-gray-700">
-                  Account Number: {mask(currentUser.accountNumber)}
+                  Account Number: {currentUser?.accountNumber ? mask(currentUser.accountNumber) : "N/A"}
                 </p>
               </div>
             </div>
@@ -183,7 +325,7 @@ const AccountDashboard = () => {
               <button className="flex-1 min-w-40 bg-gray-800 text-white font-semibold py-4 px-6 rounded-full shadow-lg hover:bg-gray-900 transition-all duration-300 cursor-pointer transform hover:scale-105">
                 Pay Bills
               </button>
-              <button className="flex-1 min-w-40 bg-gray-300 text-gray-800 font-semibold py-4 px-6 rounded-full shadow-lg hover:bg-gray-400 transition-all duration-300 cursor-pointer transform hover:scale-105">
+              <button onClick={downloadStatement} className="flex-1 min-w-40 bg-gray-300 text-gray-800 font-semibold py-4 px-6 rounded-full shadow-lg hover:bg-gray-400 transition-all duration-300 cursor-pointer transform hover:scale-105">
                 Download Statement
               </button>
             </div>
@@ -222,7 +364,7 @@ const AccountDashboard = () => {
                           !n.read ? "font-medium" : ""
                         }`}
                       >
-                        {n.message.slice(0,50) + '...'}
+                        {n.message.slice(0, 50) + "..."}
                       </p>
                     </div>
                     <span className="text-xs text-gray-400 whitespace-nowrap ml-2">
@@ -235,7 +377,7 @@ const AccountDashboard = () => {
         </div>
       </div>
       <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6 w-[90%] mx-auto">
-        {currentUser.card.map((card) => (
+        {currentUser?.card?.map((card) => (
           <div
             key={card.id}
             className="relative p-6 rounded-2xl shadow-lg text-white transform transition-transform hover:scale-105"

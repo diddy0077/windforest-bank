@@ -71,21 +71,18 @@ const Navbar = () => {
           <div className="bg-white border-b border-gray-200 py-2 shadow-sm">
             <div className="container mx-auto px-6">
               <ul className="flex space-x-8 text-sm overflow-x-auto whitespace-nowrap md:justify-center">
-                <li className="py-2 border-b-2 border-transparent hover:border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer">
+                <Link to='/checking' className="py-2 border-b-2 border-transparent hover:border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer">
                   Checking
-                </li>
-                <li className="py-2 border-b-2 border-transparent hover:border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer">
+                </Link>
+                <Link to='/savings' className="py-2 border-b-2 border-transparent hover:border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer">
                   Savings & CDs
-                </li>
+                </Link>
                 <li className="py-2 border-b-2 border-transparent hover:border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer">
                   Credit Cards
                 </li>
-                <li className="py-2 border-b-2 border-transparent hover:border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer">
-                  Home Loans
-                </li>
-                <li className="py-2 border-b-2 border-transparent hover:border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer">
-                  Personal Loans
-                </li>
+                <Link to='loans' className="py-2 border-b-2 border-transparent hover:border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer">
+                  Loan Products
+                </Link>
               </ul>
             </div>
           </div>

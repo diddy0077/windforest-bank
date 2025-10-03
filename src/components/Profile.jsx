@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useContext } from "react";
 import { UserContext } from "./UserContext";
 import EditProfileForm from './EditProfileForm';
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext,Link } from 'react-router-dom';
 import UpdatePasswordForm from './UpdatePasswordForm';
 import UpdateSecurityQuestionsForm from './UpdateSecurityQuestionsForm';
+import Authentication from './Authentication';
+import { toast } from 'react-toastify';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('profile');
@@ -13,29 +15,12 @@ const Profile = () => {
   const [openPassword, setOpenPassword] = useState(false)
   const { setNotifications, setIsSidebarOpen } = useOutletContext()
   const [openQuestion, setOpenQuestion] = useState(false)
+  const [openAuth, setOpenAuth] = useState(false)
+  const [isEnabled1, setIsEnabled1] = useState(false)
+  const [isEnabled2, setIsEnabled2] = useState(false)
+  const [isEnabled3, setIsEnabled3] = useState(false)
 
-  const currentUser = {
-    id: 'user_123',
-    fullName: 'Daniel Udeh',
-    email: 'daniel.udeh@email.com',
-    address: '123 Main Street, City, State 12345',
-    accounts: [
-      { id: 'acc_1', type: 'Checking', accountNumber: '1234567890', balance: 15234.50 },
-      { id: 'acc_2', type: 'Savings', accountNumber: '0987654321', balance: 54321.75 },
-    ],
-    lastLogin: '2023-10-25T14:30:00Z',
-    phone: '+1 (555) 123-4567',
-    notificationSettings: {
-      email: true,
-      sms: true,
-      push: true,
-    },
-    linkedAccounts: [
-      { id: 'ext_1', bank: 'Another Bank', account: '9876' },
-      { id: 'ext_2', bank: 'Credit Union', account: '5432' },
-    ],
-    profileImageUrl: 'https://placehold.co/100x100/A0A0A0/FFFFFF?text=DU'
-  };
+
 
   function mask(num) {
     const str = num.toString();
@@ -43,6 +28,25 @@ const Profile = () => {
     const masked = "*".repeat(str.length - 4); // mask the rest
     return masked + last4;
   }
+
+const unlinkAccount = async (id) => {
+  const updatedAccounts = context.currentUser.linkedAccounts.filter(
+    (acc) => acc.id !== id
+  )
+
+  const res = await fetch(`http://localhost:5000/users/${context.currentUser.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ linkedAccounts: updatedAccounts }),
+  })
+
+  const data = await res.json()
+  context.setCurrentUser(data)
+  toast.success('Account successfully unlinked!')
+}
+
 
   const renderContent = () => {
     switch (activeTab) {
@@ -52,7 +56,7 @@ const Profile = () => {
             {/* Main Profile Header */}
             <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-8 pb-8 border-b border-gray-200">
               <div alt="Profile" className="w-24 h-24 rounded-full bg-red-600 flex items-center justify-center border-4 border-white shadow-lg" >
-                <p className='font-bold text-white text-4xl'>{context.currentUser.fullName.slice(0,1)}</p>
+                <p className='font-bold text-white text-4xl'>{context?.currentUser?.fullName.slice(0,1) || 'N/A'}</p>
               </div>
               <div className="text-center sm:text-left">
                 <h2 className="text-3xl font-bold text-gray-800">{context.currentUser.fullName}</h2>
@@ -117,7 +121,7 @@ const Profile = () => {
                   <p className="font-semibold text-lg">Update Password</p>
                   <p className="text-sm text-gray-600 mt-1">Change your current password.</p>
                 </button>
-                <button className="cursor-pointer bg-gray-100 text-gray-800 py-6 px-4 rounded-xl shadow hover:bg-gray-200 transition text-left">
+                <button onClick={() => setOpenAuth(true)} className="cursor-pointer bg-gray-100 text-gray-800 py-6 px-4 rounded-xl shadow hover:bg-gray-200 transition text-left">
                   <p className="font-semibold text-lg">Two-Factor Authentication</p>
                   <p className="text-sm text-gray-600 mt-1">Add an extra layer of security.</p>
                 </button>
@@ -133,42 +137,43 @@ const Profile = () => {
               <div className="bg-gray-100 p-6 rounded-xl space-y-4">
                 <div className="flex justify-between items-center">
                   <p className="text-lg font-medium text-gray-800">Email Notifications</p>
-                  <label className="relative inline-flex items-center cursor-pointer">
-                    <input type="checkbox" checked={currentUser.notificationSettings.email} className="sr-only peer" readOnly />
-                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
-                  </label>
+                  <button onClick={() => setIsEnabled1((prev) => !prev)} className={`${isEnabled1 ? 'justify-end bg-red-600' : 'bg-gray-400'} w-11 h-6 rounded-full flex items-center p-[.1rem] cursor-pointer cursor-pointer transition duration-300`}>
+                    <div className='bg-white w-5 h-5 rounded-full transition duration-300'></div>
+                 </button>
                 </div>
                 <div className="flex justify-between items-center">
                   <p className="text-lg font-medium text-gray-800">SMS Alerts</p>
-                  <label className="relative inline-flex items-center cursor-pointer">
-                    <input type="checkbox" checked={currentUser.notificationSettings.sms} className="sr-only peer" readOnly />
-                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
-                  </label>
+                  <button onClick={() => setIsEnabled2((prev) => !prev)} className={`${isEnabled2 ? 'justify-end bg-red-600' : 'bg-gray-400'} w-11 h-6 rounded-full flex items-center p-[.1rem] cursor-pointer cursor-pointer transition duration-300`}>
+                    <div className='bg-white w-5 h-5 rounded-full transition duration-300'></div>
+                 </button>
                 </div>
                 <div className="flex justify-between items-center">
                   <p className="text-lg font-medium text-gray-800">Push Notifications</p>
-                  <label className="relative inline-flex items-center cursor-pointer">
-                    <input type="checkbox" checked={currentUser.notificationSettings.push} className="sr-only peer" readOnly />
-                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
-                  </label>
+                  <button onClick={() => setIsEnabled3((prev) => !prev)} className={`${isEnabled3 ? 'justify-end bg-red-600' : 'bg-gray-400'} w-11 h-6 rounded-full flex items-center p-[.1rem] cursor-pointer cursor-pointer transition duration-300`}>
+                    <div className='bg-white w-5 h-5 rounded-full transition duration-300'></div>
+                 </button>
                 </div>
               </div>
             </section>
             
             <section>
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">Linked Accounts</h2>
-              <div className="bg-gray-100 p-6 rounded-xl space-y-4">
-                {currentUser.linkedAccounts.map(acc => (
+              <div className="bg-gray-100 p-6 rounded-xl space-y-4 flex flex-col">
+                {context.currentUser.linkedAccounts.length > 0 ? (
+                 <div className='flex flex-col gap-2'>
+                  {context?.currentUser?.linkedAccounts?.map(acc => (
                   <div key={acc.id} className="flex justify-between items-center">
                     <p className="text-lg text-gray-700">
-                      <span className="font-medium text-gray-900">{acc.bank}</span> (•••{acc.account})
+                      <span className="font-medium text-gray-900">{acc?.linkedUserName}</span> (•••{acc?.accountNumber?.slice(-4)})
                     </p>
-                    <button className="text-red-600 hover:text-red-800 transition">Unlink</button>
+                    <button onClick={() => unlinkAccount(acc.id)} className="hover:underline cursor-pointer text-red-600 hover:text-red-800 transition">Unlink</button>
                   </div>
                 ))}
-                <button className="w-full text-red-600 font-bold border border-red-600 py-3 rounded-xl hover:bg-red-50 transition">
+                </div>
+               ) : ( <p>No external accounts linked yet.</p> )}
+                <Link to='/account-dashboard/link-accounts' className="w-full text-red-600 font-bold border border-red-600 py-3 rounded-xl hover:bg-red-50 transition px-4 flex items-center justify-center hover:bg-red-600 hover:text-white duration-300">
                   + Link New Account
-                </button>
+                </Link>
               </div>
             </section>
           </div>
@@ -217,12 +222,13 @@ const Profile = () => {
       </div>
 
       <div className="bg-white shadow-md rounded-xl p-8">
-        <div>
+        <div className=''>
         {renderContent()}
         </div>
         <EditProfileForm isOpen={isOpen} setIsOpen={setIsOpen} setNotifications={setNotifications} />
         <UpdatePasswordForm openPassword={openPassword} setOpenPassword={setOpenPassword} setNotifications={setNotifications} />
-        <UpdateSecurityQuestionsForm openQuestion={openQuestion} setOpenQuestion={setOpenQuestion} setNotifications={setNotifications}/>
+        <UpdateSecurityQuestionsForm openQuestion={openQuestion} setOpenQuestion={setOpenQuestion} setNotifications={setNotifications} />
+        <Authentication openAuth={openAuth} setOpenAuth={setOpenAuth} />
       </div>
     </div>
   );

@@ -10,16 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@tailwindcss/vite": "^4.1.13",
+    "canvas-confetti": "^1.9.3",
     "framer-motion": "^12.23.18",
     "json-server": "^1.0.0-beta.3",
     "jspdf": "^3.0.3",
+    "jspdf-autotable": "^5.0.2",
     "lucide-react": "^0.544.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.1",
     "react-toastify": "^11.0.5",
     "recharts": "^3.2.1",
+    "resend": "^6.1.2",
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {
