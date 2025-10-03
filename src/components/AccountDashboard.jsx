@@ -406,10 +406,10 @@ const AccountDashboard = () => {
           >
             <div className="flex justify-between items-start">
               <div>
-                <p className="text-xl font-medium">Debit Card</p>
+                <p className="text-lg font-medium">Debit Card</p>
                 <p className="text-sm font-light opacity-80">{"Active"}</p>
               </div>
-              <span className="text-2xl font-bold tracking-widest">
+              <span className="text-xl font-bold tracking-widest">
                 WindForest
               </span>
             </div>

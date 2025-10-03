@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "./UserContext";
-import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -15,23 +14,7 @@ const Header = () => {
   const { login } = useContext(UserContext);
   const nav = useNavigate();
 
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
+  const FALLBACK_IMAGE_URL = "https://via.placeholder.com/800x600?text=Bank+Image";
 
   // --- Step 1: Username & Password submit ---
   const handleSubmit = async (e) => {
@@ -77,6 +60,7 @@ const Header = () => {
       const fullUser = users.find((u) => u.id === matchedUser.userId);
 
       // Send OTP
+      console.log("Attempting to send OTP to email:", fullUser?.email);
       const otpRes = await fetch(
         "https://windforest-bank.onrender.com/send-otp",
         {
@@ -85,6 +69,8 @@ const Header = () => {
           body: JSON.stringify({ email: fullUser.email }),
         }
       );
+      console.log("OTP send response status:", otpRes.status);
+      console.log("OTP send response ok:", otpRes.ok);
 
       if (!otpRes.ok) throw new Error("Failed to send OTP");
 

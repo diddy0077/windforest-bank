@@ -116,7 +116,7 @@ const Profile = () => {
                   <p className="text-lg text-gray-700 font-medium">
                     Email Address
                   </p>
-                  <p className="text-lg text-gray-900 break-all">
+                  <p className="text-md text-gray-900 break-all">
                     {context.currentUser.email}
                   </p>
                 </div>
@@ -124,7 +124,7 @@ const Profile = () => {
                   <p className="text-lg text-gray-700 font-medium">
                     Phone Number
                   </p>
-                  <p className="text-lg text-gray-900">
+                  <p className="text-md text-gray-900">
                     {context.currentUser.phone}
                   </p>
                 </div>
@@ -132,7 +132,7 @@ const Profile = () => {
                   <p className="text-lg text-gray-700 font-medium">
                     Home Address
                   </p>
-                  <p className="text-lg text-gray-900 text-right sm:text-left">
+                  <p className="text-md text-gray-900 text-right sm:text-left">
                     {context.currentUser.address}
                   </p>
                 </div>
@@ -140,7 +140,7 @@ const Profile = () => {
                   <p className="text-lg text-gray-700 font-medium">
                     Social Security Number
                   </p>
-                  <p className="text-lg text-gray-900 text-right sm:text-left">
+                  <p className="text-md text-gray-900 text-right sm:text-left">
                     {mask(context.currentUser.ssn)}
                   </p>
                 </div>
@@ -148,7 +148,7 @@ const Profile = () => {
                   <p className="text-lg text-gray-700 font-medium">
                     Employer Name
                   </p>
-                  <p className="text-lg text-gray-900 text-right sm:text-left">
+                  <p className="text-md text-gray-900 text-right sm:text-left">
                     {context.currentUser.employerName}
                   </p>
                 </div>
@@ -158,7 +158,7 @@ const Profile = () => {
         );
       case "settings":
         return (
-          <div className="space-y-8">
+          <div className="space-y-8 ">
             <section>
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">
                 Security & Access

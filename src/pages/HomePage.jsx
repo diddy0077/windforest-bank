@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
@@ -219,7 +219,10 @@ const accountTypes = [
 // --- Main Component ---
 const HomePage = () => {
   const [openFAQ, setOpenFAQ] = React.useState(null);
-
+   useEffect(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+   }, []);
+  
   return (
     <div className="bg-gradient-to-br from-white via-gray-50 to-gray-100 text-gray-800 min-h-screen font-sans">
       {/* --- Hero Section & Login Panel --- */}

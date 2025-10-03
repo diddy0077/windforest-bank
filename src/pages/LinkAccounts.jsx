@@ -3,7 +3,8 @@ import { toast } from "react-toastify";
 import { UserContext } from "../components/UserContext";
 import ConfirmMicroDepositsCard from "../components/ConfirmMicroDepositsCard";
 import AccountLinkingSuccess from "../components/AccountLinkingSuccess";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 // Mock Icon Component for Visual Appeal (using inline SVG for the bank icon)
 const BankIcon = ({ className = "w-6 h-6" }) => (
@@ -178,7 +179,11 @@ const LinkAccounts = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4 sm:p-6 w-full">
+    <div className="min-h-screen bg-gray-50 flex-col flex items-center justify-center p-4 sm:p-6 w-full relative">
+      <Link to="/account-dashboard" className="md:hidden text-slate-800 hover:underline absolute top-4 left-4 flex items-center">
+        <ArrowLeft />
+        Back to Dashboard
+      </Link>
       {step === 1 && (
         <div className="w-full max-w-lg bg-white rounded-xl shadow-2xl overflow-hidden border border-gray-200">
           <div className="flex items-center p-6 bg-red-600 text-white rounded-t-xl">

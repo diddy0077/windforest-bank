@@ -14,7 +14,7 @@ export default function TransferSuccessModal({ isOpen, onClose, amount, recipien
       ></div>
 
       {/* Modal */}
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 relative z-10 transform transition-all duration-500 scale-100">
+      <div className="bg-white rounded-2xl mx-4 shadow-2xl w-full max-w-md p-6 relative z-10 transform transition-all duration-500 scale-100">
         
         {/* Success Animation */}
         <div className="flex justify-center mb-4">

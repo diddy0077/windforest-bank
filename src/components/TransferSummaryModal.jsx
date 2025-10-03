@@ -136,6 +136,7 @@ export default function TransferSummaryModal({
       toast.success("Transfer Successful!");
     } catch (error) {
       console.log("Error Confirming Transfer", error);
+      toast.error('Error Confirming Transfer, please try again later.');
     } finally {
       setLoading(false);
     }
@@ -161,7 +162,7 @@ export default function TransferSummaryModal({
       }`}
     >
       <div
-        className={`bg-white w-full max-w-md rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 ${
+        className={`bg-white mx-3 w-full max-w-md rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 ${
           isOpen ? "scale-100" : "scale-95"
         }`}
       >

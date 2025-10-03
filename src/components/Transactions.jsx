@@ -52,7 +52,7 @@ const Transactions = () => {
   }, [currentUser.id]);
 
   return (
-    <div className="bg-white shadow-lg rounded-2xl p-4 my-6 container mx-auto md:w-[90%] mb-20 min-h-screen w-[95%] ">
+    <div className="bg-white shadow-md rounded-lg p-4 my-6 container mx-auto md:w-[90%] min-h-screen w-[95%]">
       <div className="flex items-center gap-3 mb-8">
         <button onClick={() => setIsSidebarOpen(true)} className="md:hidden">
           <svg

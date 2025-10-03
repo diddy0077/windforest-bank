@@ -196,7 +196,7 @@ const Transfer = () => {
   }, [currentUser.id]);
 
   return (
-    <div className=" bg-white shadow-lg rounded-2xl p-6 sm:p-8 my-6 md:w-[90%] min-h-screen mb-20 w-[95%] mx-auto">
+    <div className="bg-white shadow-md rounded-lg p-6 sm:p-8 my-3 md:w-[95%] min-h-screen w-[95%] mx-auto">
       <div className="flex flex-col md:flex-row justify-between">
         <div className="flex items-center gap-3 mb-8">
           <button onClick={() => setIsSidebarOpen(true)} className="md:hidden">
@@ -299,7 +299,7 @@ const Transfer = () => {
         </div>
         <button
           onClick={transferMoney}
-          className="cursor-pointer w-full py-4 bg-red-600 text-white font-semibold rounded-full shadow-md hover:bg-red-700 transition-colors"
+          className="cursor-pointer w-full py-3 bg-red-600 text-white font-semibold rounded-full shadow-md hover:bg-red-700 transition-colors"
         >
           Complete Transfer
         </button>

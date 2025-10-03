@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   User,
   Shield,
@@ -284,9 +284,9 @@ const AdminDashboard = () => {
     <div className="p-4 sm:p-8 bg-gray-50 min-h-screen font-sans">
       <header className="mb-8 flex justify-between items-center border-b pb-4">
         <div>
-          <h1 className="text-4xl font-extrabold text-red-700 flex items-center">
+          <h1 className="text-2xl md:text-4xl font-extrabold text-red-700 flex items-center">
             <Shield className="w-8 h-8 mr-3 text-red-600" />
-            Bank Admin Panel
+            WindForest Bank Admin Panel
           </h1>
           <p className="mt-2 text-lg text-gray-600">
             Managing all users and performing actions.
@@ -299,7 +299,7 @@ const AdminDashboard = () => {
           </p>
           <button
             onClick={logout}
-            className="bg-red-600 p-3 text-white font-semibold py-2 rounded-full shadow-md mt-4 cursor-pointer"
+            className="bg-red-600 p-4 text-white font-semibold py-2 rounded-lg shadow-md mt-4 cursor-pointer"
           >
             Logout
           </button>
@@ -443,11 +443,11 @@ const UserTable = ({ users, setSelectedUser, setShowModal }) => {
 
 // --- Helper for displaying detail items ---
 const DetailItem = ({ icon: Icon, title, value }) => (
-  <div className="flex items-center space-x-3 p-2 bg-white rounded-lg shadow-sm">
+  <div className="flex items-center space-x-2 p-2 bg-white rounded-lg shadow-sm">
     <Icon className="w-5 h-5 text-red-500 flex-shrink-0" />
     <div>
       <p className="text-xs font-medium text-gray-500 uppercase">{title}</p>
-      <p className="text-sm font-semibold text-gray-800 break-words max-w-[150px]">
+      <p className="text-sm font-semibold text-gray-800 break-words max-w-[150px] whitespace-wrap">
         {value}
       </p>
     </div>

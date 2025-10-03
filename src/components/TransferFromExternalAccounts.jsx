@@ -171,7 +171,7 @@ const TransferFromExternalAccounts = ({
         date: new Date().toISOString(),
         balanceAfterSender: external.accountBalance - Number(transferAmount),
         balanceAfterReceiver:
-          currentUser.accountBalance + Number(transferAmount),
+        currentUser.accountBalance + Number(transferAmount),
       };
       const response = await fetch(
         "https://windforest-json-server.onrender.com/transactions",
@@ -555,7 +555,7 @@ const TransferFromExternalAccounts = ({
               View Account Activity
             </button>
             <button
-              onClick={() => nav("/account-dashboard/transfer")}
+              onClick={() => (nav("/account-dashboard/transfer"), setStep(0))}
               className="w-full py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-100 transition duration-150 cursor-pointer"
             >
               Make Another Transfer

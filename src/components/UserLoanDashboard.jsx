@@ -126,7 +126,7 @@ const UserLoanDashboard = () => {
               />
             </svg>
           </button>
-          <h1 className="text-2xl md:text-3xl font-extrabold text-red-700">
+          <h1 className="text-xl md:text-3xl font-extrabold text-red-700">
             {" "}
             {/* Primary header is now a deep red */}
             Your Loan Applications
@@ -222,7 +222,7 @@ const UserLoanDashboard = () => {
       </div>
 
       {loans.length === 0 && (
-        <div className="p-10 text-center text-gray-500 bg-white rounded-xl shadow-lg mt-6">
+        <div className="p-10 text-center text-gray-500 bg-white rounded-md shadow-sm mt-6">
           <p className="text-lg">You have no loan applications on file.</p>
         </div>
       )}
