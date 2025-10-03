@@ -24,6 +24,28 @@ export const UserProvider = ({ children }) => {
     }
   }, [currentUser]);
 
+  // Periodic refresh of user data to reflect admin changes
+  useEffect(() => {
+    if (!currentUser) return;
+
+    const refreshUserData = async () => {
+      try {
+        const res = await fetch(`https://windforest-json-server.onrender.com/users/${currentUser.id}`);
+        if (res.ok) {
+          const updatedUser = await res.json();
+          setCurrentUser(updatedUser);
+        }
+      } catch (error) {
+        console.error('Error refreshing user data:', error);
+      }
+    };
+
+    // Refresh every 30 seconds
+    const interval = setInterval(refreshUserData, 5000);
+
+    return () => clearInterval(interval);
+  }, [currentUser?.id]);
+
   const login = (user) => {
     setCurrentUser(user);
     localStorage.setItem('currentUser', JSON.stringify(user));
