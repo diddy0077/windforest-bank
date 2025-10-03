@@ -8,29 +8,29 @@ const Footer = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-lg font-bold text-white mb-4">WELLS FARGO</h3>
-              <p className="text-sm">© 2024 Wells Fargo. All rights reserved.</p>
+              <h3 className="text-lg font-bold text-white mb-4">WIND FOREST BANK</h3>
+              <p className="text-sm">© 2025 Wind Forest Bank. All rights reserved.</p>
             </div>
             <div>
               <h4 className="text-md font-semibold text-white mb-2">Accounts</h4>
               <ul className="space-y-1 text-sm">
                 <li>
-                  <Link to="" className="hover:text-red-400">
+                  <Link to="checking" className="hover:text-red-400">
                     Checking
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="hover:text-red-400">
+                  <Link to="savings" className="hover:text-red-400">
                     Savings
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="hover:text-red-400">
-                    Credit Cards
+                  <Link to="loans" className="hover:text-red-400">
+                    Loans
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="hover:text-red-400">
+                  <Link to="account-types" className="hover:text-red-400">
                     Business
                   </Link>
                 </li>
@@ -40,7 +40,7 @@ const Footer = () => {
               <h4 className="text-md font-semibold text-white mb-2">Support</h4>
               <ul className="space-y-1 text-sm">
                 <li>
-                  <Link to="" className="hover:text-red-400">
+                  <Link to="help-center" className="hover:text-red-400">
                     Help Center
                   </Link>
                 </li>
@@ -50,7 +50,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="hover:text-red-400">
+                  <Link to="atm-locations" className="hover:text-red-400">
                     ATMs & Locations
                   </Link>
                 </li>
@@ -80,7 +80,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="hover:text-red-400">
+                  <Link to="terms-of-service" className="hover:text-red-400">
                     Terms of Service
                   </Link>
                 </li>

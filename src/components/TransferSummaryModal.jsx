@@ -141,8 +141,7 @@ export default function TransferSummaryModal({
       setLoading(false);
     }
   };
-  console.log("currentUser.id", currentUser.id);
-  console.log("transferBeneficiary", transferBeneficiary);
+ 
 
   function closeTransfer() {
     setAmount("");

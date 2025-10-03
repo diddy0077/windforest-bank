@@ -210,7 +210,9 @@ const LoanCalculator = ({ selectedLoan, setIsOpen, setConfirm }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }; 
+
+ 
 
   return (
     <div className="bg-white p-6 sm:p-8 rounded-xl shadow-2xl border-t-4 border-gray-800">
@@ -314,6 +316,10 @@ const LoanProductsPage = () => {
   const location = useLocation();
   const [confirm, setConfirm] = useState(false);
 
+    useEffect(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, []);
+
   useEffect(() => {
     if (location.state?.pendingLoan && LOAN_PRODUCTS.length > 0) {
       const match = LOAN_PRODUCTS.find(
@@ -333,7 +339,10 @@ const LoanProductsPage = () => {
       );
       if (!res.ok) throw { message: "Error fetching loans" };
       const data = await res.json();
-      setLOAN_PRODUCTS(data);
+      setTimeout(() => {
+        setLOAN_PRODUCTS(data);
+        setLoading(false);
+      }, 3000);
     };
     fetchLoans();
   }, []);
@@ -346,6 +355,15 @@ const LoanProductsPage = () => {
     } else {
       return <CarIcon />;
     }
+  }
+
+   if (loading) {
+    return (
+      <div className="items-center justify-center flex flex-col min-h-screen">
+        <div className="animate-spin h-10 w-10 border-5 border-red-600 border-t-transparent rounded-full"></div>
+        <p className="text-gray-700 mt-4">Loading Loan Products...</p>
+      </div>
+    )
   }
 
   return (

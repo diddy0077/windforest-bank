@@ -23,6 +23,11 @@ import UserLoanDashboard from './components/UserLoanDashboard'
 import AdminRoute from './components/AdminRoute'
 import AdminDashboard from './pages/AdminDashboard'
 import AdminLogin from './pages/AdminLogin'
+import TermsOfService from './pages/TermsOfService'
+import Atm from './pages/Atm'
+import NotFoundPage from './pages/NotFoundPage'
+import Help from './pages/Help'
+import HelpDetails from './components/HelpDetails'
 
 const App = () => {
  
@@ -38,7 +43,11 @@ const App = () => {
        <Route path="savings" element={<Savings />} />
        <Route path="checking" element={<Checking />} />
        <Route path="loans" element={<LoanProductsPage />} />
+       <Route path="terms-of-service" element={<TermsOfService />} />
+       <Route path="atm-locations" element={<Atm />} />
+       <Route path="help-center" element={<Help />} />
        <Route path="learn-more" element={<OpenAccountInfoPage />} />
+        <Route path="/help/:slug" element={<HelpDetails />} />
        <Route path="admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
        <Route path="admin-login" element={<AdminLogin/>}/>
        <Route path='account-dashboard' element={<ProtectedRoute />}>
@@ -49,7 +58,8 @@ const App = () => {
          <Route path='my-loans' element={<UserLoanDashboard />} />
          <Route path='/account-dashboard/link-accounts' element={<LinkAccounts />} />
        </Route>
-       <Route path='forgot-password' element={<ForgotPassword/>}/>
+       <Route path='forgot-password' element={<ForgotPassword />} />
+       <Route path="*" element={<NotFoundPage />} />
      </Route>
    )
  );

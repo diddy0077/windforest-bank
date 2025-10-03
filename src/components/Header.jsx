@@ -124,6 +124,13 @@ const Header = () => {
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
       login({ ...fullUser, lastLogin });
+      const pendingLoan = sessionStorage.getItem("pendingLoan");
+    if (pendingLoan) {
+      // Clear it from storage after reading
+      sessionStorage.removeItem("pendingLoan");
+      nav("/loan-page", { state: { pendingLoan: JSON.parse(pendingLoan) } });
+      return;
+    }
       nav("/account-dashboard");
     } catch (err) {
       console.log("OTP error:", err);

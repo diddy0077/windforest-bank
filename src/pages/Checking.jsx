@@ -46,7 +46,7 @@ const Checking = () => {
 
   return (
     <div className="min-h-screen p-6 py-12 container mx-auto">
-      <h1 className="font-bold text-4xl text-center my-20 md:mt-10 mt-5">
+      <h1 className="font-bold text-3xl text-center my-20 md:mt-10 mt-5">
         Explore Our Checkings Accounts
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
