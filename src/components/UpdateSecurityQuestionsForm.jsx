@@ -36,14 +36,16 @@ const UpdateSecurityQuestionsForm = ({
         date: new Date().toISOString(),
         read: false,
       };
-      const res2 = await fetch("http://localhost:5000/onlineAccessUsers");
+      const res2 = await fetch(
+        "https://windforest-json-server.onrender.com/onlineAccessUsers"
+      );
       const onlineUsers = await res2.json();
       const matchedUser = onlineUsers.find(
         (user) => user.userId === currentUser.id
       );
 
       const response = await fetch(
-        `http://localhost:5000/onlineAccessUsers/${matchedUser.id}`,
+        `https://windforest-json-server.onrender.com/onlineAccessUsers/${matchedUser.id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -59,13 +61,16 @@ const UpdateSecurityQuestionsForm = ({
         };
       }
       await new Promise((resolve) => setTimeout(resolve, 3000)); // simulate delay
-      const res = await fetch(`http://localhost:5000/users/${currentUser.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          notifications: [...currentUser.notifications, newNotification],
-        }),
-      });
+      const res = await fetch(
+        `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            notifications: [...currentUser.notifications, newNotification],
+          }),
+        }
+      );
       if (!res.ok) {
         throw {
           message: "Error fetching user",

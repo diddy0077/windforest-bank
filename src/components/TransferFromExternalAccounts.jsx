@@ -113,7 +113,9 @@ const TransferFromExternalAccounts = ({
       toast.error("Please enter a valid amount.");
       return;
     }
-    const res = await fetch("http://localhost:5000/users");
+    const res = await fetch(
+      "https://windforest-json-server.onrender.com/users"
+    );
     const users = await res.json();
     const accountToTransferFrom = users.find(
       (user) => Number(user.accountNumber) === Number(selectedFrom)
@@ -171,29 +173,38 @@ const TransferFromExternalAccounts = ({
         balanceAfterReceiver:
           currentUser.accountBalance + Number(transferAmount),
       };
-      const response = await fetch("http://localhost:5000/transactions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(transaction),
-      });
+      const response = await fetch(
+        "https://windforest-json-server.onrender.com/transactions",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(transaction),
+        }
+      );
       if (!response.ok) {
         throw { message: "Error posting transaction" };
       }
-      const res = await fetch(`http://localhost:5000/users/${currentUser.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedCurrentUser),
-      });
+      const res = await fetch(
+        `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedCurrentUser),
+        }
+      );
       if (!res.ok) {
         throw { message: "Error updating current user" };
       }
       const data = await res.json();
       setCurrentUser(data);
-      const res2 = await fetch(`http://localhost:5000/users/${external.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedAccountToTransferFrom),
-      });
+      const res2 = await fetch(
+        `https://windforest-json-server.onrender.com/users/${external.id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedAccountToTransferFrom),
+        }
+      );
       if (!res2.ok) {
         throw { message: "Error updating external account holder" };
       }

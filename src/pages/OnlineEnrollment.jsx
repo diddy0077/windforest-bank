@@ -44,7 +44,9 @@ const OnlineEnrollment = () => {
     setLoading(true);
     const fetchUsers = async () => {
       try {
-        const res = await fetch("http://localhost:5000/users");
+        const res = await fetch(
+          "https://windforest-json-server.onrender.com/users"
+        );
         if (!res.ok) {
           throw {
             message: "Error fetching users",
@@ -155,7 +157,9 @@ const OnlineEnrollment = () => {
         setIsSubmitting(false);
         return;
       }
-      const res = await fetch("http://localhost:5000/onlineAccessUsers");
+      const res = await fetch(
+        "https://windforest-json-server.onrender.com/onlineAccessUsers"
+      );
       const onlineUsers = await res.json();
 
       // --- Start of Debugging Block ---
@@ -192,11 +196,14 @@ const OnlineEnrollment = () => {
         termsAccepted: formData.termsAccepted,
       };
 
-      const createRes = await fetch("http://localhost:5000/onlineAccessUsers", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(onlineAccessData),
-      });
+      const createRes = await fetch(
+        "https://windforest-json-server.onrender.com/onlineAccessUsers",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(onlineAccessData),
+        }
+      );
 
       if (!createRes.ok)
         throw new Error("Failed to create online access account.");

@@ -153,7 +153,7 @@ const AccountOpening = () => {
     const fetchAccount = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/accountTypes/?name=${params.name}`
+          `https://windforest-json-server.onrender.com/accountTypes/?name=${params.name}`
         );
         if (!res.ok) {
           throw {
@@ -255,7 +255,9 @@ const AccountOpening = () => {
     }
 
     // ✅ Check if email exists
-    const res = await fetch("http://localhost:5000/users");
+    const res = await fetch(
+      "https://windforest-json-server.onrender.com/users"
+    );
     const users = await res.json();
     const matchedUser = users.find(
       (user) => user.email === email.trim().toLowerCase()
@@ -359,13 +361,16 @@ const AccountOpening = () => {
         accountBalance: 0,
         card: [generateCard()],
       };
-      const res = await fetch("http://localhost:5000/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newAccount),
-      });
+      const res = await fetch(
+        "https://windforest-json-server.onrender.com/users",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newAccount),
+        }
+      );
       if (!res.ok) {
         throw {
           message: "Error Submitting Form",

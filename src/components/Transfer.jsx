@@ -8,85 +8,81 @@ import { useOutletContext } from "react-router-dom";
 import { addNotification } from "./utils";
 import TransferFromExternalAccounts from "./TransferFromExternalAccounts";
 
-
-
-function Restricted({openRes, setOpenRes}) {
+function Restricted({ openRes, setOpenRes }) {
   // Icon for Restriction/Alert (using a simple X circle for clarity)
-    const AlertIcon = () => (
-        <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-10 w-10 text-red-600" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-        >
-            <circle cx="12" cy="12" r="10" />
-            <line x1="15" y1="9" x2="9" y2="15" />
-            <line x1="9" y1="9" x2="15" y2="15" />
-        </svg>
-    );
+  const AlertIcon = () => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-10 w-10 text-red-600"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <line x1="15" y1="9" x2="9" y2="15" />
+      <line x1="9" y1="9" x2="15" y2="15" />
+    </svg>
+  );
 
-    return (
-       <div
+  return (
+    <div
       className={`fixed inset-0 bg-black/40 backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 ${
         openRes
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"
       }`}
-      >
-          <div
+    >
+      <div
         className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300`}
         onClick={() => setOpenRes(false)}
       ></div>
-     
-            
-            {/* Notification Card */}
-            <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl overflow-hidden border-t-4 border-red-600 transform hover:scale-[1.01] transition duration-300 relative z-40">
-                
-                {/* Header & Icon Area */}
-                <div className="p-6 text-center">
-                    <div className="mx-auto flex items-center justify-center h-14 w-14 rounded-full bg-red-100 ring-4 ring-red-50">
-                        <AlertIcon />
-                    </div>
-                    
-                    <h2 className="mt-4 text-xl font-extrabold text-gray-900 tracking-tight">
-                        Action Required: Transfer Restriction
-                    </h2>
-                    
-                    <p className="mt-2 text-sm text-gray-600">
-                        Immediate transfers from this account have been temporarily restricted due to recent activity reviews.
-                    </p>
-                </div>
 
-                {/* Status Detail & Next Steps */}
-                <div className="px-6 py-4 bg-gray-50 border-t border-gray-100">
-                    <div className="flex justify-between text-sm font-medium">
-                        <span className="text-gray-500">Status:</span>
-                        <span className="text-red-600 font-semibold">Restricted</span>
-                    </div>
-                </div>
+      {/* Notification Card */}
+      <div className="w-full max-w-sm bg-white rounded-2xl shadow-xl overflow-hidden border-t-4 border-red-600 transform hover:scale-[1.01] transition duration-300 relative z-40">
+        {/* Header & Icon Area */}
+        <div className="p-6 text-center">
+          <div className="mx-auto flex items-center justify-center h-14 w-14 rounded-full bg-red-100 ring-4 ring-red-50">
+            <AlertIcon />
+          </div>
 
-                {/* Call to Action (CTA) Button */}
-                <div className="p-6 pt-0">
-                    <button
-                        type="button"
-                        className="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-xl shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150 ease-in-out transform hover:translate-y-[-1px] cursor-pointer"
-                        // No logic included, just UI
-                        onClick={() => setOpenRes(false)} 
-                    >
-                        Close
-                    </button>
-                    <p className="mt-3 text-xs text-gray-500 text-center">
-                        Need help? Call our support line immediately.
-                    </p>
-                </div>
-            </div>
+          <h2 className="mt-4 text-xl font-extrabold text-gray-900 tracking-tight">
+            Action Required: Transfer Restriction
+          </h2>
 
+          <p className="mt-2 text-sm text-gray-600">
+            Immediate transfers from this account have been temporarily
+            restricted due to recent activity reviews.
+          </p>
         </div>
-    );
+
+        {/* Status Detail & Next Steps */}
+        <div className="px-6 py-4 bg-gray-50 border-t border-gray-100">
+          <div className="flex justify-between text-sm font-medium">
+            <span className="text-gray-500">Status:</span>
+            <span className="text-red-600 font-semibold">Restricted</span>
+          </div>
+        </div>
+
+        {/* Call to Action (CTA) Button */}
+        <div className="p-6 pt-0">
+          <button
+            type="button"
+            className="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-xl shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-150 ease-in-out transform hover:translate-y-[-1px] cursor-pointer"
+            // No logic included, just UI
+            onClick={() => setOpenRes(false)}
+          >
+            Close
+          </button>
+          <p className="mt-3 text-xs text-gray-500 text-center">
+            Need help? Call our support line immediately.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 const Transfer = () => {
@@ -99,8 +95,8 @@ const Transfer = () => {
   const [amount, setAmount] = useState("");
   const [transferBeneficiary, setTransferBeneficiary] = useState(null);
   const { setIsSidebarOpen, setNotifications } = useOutletContext();
-  const [externalTransfer, setExternalTransfer] = useState(false)
-  const [openRes, setOpenRes] = useState(false)
+  const [externalTransfer, setExternalTransfer] = useState(false);
+  const [openRes, setOpenRes] = useState(false);
   const deleteBeneficiary = async (accountNumber) => {
     const newBeneficiaries = beneficiaries.filter((b) => {
       return b.accountNumber !== accountNumber;
@@ -117,14 +113,17 @@ const Transfer = () => {
     setNotifications((prev) => [...prev, notification]);
 
     try {
-      const res = await fetch(`http://localhost:5000/users/${currentUser.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          beneficiaries: newBeneficiaries,
-          notifications: [...currentUser.notifications, notification],
-        }),
-      });
+      const res = await fetch(
+        `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            beneficiaries: newBeneficiaries,
+            notifications: [...currentUser.notifications, notification],
+          }),
+        }
+      );
       const data = await res.json();
       console.log("PATCH response:", data);
       setBeneficiaries(data.beneficiaries);
@@ -164,24 +163,22 @@ const Transfer = () => {
       return;
     }
     if (currentUser.isTransferEnabled === false) {
-      setOpenRes(true)
+      setOpenRes(true);
       return;
     } else {
-         const fullBeneficiary = beneficiaries.find(
-      (b) => b.accountNumber === toAccount
-    );
-    setTransferBeneficiary(fullBeneficiary);
-    setIsOpen(true);
+      const fullBeneficiary = beneficiaries.find(
+        (b) => b.accountNumber === toAccount
+      );
+      setTransferBeneficiary(fullBeneficiary);
+      setIsOpen(true);
     }
-
-   
   };
 
   useEffect(() => {
     const fetchBeneficary = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/users/${currentUser.id}`
+          `https://windforest-json-server.onrender.com/users/${currentUser.id}`
         );
         if (!res.ok) {
           throw {
@@ -224,17 +221,17 @@ const Transfer = () => {
         </div>
         <div className="flex gap-2 items-center mb-8">
           <button
-          onClick={() => setBeneficiaryForm(true)}
-          style={{
-            background: "linear-gradient(45deg, #1f2937, #4b5563)",
-          }}
-          className=" text-white text-sm md:text-md cursor-pointer font-semibold active:scale-[0.95] transition duration-300 p-3 px-4 rounded-lg md:mb-0"
-        >
-          + Add Beneficiary
+            onClick={() => setBeneficiaryForm(true)}
+            style={{
+              background: "linear-gradient(45deg, #1f2937, #4b5563)",
+            }}
+            className=" text-white text-sm md:text-md cursor-pointer font-semibold active:scale-[0.95] transition duration-300 p-3 px-4 rounded-lg md:mb-0"
+          >
+            + Add Beneficiary
           </button>
           <button
-  onClick={() => setExternalTransfer(true)}
-  className="
+            onClick={() => setExternalTransfer(true)}
+            className="
     cursor-pointer px-4 py-3 
     bg-gradient-to-r from-gray-800 via-gray-700 to-red-600 
     text-white font-semibold 
@@ -243,9 +240,9 @@ const Transfer = () => {
     transition-all active:scale-[0.95] duration-300 
     text-sm tracking-wide
   "
->
-  + External Transfers
-</button>
+          >
+            + External Transfers
+          </button>
         </div>
       </div>
       <div className="space-y-4">
@@ -307,7 +304,12 @@ const Transfer = () => {
           Complete Transfer
         </button>
       </div>
-      {externalTransfer && <TransferFromExternalAccounts externalTransfer={externalTransfer} setExternalTransfer={setExternalTransfer} />}
+      {externalTransfer && (
+        <TransferFromExternalAccounts
+          externalTransfer={externalTransfer}
+          setExternalTransfer={setExternalTransfer}
+        />
+      )}
       <section className="mt-6">
         {beneficiaries.length > 0 ? (
           <div>
@@ -359,7 +361,7 @@ const Transfer = () => {
         addNotification={addNotification}
         setNotifications={setNotifications}
       />
-    <Restricted openRes={openRes} setOpenRes={setOpenRes}/>
+      <Restricted openRes={openRes} setOpenRes={setOpenRes} />
       <AddBeneficiaryModal
         beneficiaryForm={beneficiaryForm}
         setBeneficiaryForm={setBeneficiaryForm}

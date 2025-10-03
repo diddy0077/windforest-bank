@@ -33,10 +33,12 @@ export default function TransferSummaryModal({
 
   const confirmTransfer = async () => {
     setLoading(true);
-    const res = await fetch(`http://localhost:5000/users/${currentUser.id}`);
+    const res = await fetch(
+      `https://windforest-json-server.onrender.com/users/${currentUser.id}`
+    );
     const currentUserData = await res.json();
     const res2 = await fetch(
-      `http://localhost:5000/users/?accountNumber=${transferBeneficiary.accountNumber}`
+      `https://windforest-json-server.onrender.com/users/?accountNumber=${transferBeneficiary.accountNumber}`
     );
     const beneficiaryDataArray = await res2.json();
     const beneficiaryData = beneficiaryDataArray[0];
@@ -51,7 +53,7 @@ export default function TransferSummaryModal({
     setCurrentUser(updatedCurrentUser);
     try {
       const response = await fetch(
-        `http://localhost:5000/users/${currentUser.id}`,
+        `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
         {
           method: "PATCH",
           headers: {
@@ -65,9 +67,9 @@ export default function TransferSummaryModal({
           message: "Error Updating Current User balance",
         };
       }
-      console.log(beneficiaryData.id)
+      console.log(beneficiaryData.id);
       const response2 = await fetch(
-        `http://localhost:5000/users/${beneficiaryData.id}`,
+        `https://windforest-json-server.onrender.com/users/${beneficiaryData.id}`,
         {
           method: "PATCH",
           headers: {
@@ -114,13 +116,16 @@ export default function TransferSummaryModal({
         date: new Date().toISOString(),
         balanceAfterSender: currentUser.accountBalance - Number(amount),
         balanceAfterReceiver: beneficiaryData.accountBalance + Number(amount),
-        reversed: false
+        reversed: false,
       };
-      const res3 = await fetch("http://localhost:5000/transactions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(transaction),
-      });
+      const res3 = await fetch(
+        "https://windforest-json-server.onrender.com/transactions",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(transaction),
+        }
+      );
       if (!res3.ok) {
         throw {
           message: "Error Posting Transaction",
@@ -135,8 +140,8 @@ export default function TransferSummaryModal({
       setLoading(false);
     }
   };
-  console.log('currentUser.id', currentUser.id);
-console.log('transferBeneficiary', transferBeneficiary);
+  console.log("currentUser.id", currentUser.id);
+  console.log("transferBeneficiary", transferBeneficiary);
 
   function closeTransfer() {
     setAmount("");

@@ -22,11 +22,14 @@ export default function NotificationsModal({
     setNotifications(updatedNotifications);
 
     // Optional: persist to backend
-    fetch(`http://localhost:5000/users/${currentUser.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ notifications: updatedNotifications }),
-    }).catch((err) => console.log("Error updating notifications:", err));
+    fetch(
+      `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ notifications: updatedNotifications }),
+      }
+    ).catch((err) => console.log("Error updating notifications:", err));
   };
 
   const markAllAsRead = () => {
@@ -36,11 +39,14 @@ export default function NotificationsModal({
     }));
     setNotifications(updatedNotifications);
 
-    fetch(`http://localhost:5000/users/${currentUser.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ notifications: updatedNotifications }),
-    }).catch((err) => console.log("Error updating notifications:", err));
+    fetch(
+      `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ notifications: updatedNotifications }),
+      }
+    ).catch((err) => console.log("Error updating notifications:", err));
   };
 
   return (

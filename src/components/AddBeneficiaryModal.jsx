@@ -23,7 +23,9 @@ export default function AddBeneficiaryModal({
 
     if (value.length >= 6) {
       try {
-        const res = await fetch("http://localhost:5000/users");
+        const res = await fetch(
+          "https://windforest-json-server.onrender.com/users"
+        );
         const users = await res.json();
         const found = users.find((u) => u.accountNumber === value);
 
@@ -65,14 +67,17 @@ export default function AddBeneficiaryModal({
       setNotifications((prev) => [...prev, notification]);
 
       const updatedArray = [...beneficiaries, newBeneficiary];
-      const res = await fetch(`http://localhost:5000/users/${currentUser.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          beneficiaries: updatedArray,
-          notifications: [...currentUser.notifications, notification],
-        }),
-      });
+      const res = await fetch(
+        `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            beneficiaries: updatedArray,
+            notifications: [...currentUser.notifications, notification],
+          }),
+        }
+      );
       const data = await res.json();
       setBeneficiaries(data.beneficiaries);
       setAccountNumber("");

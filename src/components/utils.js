@@ -1,13 +1,15 @@
 export const addNotification = async (userId, notification) => {
   try {
     // Fetch current user data
-    const res = await fetch(`http://localhost:5000/users/${userId}`);
+    const res = await fetch(
+      `https://windforest-json-server.onrender.com/users/${userId}`
+    );
     const user = await res.json();
 
     const updatedNotifications = [...(user.notifications || []), notification];
 
     // PATCH updated notifications array
-    await fetch(`http://localhost:5000/users/${userId}`, {
+    await fetch(`https://windforest-json-server.onrender.com/users/${userId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ notifications: updatedNotifications }),

@@ -40,7 +40,9 @@ const EditProfileForm = ({ isOpen, setIsOpen, setNotifications }) => {
 
     try {
       // Get online access users
-      const res = await fetch(`http://localhost:5000/onlineAccessUsers`);
+      const res = await fetch(
+        `https://windforest-json-server.onrender.com/onlineAccessUsers`
+      );
       if (!res.ok) throw new Error("Error fetching online users.");
       const onlineUsers = await res.json();
 
@@ -73,7 +75,7 @@ const EditProfileForm = ({ isOpen, setIsOpen, setNotifications }) => {
       setNotifications((prev) => [...prev, newNotification]);
       // Update in users DB
       const response = await fetch(
-        `http://localhost:5000/users/${currentUser.id}`,
+        `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

@@ -51,7 +51,9 @@ const Header = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/onlineAccessUsers");
+      const res = await fetch(
+        "https://windforest-json-server.onrender.com/onlineAccessUsers"
+      );
       if (!res.ok) throw new Error("Error fetching online users");
       const onlineUsers = await res.json();
 
@@ -68,16 +70,21 @@ const Header = () => {
         return;
       }
 
-      const usersRes = await fetch("http://localhost:5000/users");
+      const usersRes = await fetch(
+        "https://windforest-json-server.onrender.com/users"
+      );
       const users = await usersRes.json();
       const fullUser = users.find((u) => u.id === matchedUser.userId);
 
       // Send OTP
-      const otpRes = await fetch("http://localhost:7000/send-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: fullUser.email }),
-      });
+      const otpRes = await fetch(
+        "https://windforest-bank.onrender.com/send-otp",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: fullUser.email }),
+        }
+      );
 
       if (!otpRes.ok) throw new Error("Failed to send OTP");
 
@@ -104,22 +111,28 @@ const Header = () => {
     try {
       const { fullUser, matchedUser } = tempUser;
 
-      const res = await fetch("http://localhost:7000/verify-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: fullUser.email, otp }),
-      });
+      const res = await fetch(
+        "https://windforest-bank.onrender.com/verify-otp",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: fullUser.email, otp }),
+        }
+      );
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "OTP verification failed");
 
       // ✅ OTP verified → update lastLogin
       const lastLogin = new Date().toISOString();
-      await fetch(`http://localhost:5000/onlineAccessUsers/${matchedUser.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ lastLogin }),
-      });
+      await fetch(
+        `https://windforest-json-server.onrender.com/onlineAccessUsers/${matchedUser.id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ lastLogin }),
+        }
+      );
 
       // — Add a 2-second delay to show loading
       await new Promise((resolve) => setTimeout(resolve, 3000));

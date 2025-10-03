@@ -25,7 +25,9 @@ const ForgotPassword = () => {
       return;
     }
     try {
-      const res = await fetch("http://localhost:5000/users");
+      const res = await fetch(
+        "https://windforest-json-server.onrender.com/users"
+      );
       if (!res.ok) {
         throw {
           message: "Error fetching users",
@@ -42,7 +44,9 @@ const ForgotPassword = () => {
       setUserEmail(matchedUser.email);
       setEmail("");
       setStep(2);
-      const res2 = await fetch("http://localhost:5000/onlineAccessUsers");
+      const res2 = await fetch(
+        "https://windforest-json-server.onrender.com/onlineAccessUsers"
+      );
       const onlineUsers = await res2.json();
       const matchedOnlineUser = onlineUsers.find(
         (user) => user.userId === matchedUser.id
@@ -63,7 +67,9 @@ const ForgotPassword = () => {
       return;
     }
     try {
-      const res = await fetch("http://localhost:5000/users");
+      const res = await fetch(
+        "https://windforest-json-server.onrender.com/users"
+      );
       if (!res.ok) {
         throw {
           message: "Error fetching users",
@@ -73,7 +79,9 @@ const ForgotPassword = () => {
       const matchedUser = users.find(
         (user) => user.email === userEmail.trim().toLowerCase()
       );
-      const res2 = await fetch("http://localhost:5000/onlineAccessUsers");
+      const res2 = await fetch(
+        "https://windforest-json-server.onrender.com/onlineAccessUsers"
+      );
       const onlineUsers = await res2.json();
       const matchedOnlineUser = onlineUsers.find(
         (user) => user.userId === matchedUser.id
@@ -111,10 +119,14 @@ const ForgotPassword = () => {
       return;
     }
     try {
-      const res2 = await fetch("http://localhost:5000/users");
+      const res2 = await fetch(
+        "https://windforest-json-server.onrender.com/users"
+      );
       const users = await res2.json();
       const user = users.find((u) => u.email === userEmail);
-      const res = await fetch("http://localhost:5000/onlineAccessUsers");
+      const res = await fetch(
+        "https://windforest-json-server.onrender.com/onlineAccessUsers"
+      );
       const onlineUsers = await res.json();
       const matchedUser = onlineUsers.find((user) => user.userId === user.id);
       const updatedUser = {
@@ -122,7 +134,7 @@ const ForgotPassword = () => {
         password: newPassword,
       };
       const response = await fetch(
-        `http://localhost:5000/onlineAccessUsers/${matchedUser.id}`,
+        `https://windforest-json-server.onrender.com/onlineAccessUsers/${matchedUser.id}`,
         {
           method: "PATCH",
           headers: {
@@ -145,15 +157,18 @@ const ForgotPassword = () => {
         date: new Date().toISOString(),
         read: false,
       };
-      const res3 = await fetch(`http://localhost:5000/users/${user.id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          notifications: [...user.notifications, newNotification],
-        }),
-      });
+      const res3 = await fetch(
+        `https://windforest-json-server.onrender.com/users/${user.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            notifications: [...user.notifications, newNotification],
+          }),
+        }
+      );
       if (!res3.ok) {
         throw {
           message: "Error Updating notifications",

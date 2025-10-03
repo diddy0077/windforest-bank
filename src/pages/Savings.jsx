@@ -4,16 +4,18 @@ import { Link } from "react-router-dom";
 const Savings = () => {
   const [savings, setSavings] = useState([]);
   const [loading, setLoading] = useState(false);
-  
-    useEffect(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   useEffect(() => {
     setLoading(true);
     const fetchSavings = async () => {
       try {
-        const res = await fetch("http://localhost:5000/accountTypes");
+        const res = await fetch(
+          "https://windforest-json-server.onrender.com/accountTypes"
+        );
         if (!res.ok) {
           throw {
             message: "Error fetching savings accounts",

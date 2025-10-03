@@ -3,9 +3,9 @@ import { UserContext } from "./UserContext";
 import { useOutletContext } from "react-router-dom";
 
 const Transactions = () => {
-  
   const { currentUser } = useContext(UserContext);
-  const { setIsSidebarOpen,transactions,setTransactions } = useOutletContext();
+  const { setIsSidebarOpen, transactions, setTransactions } =
+    useOutletContext();
   function formatDate(dateStr) {
     const date = new Date(dateStr);
     return (
@@ -14,11 +14,13 @@ const Transactions = () => {
       date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
     );
   }
-console.log(transactions)
+  console.log(transactions);
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const res = await fetch("http://localhost:5000/transactions");
+        const res = await fetch(
+          "https://windforest-json-server.onrender.com/transactions"
+        );
         if (!res.ok) {
           throw {
             message: "Error fetching transactions",
@@ -115,9 +117,11 @@ console.log(transactions)
                         ? `-$${Number(tx.amount).toLocaleString()}`
                         : `+$${Number(tx.amount).toLocaleString()}`}
                     </td>
-                    {<td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 font-semibold text-right">
-                      ${tx.balanceAfter.toLocaleString()}
-                    </td>}
+                    {
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 font-semibold text-right">
+                        ${tx.balanceAfter.toLocaleString()}
+                      </td>
+                    }
                   </tr>
                 ))
             ) : (

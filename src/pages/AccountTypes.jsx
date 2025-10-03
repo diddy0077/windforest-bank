@@ -15,7 +15,9 @@ const AccountTypes = () => {
     setLoading(true);
     const fetchAccounts = async () => {
       try {
-        const res = await fetch("http://localhost:5000/accountTypes");
+        const res = await fetch(
+          "https://windforest-json-server.onrender.com/accountTypes"
+        );
         if (!res.ok) {
           throw {
             message: "Error fetching accounts",
@@ -189,7 +191,10 @@ const AccountTypes = () => {
                   >
                     Open Now
                   </Link>
-                  <Link to='/learn-more' className="w-full py-3 border border-gray-400 text-gray-700 font-semibold rounded-full hover:bg-gray-200 transition-colors">
+                  <Link
+                    to="/learn-more"
+                    className="w-full py-3 border border-gray-400 text-gray-700 font-semibold rounded-full hover:bg-gray-200 transition-colors"
+                  >
                     Learn More
                   </Link>
                 </div>
