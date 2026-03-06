@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import AddBeneficiaryModal from "./AddBeneficiaryModal";
 import { useContext } from "react";
 import { UserContext } from "./UserContext";
@@ -7,6 +7,16 @@ import TransferSummaryModal from "./TransferSummaryModal";
 import { useOutletContext } from "react-router-dom";
 import { addNotification } from "./utils";
 import TransferFromExternalAccounts from "./TransferFromExternalAccounts";
+import {
+  Clock,
+  DollarSign,
+  TrendingUp,
+  Star,
+  History,
+  Calendar,
+  ArrowRight,
+  Users,
+} from "lucide-react";
 
 function Restricted({ openRes, setOpenRes }) {
   // Icon for Restriction/Alert (using a simple X circle for clarity)
@@ -97,6 +107,9 @@ const Transfer = () => {
   const { setIsSidebarOpen, setNotifications } = useOutletContext();
   const [externalTransfer, setExternalTransfer] = useState(false);
   const [openRes, setOpenRes] = useState(false);
+  const [recentTransfers, setRecentTransfers] = useState([]);
+  const [transferTemplates, setTransferTemplates] = useState([]);
+  const [showScheduleModal, setShowScheduleModal] = useState(false);
   const deleteBeneficiary = async (accountNumber) => {
     const newBeneficiaries = beneficiaries.filter((b) => {
       return b.accountNumber !== accountNumber;
@@ -174,6 +187,18 @@ const Transfer = () => {
     }
   };
 
+  // Transfer statistics
+  const transferStats = useMemo(() => {
+    const totalTransferred = recentTransfers.reduce((sum, tx) => sum + Number(tx.amount), 0);
+    const thisMonth = recentTransfers.filter(tx => {
+      const txDate = new Date(tx.date);
+      const now = new Date();
+      return txDate.getMonth() === now.getMonth() && txDate.getFullYear() === now.getFullYear();
+    }).reduce((sum, tx) => sum + Number(tx.amount), 0);
+
+    return { totalTransferred, thisMonth, totalTransfers: recentTransfers.length };
+  }, [recentTransfers]);
+
   useEffect(() => {
     const fetchBeneficary = async () => {
       try {
@@ -188,11 +213,38 @@ const Transfer = () => {
         const data = await res.json();
         console.log(data);
         setBeneficiaries(data.beneficiaries);
+        setTransferTemplates(data.transferTemplates || []);
       } catch (error) {
         console.log("Error fetching beneficiaries", error);
       }
     };
+
+    const fetchRecentTransfers = async () => {
+      try {
+        const res = await fetch(
+          "https://windforest-json-server.onrender.com/transactions"
+        );
+        if (!res.ok) {
+          throw {
+            message: "Error fetching transfers",
+          };
+        }
+        const data = await res.json();
+        const userTransfers = data
+          .filter(
+            (tx) =>
+              tx.fromUserId === currentUser.id || tx.toUserId === currentUser.id
+          )
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .slice(0, 5); // Get last 5 transfers
+        setRecentTransfers(userTransfers);
+      } catch (error) {
+        console.log("Error fetching transfers", error);
+      }
+    };
+
     fetchBeneficary();
+    fetchRecentTransfers();
   }, [currentUser.id]);
 
   return (
@@ -219,29 +271,43 @@ const Transfer = () => {
             Transfer Funds
           </h2>
         </div>
-        <div className="flex gap-2 items-center mb-8">
+        <div className="flex flex-wrap gap-2 items-center mb-8">
           <button
             onClick={() => setBeneficiaryForm(true)}
             style={{
               background: "linear-gradient(45deg, #1f2937, #4b5563)",
             }}
-            className=" text-white text-sm md:text-md cursor-pointer font-semibold active:scale-[0.95] transition duration-300 p-3 px-4 rounded-lg md:mb-0"
+            className=" text-white text-sm md:text-md cursor-pointer font-semibold active:scale-[0.95] transition duration-300 p-3 px-4 rounded-lg"
           >
             + Add Beneficiary
           </button>
           <button
             onClick={() => setExternalTransfer(true)}
             className="
-    cursor-pointer px-4 py-3 
-    bg-gradient-to-r from-gray-800 via-gray-700 to-red-600 
-    text-white font-semibold 
-    rounded-lg shadow-md 
+    cursor-pointer px-4 py-3
+    bg-gradient-to-r from-gray-800 via-gray-700 to-red-600
+    text-white font-semibold
+    rounded-lg shadow-md
     hover:from-red-600 hover:via-gray-700 hover:to-gray-800
-    transition-all active:scale-[0.95] duration-300 
+    transition-all active:scale-[0.95] duration-300
     text-sm tracking-wide
   "
           >
             + External Transfers
+          </button>
+          <button
+            onClick={() => setShowScheduleModal(true)}
+            className="
+    cursor-pointer px-4 py-3
+    bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800
+    text-white font-semibold
+    rounded-lg shadow-md
+    hover:from-blue-700 hover:via-blue-800 hover:to-blue-900
+    transition-all active:scale-[0.95] duration-300
+    text-sm tracking-wide
+  "
+          >
+            📅 Schedule Transfer
           </button>
         </div>
       </div>
@@ -304,6 +370,100 @@ const Transfer = () => {
           Complete Transfer
         </button>
       </div>
+
+      {/* Transfer Summary Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+        <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+          <div className="flex items-center">
+            <DollarSign className="w-8 h-8 text-blue-600 mr-3" />
+            <div>
+              <p className="text-sm text-gray-600">Total Transferred</p>
+              <p className="text-xl font-bold text-blue-600">
+                ${transferStats.totalTransferred.toLocaleString()}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+          <div className="flex items-center">
+            <Calendar className="w-8 h-8 text-green-600 mr-3" />
+            <div>
+              <p className="text-sm text-gray-600">This Month</p>
+              <p className="text-xl font-bold text-green-600">
+                ${transferStats.thisMonth.toLocaleString()}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+          <div className="flex items-center">
+            <History className="w-8 h-8 text-purple-600 mr-3" />
+            <div>
+              <p className="text-sm text-gray-600">Total Transfers</p>
+              <p className="text-xl font-bold text-purple-600">
+                {transferStats.totalTransfers}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick Actions */}
+      <div className="bg-gray-50 p-4 rounded-lg mb-6">
+        <h3 className="text-lg font-semibold mb-3">Quick Actions</h3>
+        <div className="flex flex-wrap gap-3">
+          {beneficiaries.slice(0, 3).map((beneficiary) => (
+            <button
+              key={beneficiary.accountNumber}
+              onClick={() => {
+                setToAccount(beneficiary.accountNumber);
+                setTransferBeneficiary(beneficiary);
+              }}
+              className="flex items-center gap-2 bg-white p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow border"
+            >
+              <Users className="w-4 h-4 text-gray-600" />
+              <span className="text-sm font-medium">{beneficiary.name}</span>
+            </button>
+          ))}
+          <button
+            onClick={() => setBeneficiaryForm(true)}
+            className="flex items-center gap-2 bg-red-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow border border-red-200"
+          >
+            <Star className="w-4 h-4 text-red-600" />
+            <span className="text-sm font-medium text-red-600">Add Favorite</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Recent Transfers */}
+      {recentTransfers.length > 0 && (
+        <div className="bg-white p-4 rounded-lg shadow-md mb-6">
+          <h3 className="text-lg font-semibold mb-3">Recent Transfers</h3>
+          <div className="space-y-3">
+            {recentTransfers.map((transfer) => (
+              <div key={transfer.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div className="flex items-center gap-3">
+                  <ArrowRight className={`w-4 h-4 ${transfer.fromUserId === currentUser.id ? 'text-red-500' : 'text-green-500'}`} />
+                  <div>
+                    <p className="text-sm font-medium">
+                      {transfer.fromUserId === currentUser.id
+                        ? `To ${transfer.toUserName}`
+                        : `From ${transfer.fromUserName}`}
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      {new Date(transfer.date).toLocaleDateString()}
+                    </p>
+                  </div>
+                </div>
+                <div className={`text-sm font-semibold ${transfer.fromUserId === currentUser.id ? 'text-red-600' : 'text-green-600'}`}>
+                  {transfer.fromUserId === currentUser.id ? '-' : '+'}${transfer.amount}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {externalTransfer && (
         <TransferFromExternalAccounts
           externalTransfer={externalTransfer}
@@ -369,6 +529,37 @@ const Transfer = () => {
         beneficiaries={beneficiaries}
         setNotifications={setNotifications}
       />
+
+      {/* Scheduled Transfer Modal */}
+      {showScheduleModal && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-md">
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-4">Schedule Transfer</h3>
+              <p className="text-gray-600 mb-4">
+                This feature allows you to schedule recurring transfers. Coming soon!
+              </p>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowScheduleModal(false)}
+                  className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-300 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    toast.info("Scheduled transfers feature coming soon!");
+                    setShowScheduleModal(false);
+                  }}
+                  className="flex-1 bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors"
+                >
+                  Notify Me
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

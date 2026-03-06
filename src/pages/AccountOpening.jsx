@@ -405,7 +405,7 @@ const AccountOpening = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 sm:p-6">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 sm:p-6 overflow-x-hidden">
       {successMessage ? (
         <div className="w-full max-w-xl bg-white shadow-2xl rounded-3xl p-8 sm:p-10 text-center">
           <div className="mb-6">
@@ -515,7 +515,7 @@ const AccountOpening = () => {
 
               {/* Stepper with Progress Bar */}
               <div className="relative mb-8 sm:mb-12">
-                <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-300 transform -translate-y-1/2 rounded-full">
+                <div className="absolute top-1/3 left-1 w-full h-1 bg-gray-300 transform -translate-y-1/2 rounded-full">
                   <div
                     className="h-full bg-red-600 transition-all duration-500 ease-in-out rounded-full"
                     style={{
@@ -544,7 +544,7 @@ const AccountOpening = () => {
                         </span>
                       </div>
                       <div
-                        className={`mt-2 text-xs sm:text-sm font-medium whitespace-nowrap text-center transition-colors duration-500 ${
+                        className={`mt-2 mr-2 text-xs sm:text-sm font-medium whitespace-nowrap text-center transition-colors duration-500 ${
                           index === currentStep
                             ? "text-red-700 font-bold"
                             : "text-gray-500"

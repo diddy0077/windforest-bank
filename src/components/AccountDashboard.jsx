@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useOutletContext, Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { UserContext } from "./UserContext";
@@ -15,6 +15,30 @@ import {
 import NotificationsModal from "./NotificationsModal";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
+import {
+  CreditCard,
+  DollarSign,
+  Calendar,
+  Plus,
+  History,
+  Zap,
+  Phone,
+  Wifi,
+  Shield,
+  Car,
+  Home,
+  Receipt,
+  Search,
+  Star,
+  StarOff,
+  Clock,
+  Bell,
+  Upload,
+  FileText,
+  TrendingUp,
+  CheckCircle,
+  X,
+} from "lucide-react";
 
 const AccountDashboard = () => {
   const { setIsSidebarOpen, notifications, setNotifications, transactions } =
@@ -22,6 +46,66 @@ const AccountDashboard = () => {
   const { currentUser } = useContext(UserContext);
 
   const [openNotifications, setOpenNotifications] = useState(false);
+  const [showBillPayment, setShowBillPayment] = useState(false);
+  const [billers, setBillers] = useState([]);
+  const [billPayments, setBillPayments] = useState([]);
+  const [billerSearchTerm, setBillerSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [showRecurringSetup, setShowRecurringSetup] = useState(false);
+  const [showPaymentConfirmation, setShowPaymentConfirmation] = useState(false);
+  const [lastPayment, setLastPayment] = useState(null);
+  const [uploadedBill, setUploadedBill] = useState(null);
+  const [scheduledPayments, setScheduledPayments] = useState([]);
+  const [showAddBiller, setShowAddBiller] = useState(false);
+  const [newBiller, setNewBiller] = useState({ name: '', category: 'utilities', accountNumber: '' });
+  const [paymentForm, setPaymentForm] = useState({ billerId: '', amount: '', account: 'checking' });
+  const [recurringForm, setRecurringForm] = useState({
+    billerId: '',
+    amount: '',
+    frequency: 'monthly',
+    startDate: '',
+    endDate: ''
+  });
+  // Bill payment statistics
+  const billStats = useMemo(() => {
+    const totalPaid = billPayments.reduce((sum, payment) => sum + Number(payment.amount), 0);
+    const thisMonth = billPayments.filter(payment => {
+      const paymentDate = new Date(payment.date);
+      const now = new Date();
+      return paymentDate.getMonth() === now.getMonth() && paymentDate.getFullYear() === now.getFullYear();
+    }).reduce((sum, payment) => sum + Number(payment.amount), 0);
+
+    return { totalPaid, thisMonth, totalPayments: billPayments.length };
+  }, [billPayments]);
+
+  // Filtered billers for search and category
+  const filteredBillers = useMemo(() => {
+    return billers.filter(biller => {
+      const matchesSearch = biller.name.toLowerCase().includes(billerSearchTerm.toLowerCase());
+      const matchesCategory = selectedCategory === "all" || biller.category === selectedCategory;
+      return matchesSearch && matchesCategory;
+    });
+  }, [billers, billerSearchTerm, selectedCategory]);
+
+  // Bill category analytics
+  const categoryAnalytics = useMemo(() => {
+    const categories = {};
+    billPayments.forEach(payment => {
+      const category = payment.category || 'Other';
+      if (!categories[category]) {
+        categories[category] = { total: 0, count: 0 };
+      }
+      categories[category].total += Number(payment.amount);
+      categories[category].count += 1;
+    });
+    return Object.entries(categories).map(([name, data]) => ({
+      name,
+      total: data.total,
+      count: data.count,
+      average: data.total / data.count
+    }));
+  }, [billPayments]);
+
   console.log(currentUser);
   const spendingData = [
     { category: "Groceries", amount: 350 },
@@ -337,7 +421,10 @@ const AccountDashboard = () => {
               >
                 Transfer Funds
               </Link>
-              <button className="flex-1 min-w-40 bg-gray-800 text-white font-semibold py-4 px-6 rounded-full shadow-lg hover:bg-gray-900 transition-all duration-300 cursor-pointer transform hover:scale-105">
+              <button
+                onClick={() => setShowBillPayment(true)}
+                className="flex-1 min-w-40 bg-gray-800 text-white font-semibold py-4 px-6 rounded-full shadow-lg hover:bg-gray-900 transition-all duration-300 cursor-pointer transform hover:scale-105"
+              >
                 Pay Bills
               </button>
               <button
@@ -455,6 +542,586 @@ const AccountDashboard = () => {
         notifications={notifications}
         setNotifications={setNotifications}
       />
+
+      {/* Bill Payment Modal */}
+      {showBillPayment && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+            <div className="p-6 border-b">
+              <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-bold text-gray-800">Pay Bills</h2>
+                <button
+                  onClick={() => setShowBillPayment(false)}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div className="p-6">
+              {/* Tab Navigation */}
+              <div className="flex border-b mb-6">
+                {[
+                  { id: 'pay', label: 'Pay Bills', icon: DollarSign },
+                  { id: 'billers', label: 'My Billers', icon: Receipt },
+                  { id: 'recurring', label: 'Recurring', icon: Clock },
+                  { id: 'analytics', label: 'Analytics', icon: TrendingUp },
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    className={`flex items-center gap-2 px-4 py-2 border-b-2 font-medium text-sm ${
+                      selectedCategory === tab.id
+                        ? 'border-red-600 text-red-600'
+                        : 'border-transparent text-gray-500 hover:text-gray-700'
+                    }`}
+                    onClick={() => setSelectedCategory(tab.id)}
+                  >
+                    <tab.icon className="w-4 h-4" />
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Pay Bills Tab */}
+              {selectedCategory === 'pay' && (
+                <div>
+                  {/* Bill Payment Stats */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                      <div className="flex items-center">
+                        <Receipt className="w-8 h-8 text-blue-600 mr-3" />
+                        <div>
+                          <p className="text-sm text-gray-600">Total Paid</p>
+                          <p className="text-xl font-bold text-blue-600">
+                            ${billStats.totalPaid.toLocaleString()}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                      <div className="flex items-center">
+                        <Calendar className="w-8 h-8 text-green-600 mr-3" />
+                        <div>
+                          <p className="text-sm text-gray-600">This Month</p>
+                          <p className="text-xl font-bold text-green-600">
+                            ${billStats.thisMonth.toLocaleString()}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                      <div className="flex items-center">
+                        <History className="w-8 h-8 text-purple-600 mr-3" />
+                        <div>
+                          <p className="text-sm text-gray-600">Payments Made</p>
+                          <p className="text-xl font-bold text-purple-600">
+                            {billStats.totalPayments}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Quick Pay */}
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold mb-3">Quick Pay</h3>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      {[
+                        { name: "Electricity", icon: Zap, color: "text-yellow-600", category: "utilities" },
+                        { name: "Internet", icon: Wifi, color: "text-blue-600", category: "communications" },
+                        { name: "Phone", icon: Phone, color: "text-green-600", category: "communications" },
+                        { name: "Insurance", icon: Shield, color: "text-red-600", category: "insurance" },
+                        { name: "Water", icon: Home, color: "text-cyan-600", category: "utilities" },
+                        { name: "Gas", icon: Zap, color: "text-orange-600", category: "utilities" },
+                        { name: "Cable TV", icon: Wifi, color: "text-purple-600", category: "entertainment" },
+                        { name: "Car Payment", icon: Car, color: "text-gray-600", category: "transportation" },
+                      ].map((billType) => (
+                        <button
+                          key={billType.name}
+                          className="flex flex-col items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                          onClick={() => {
+                            setPaymentForm({
+                              billerId: billType.name,
+                              amount: '',
+                              account: 'checking'
+                            });
+                            setShowPaymentConfirmation(true);
+                          }}
+                        >
+                          <billType.icon className={`w-8 h-8 mb-2 ${billType.color}`} />
+                          <span className="text-sm font-medium text-gray-700">{billType.name}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Bill Upload/Scan */}
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold mb-3">Upload Bill</h3>
+                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                      <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                      <p className="text-gray-600 mb-2">Upload your bill for automatic amount detection</p>
+                      <input
+                        type="file"
+                        accept="image/*,.pdf"
+                        onChange={(e) => setUploadedBill(e.target.files[0])}
+                        className="hidden"
+                        id="bill-upload"
+                      />
+                      <label
+                        htmlFor="bill-upload"
+                        className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 cursor-pointer"
+                      >
+                        <Upload className="w-4 h-4 mr-2" />
+                        Choose File
+                      </label>
+                      {uploadedBill && (
+                        <p className="text-sm text-green-600 mt-2">File uploaded: {uploadedBill.name}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Payment Scheduling */}
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold mb-3">Schedule Payment</h3>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Payment Date</label>
+                          <input
+                            type="date"
+                            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">Amount</label>
+                          <input
+                            type="number"
+                            placeholder="0.00"
+                            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                          />
+                        </div>
+                      </div>
+                      <button className="mt-4 w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors">
+                        Schedule Payment
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* My Billers Tab */}
+              {selectedCategory === 'billers' && (
+                <div>
+                  {/* Search and Filter */}
+                  <div className="mb-6">
+                    <div className="flex gap-4 mb-4">
+                      <div className="flex-1 relative">
+                        <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                        <input
+                          type="text"
+                          placeholder="Search billers..."
+                          value={billerSearchTerm}
+                          onChange={(e) => setBillerSearchTerm(e.target.value)}
+                          className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                        />
+                      </div>
+                      <select
+                        value={selectedCategory}
+                        onChange={(e) => setSelectedCategory(e.target.value)}
+                        className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                      >
+                        <option value="all">All Categories</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="communications">Communications</option>
+                        <option value="insurance">Insurance</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="transportation">Transportation</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Billers List */}
+                  <div className="space-y-3">
+                    {filteredBillers.map((biller) => (
+                      <div key={biller.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                            <Receipt className="w-5 h-5 text-red-600" />
+                          </div>
+                          <div>
+                            <p className="font-medium">{biller.name}</p>
+                            <p className="text-sm text-gray-500">{biller.category}</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => {
+                              setBillers(billers.map(b =>
+                                b.id === biller.id ? {...b, favorite: !b.favorite} : b
+                              ));
+                            }}
+                            className={`p-2 rounded-full ${biller.favorite ? 'text-yellow-500' : 'text-gray-400'}`}
+                          >
+                            {biller.favorite ? <Star className="w-5 h-5" /> : <StarOff className="w-5 h-5" />}
+                          </button>
+                          <button
+                            onClick={() => {
+                              setPaymentForm({
+                                billerId: biller.id,
+                                amount: '',
+                                account: 'checking'
+                              });
+                              setShowPaymentConfirmation(true);
+                            }}
+                            className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
+                          >
+                            Pay Now
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Add New Biller */}
+                  <div className="border-t pt-6 mt-6">
+                    <button
+                      onClick={() => setShowAddBiller(true)}
+                      className="w-full flex items-center justify-center gap-2 bg-red-600 text-white py-3 px-6 rounded-lg hover:bg-red-700 transition-colors"
+                    >
+                      <Plus className="w-5 h-5" />
+                      Add New Biller
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Recurring Payments Tab */}
+              {selectedCategory === 'recurring' && (
+                <div>
+                  <h3 className="text-lg font-semibold mb-4">Recurring Payments</h3>
+                  <div className="space-y-4">
+                    {scheduledPayments.map((payment) => (
+                      <div key={payment.id} className="p-4 bg-gray-50 rounded-lg">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <p className="font-medium">{payment.billerName}</p>
+                            <p className="text-sm text-gray-600">
+                              ${payment.amount} - {payment.frequency} - Next: {new Date(payment.nextDate).toLocaleDateString()}
+                            </p>
+                          </div>
+                          <div className="flex gap-2">
+                            <button className="text-blue-600 hover:text-blue-800">
+                              <Bell className="w-4 h-4" />
+                            </button>
+                            <button className="text-red-600 hover:text-red-800">
+                              <X className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <button
+                    onClick={() => setShowRecurringSetup(true)}
+                    className="w-full mt-6 flex items-center justify-center gap-2 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    <Plus className="w-5 h-5" />
+                    Set Up Recurring Payment
+                  </button>
+                </div>
+              )}
+
+              {/* Analytics Tab */}
+              {selectedCategory === 'analytics' && (
+                <div>
+                  <h3 className="text-lg font-semibold mb-4">Bill Payment Analytics</h3>
+                  <div className="space-y-6">
+                    {categoryAnalytics.map((category) => (
+                      <div key={category.name} className="p-4 bg-gray-50 rounded-lg">
+                        <div className="flex justify-between items-center mb-2">
+                          <h4 className="font-medium">{category.name}</h4>
+                          <span className="text-sm text-gray-600">
+                            {category.count} payments
+                          </span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span>Total: ${category.total.toLocaleString()}</span>
+                          <span>Average: ${category.average.toFixed(2)}</span>
+                        </div>
+                        <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
+                          <div
+                            className="bg-red-600 h-2 rounded-full"
+                            style={{ width: `${(category.total / billStats.totalPaid) * 100}%` }}
+                          ></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Payment Confirmation Modal */}
+      {showPaymentConfirmation && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-md">
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-4">Confirm Payment</h3>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Biller</label>
+                  <input
+                    type="text"
+                    value={typeof paymentForm.billerId === 'string' && paymentForm.billerId.includes('-') ?
+                      billers.find(b => b.id === paymentForm.billerId)?.name || paymentForm.billerId :
+                      paymentForm.billerId}
+                    readOnly
+                    className="w-full p-2 border border-gray-300 rounded-lg bg-gray-50"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Amount</label>
+                  <input
+                    type="number"
+                    value={paymentForm.amount}
+                    onChange={(e) => setPaymentForm({...paymentForm, amount: e.target.value})}
+                    placeholder="Enter amount"
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">From Account</label>
+                  <select
+                    value={paymentForm.account}
+                    onChange={(e) => setPaymentForm({...paymentForm, account: e.target.value})}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  >
+                    <option value="checking">Checking Account</option>
+                    <option value="savings">Savings Account</option>
+                  </select>
+                </div>
+              </div>
+              <div className="flex gap-3 mt-6">
+                <button
+                  onClick={() => setShowPaymentConfirmation(false)}
+                  className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-300 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    // Process payment
+                    const billerName = typeof paymentForm.billerId === 'string' && paymentForm.billerId.includes('-') ?
+                      billers.find(b => b.id === paymentForm.billerId)?.name || paymentForm.billerId :
+                      paymentForm.billerId;
+
+                    const newPayment = {
+                      id: crypto.randomUUID(),
+                      billerName: billerName,
+                      amount: paymentForm.amount,
+                      date: new Date().toISOString(),
+                      account: paymentForm.account,
+                      status: 'completed'
+                    };
+                    setBillPayments([...billPayments, newPayment]);
+                    setShowPaymentConfirmation(false);
+                    setPaymentForm({ billerId: '', amount: '', account: 'checking' });
+                    alert('Payment processed successfully!');
+                  }}
+                  className="flex-1 bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors"
+                >
+                  Pay Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Add Biller Modal */}
+      {showAddBiller && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-md">
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-4">Add New Biller</h3>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Biller Name</label>
+                  <input
+                    type="text"
+                    value={newBiller.name}
+                    onChange={(e) => setNewBiller({...newBiller, name: e.target.value})}
+                    placeholder="Enter biller name"
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                  <select
+                    value={newBiller.category}
+                    onChange={(e) => setNewBiller({...newBiller, category: e.target.value})}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  >
+                    <option value="utilities">Utilities</option>
+                    <option value="communications">Communications</option>
+                    <option value="insurance">Insurance</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="transportation">Transportation</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Account Number</label>
+                  <input
+                    type="text"
+                    value={newBiller.accountNumber}
+                    onChange={(e) => setNewBiller({...newBiller, accountNumber: e.target.value})}
+                    placeholder="Enter account number"
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  />
+                </div>
+              </div>
+              <div className="flex gap-3 mt-6">
+                <button
+                  onClick={() => setShowAddBiller(false)}
+                  className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-300 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    // Add new biller
+                    const biller = {
+                      id: crypto.randomUUID(),
+                      ...newBiller,
+                      favorite: false
+                    };
+                    setBillers([...billers, biller]);
+                    setShowAddBiller(false);
+                    setNewBiller({ name: '', category: 'utilities', accountNumber: '' });
+                    alert('Biller added successfully!');
+                  }}
+                  className="flex-1 bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors"
+                >
+                  Add Biller
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Recurring Payment Setup Modal */}
+      {showRecurringSetup && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-md">
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-4">Set Up Recurring Payment</h3>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Select Biller</label>
+                  <select
+                    value={recurringForm.billerId}
+                    onChange={(e) => setRecurringForm({...recurringForm, billerId: e.target.value})}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  >
+                    <option value="">Choose a biller</option>
+                    {billers.map(biller => (
+                      <option key={biller.id} value={biller.id}>{biller.name}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Amount</label>
+                  <input
+                    type="number"
+                    value={recurringForm.amount}
+                    onChange={(e) => setRecurringForm({...recurringForm, amount: e.target.value})}
+                    placeholder="Enter amount"
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Frequency</label>
+                  <select
+                    value={recurringForm.frequency}
+                    onChange={(e) => setRecurringForm({...recurringForm, frequency: e.target.value})}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  >
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="quarterly">Quarterly</option>
+                    <option value="yearly">Yearly</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Start Date</label>
+                  <input
+                    type="date"
+                    value={recurringForm.startDate}
+                    onChange={(e) => setRecurringForm({...recurringForm, startDate: e.target.value})}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">End Date (Optional)</label>
+                  <input
+                    type="date"
+                    value={recurringForm.endDate}
+                    onChange={(e) => setRecurringForm({...recurringForm, endDate: e.target.value})}
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                  />
+                </div>
+              </div>
+              <div className="flex gap-3 mt-6">
+                <button
+                  onClick={() => setShowRecurringSetup(false)}
+                  className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-300 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    // Set up recurring payment
+                    const selectedBiller = billers.find(b => b.id === recurringForm.billerId);
+                    const recurringPayment = {
+                      id: crypto.randomUUID(),
+                      billerName: selectedBiller?.name || 'Unknown',
+                      amount: recurringForm.amount,
+                      frequency: recurringForm.frequency,
+                      startDate: recurringForm.startDate,
+                      endDate: recurringForm.endDate,
+                      nextDate: recurringForm.startDate,
+                      status: 'active'
+                    };
+                    setScheduledPayments([...scheduledPayments, recurringPayment]);
+                    setShowRecurringSetup(false);
+                    setRecurringForm({
+                      billerId: '',
+                      amount: '',
+                      frequency: 'monthly',
+                      startDate: '',
+                      endDate: ''
+                    });
+                    alert('Recurring payment set up successfully!');
+                  }}
+                  className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Set Up Payment
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

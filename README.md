@@ -11,7 +11,7 @@ A comprehensive full-stack banking simulation web application built with React a
 - **Account Management**: Support for multiple account types (Checking, Savings, High-Yield Savings, Business accounts, etc.)
 - **Money Transfers**: Internal transfers between users and external transfers to linked accounts
 - **Beneficiary Management**: Add, manage, and remove saved beneficiaries for quick transfers
-- **Transaction History**: Detailed view of all account transactions with filtering and search
+- **Transaction History**: Enhanced view with summary dashboard, search, filtering by type/date, CSV export, and activity charts
 - **Loan Applications**: Apply for various loan types (Personal, Education, Car, Home, Business, etc.) with built-in calculator
 - **Loan Dashboard**: Track loan applications, view payment schedules, and manage active loans
 - **Profile Management**: Edit personal information, change passwords, update security questions, unlink accounts
@@ -29,18 +29,26 @@ A comprehensive full-stack banking simulation web application built with React a
 ### Admin Features
 - **Admin Dashboard**: Comprehensive user management interface
 - **User Management**: View, edit, and manage all user accounts
-- **Transfer Restrictions**: Ability to restrict/unrestrict user transfer capabilities
+- **Transfer Restrictions**: Real-time ability to restrict/unrestrict user transfer capabilities with automatic user session updates
 - **Transaction Reversals**: Reverse transactions with automatic balance adjustments and notifications
 - **User Oversight**: Monitor user activities, balances, and account statuses
 
 ### Additional Features
 - **Responsive Design**: Fully responsive UI built with Tailwind CSS
 - **Animations**: Smooth animations and transitions using Framer Motion
-- **Charts & Analytics**: Spending data visualization with Recharts
+- **Charts & Analytics**: Transaction activity charts and spending data visualization with Recharts
 - **PDF Generation**: Download receipts, statements, and reports
 - **Email Notifications**: Automated email notifications for various actions
 - **Security Features**: OTP verification, password hashing, session management
+- **Real-time Updates**: Automatic user data refresh for immediate admin action reflection
 - **Data Persistence**: JSON Server for mock data storage and API simulation
+
+### Enhanced Transaction Features
+- **Summary Dashboard**: Real-time display of total debits, credits, and net change
+- **Advanced Search & Filtering**: Search by transaction details, filter by type (debit/credit), and date range
+- **CSV Export**: Download filtered transaction data in CSV format for external analysis
+- **Activity Charts**: Visual representation of daily transaction activity with interactive tooltips
+- **Real-time Updates**: Automatic refresh of user data to reflect admin actions immediately
 
 ## Technologies Used
 
@@ -68,7 +76,7 @@ A comprehensive full-stack banking simulation web application built with React a
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/diddy0077/windforest-bank
    cd my-bank
    ```
 

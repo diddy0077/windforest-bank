@@ -487,7 +487,7 @@ const OnlineEnrollment = () => {
 
             {/* Progress Bar */}
             <div className="relative mb-8 sm:mb-12">
-              <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-300 transform -translate-y-1/2 rounded-full">
+              <div className="absolute top-1/4 left-0 w-full h-1 bg-gray-300 transform -translate-y-1/2 rounded-full">
                 <div
                   className="h-full bg-red-600 transition-all duration-500 ease-in-out rounded-full"
                   style={{
@@ -514,7 +514,7 @@ const OnlineEnrollment = () => {
                       </span>
                     </div>
                     <div
-                      className={`mt-2 text-xs sm:text-sm font-medium whitespace-nowrap text-center transition-colors duration-500 ${
+                      className={`mt-2 text-xs sm:text-sm font-medium whitespace-wrap text-center transition-colors duration-500 ${
                         index === currentStep
                           ? "text-red-700 font-bold"
                           : "text-gray-500"

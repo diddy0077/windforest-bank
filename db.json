@@ -307,7 +307,10 @@
           "expiryDate": "11/30",
           "createdAt": "2025-09-24T14:09:21.424Z"
         }
-      ]
+      ],
+      "billers": [],
+      "billPayments": [],
+      "scheduledPayments": []
     },
     {
       "id": "bb46",
