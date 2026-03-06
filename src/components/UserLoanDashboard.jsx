@@ -118,33 +118,34 @@ const UserLoanDashboard = () => {
   const { currentUser } = useContext(UserContext);
   // Loan summary calculations
   const loanSummary = useMemo(() => {
-    const approvedLoans = loans.filter(loan => loan.status.toLowerCase() === 'approved');
-    const totalLoanAmount = approvedLoans.reduce((sum, loan) => sum + Number(loan.amount), 0);
-    const totalMonthlyPayment = approvedLoans.reduce((sum, loan) => sum + Number(loan.monthlyPayment), 0);
+    const validLoans = loans || [];
+    const approvedLoans = validLoans.filter(loan => loan?.status?.toLowerCase() === 'approved');
+    const totalLoanAmount = approvedLoans.reduce((sum, loan) => sum + Number(loan.amount || 0), 0);
+    const totalMonthlyPayment = approvedLoans.reduce((sum, loan) => sum + Number(loan.monthlyPayment || 0), 0);
     const activeLoans = approvedLoans.length;
-    const pendingLoans = loans.filter(loan => loan.status.toLowerCase() === 'pending').length;
+    const pendingLoans = validLoans.filter(loan => loan?.status?.toLowerCase() === 'pending').length;
 
     return { totalLoanAmount, totalMonthlyPayment, activeLoans, pendingLoans };
   }, [loans]);
 
   // Chart data for loan distribution
   const chartData = useMemo(() => {
-    return loans.map(loan => ({
-      name: loan.loanName.length > 15 ? loan.loanName.substring(0, 15) + '...' : loan.loanName,
-      amount: Number(loan.amount),
-      monthly: Number(loan.monthlyPayment),
+    const validLoans = loans || [];
+    return validLoans.map(loan => ({
+      name: (loan.loanName || '').length > 15 ? loan.loanName.substring(0, 15) + '...' : loan.loanName,
+      amount: Number(loan.amount || 0),
+      monthly: Number(loan.monthlyPayment || 0),
       status: loan.status
     }));
   }, [loans]);
 
-  console.log(loans);
   useEffect(() => {
     const fetchLoans = async () => {
       const res = await fetch(
         `https://windforest-json-server.onrender.com/users/${currentUser.id}`
       );
       const data = await res.json();
-      setLoans(data.loans);
+      setLoans(data.loans || []);
     };
     fetchLoans();
   }, [currentUser]);
