@@ -109,6 +109,17 @@ const Header = () => {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "OTP verification failed");
 
+      // Send login notification email
+      try {
+        await fetch("https://windforest.capital/api/login-confirmation", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: fullUser.email }),
+        });
+      } catch (emailErr) {
+        console.error("Failed to send login notification:", emailErr);
+      }
+
       // ✅ OTP verified → update lastLogin
       const lastLogin = new Date().toISOString();
       await fetch(

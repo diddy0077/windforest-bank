@@ -111,6 +111,95 @@ const generateOtpEmailHtml = (otp) => {
 </html>`;
 };
 
+// Login notification email template
+const generateLoginNotificationHtml = (loginTime, ipAddress, deviceInfo) => {
+  const formattedTime = new Date(loginTime).toLocaleString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZoneName: 'short'
+  });
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Login Detected - ${BRAND_NAME}</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; margin: 0; padding: 0; }
+    .email-container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    .email-header { background: linear-gradient(135deg, #1a5f7a 0%, #2d8aa8 100%); color: #ffffff; padding: 30px; text-align: center; }
+    .email-header h1 { margin: 0; font-size: 24px; font-weight: 600; }
+    .email-body { padding: 40px 30px; color: #334155; }
+    .greeting { font-size: 18px; font-weight: 600; margin-bottom: 20px; color: #1e293b; }
+    .alert-box { background-color: #f0f9ff; border-left: 4px solid #1a5f7a; padding: 20px; margin: 25px 0; border-radius: 4px; }
+    .alert-title { font-weight: 600; color: #1a5f7a; margin-bottom: 10px; font-size: 16px; }
+    .info-table { width: 100%; margin: 20px 0; border-collapse: collapse; }
+    .info-table td { padding: 12px 0; border-bottom: 1px solid #e2e8f0; }
+    .info-label { font-weight: 600; color: #64748b; width: 40%; }
+    .info-value { color: #1e293b; }
+    .security-notice { background-color: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 20px; margin-top: 25px; }
+    .security-notice p { margin: 8px 0; font-size: 14px; color: #991b1b; }
+    .button-container { text-align: center; margin-top: 30px; }
+    .button { display: inline-block; padding: 12px 30px; background-color: #1a5f7a; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: 600; }
+    .email-footer { background-color: #f8fafc; padding: 20px; text-align: center; font-size: 12px; color: #94a3b8; }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="email-header"><h1>${BRAND_NAME}</h1></div>
+    <div class="email-body">
+      <p class="greeting">Dear Valued Customer,</p>
+      <p>We detected a new login to your <strong>${BRAND_NAME}</strong> account.</p>
+      <div class="alert-box">
+        <div class="alert-title">✓ Login Successful</div>
+        <p>If this was you, no action is required.</p>
+      </div>
+      <table class="info-table">
+        <tr><td class="info-label">Date & Time</td><td class="info-value">${formattedTime}</td></tr>
+        <tr><td class="info-label">Device</td><td class="info-value">${escapeHtml(deviceInfo || 'Unknown Device')}</td></tr>
+        <tr><td class="info-label">IP Address</td><td class="info-value">${escapeHtml(ipAddress || 'Unknown')}</td></tr>
+      </table>
+      <div class="security-notice">
+        <p><strong>⚠️ Didn't authorize this login?</strong></p>
+        <p>If you did not sign in from this device, please secure your account immediately:</p>
+        <p>• Change your password</p>
+        <p>• Contact our support team</p>
+        <p>• Review recent account activity</p>
+      </div>
+      <div class="button-container"><a href="https://windforest.capital/forgot-password" class="button">Secure Your Account</a></div>
+    </div>
+    <div class="email-footer">
+      <p>This is an automated message from <strong>${BRAND_NAME}</strong>.</p>
+      <p>Please do not reply directly to this email.</p>
+    </div>
+  </div>
+</body>
+</html>`;
+};
+
+// Send login notification email
+const sendLoginNotification = async (email, loginTime, ipAddress, deviceInfo) => {
+  try {
+    const info = await transporter.sendMail({
+      from: `"${BRAND_NAME}" <${process.env.SMTP_USER}>`,
+      to: email,
+      subject: `🔐 New Login to Your ${BRAND_NAME} Account`,
+      text: `Dear Valued Customer,\n\nWe detected a new login to your ${BRAND_NAME} account.\n\nLogin Time: ${new Date(loginTime).toLocaleString()}\nDevice: ${deviceInfo || 'Unknown'}\nIP Address: ${ipAddress || 'Unknown'}\n\nIf this was you, no action is required.\nIf you did not authorize this login, please secure your account immediately.\n\nBest regards,\n${BRAND_NAME}`,
+      html: generateLoginNotificationHtml(loginTime, ipAddress, deviceInfo),
+    });
+    console.log('Login notification email sent:', info.messageId);
+    return true;
+  } catch (err) {
+    console.error('Login notification error:', err);
+    return false;
+  }
+};
+
 const SMTP_PORT = Number(process.env.SMTP_PORT);
 
 const transporter = nodemailer.createTransport({
@@ -181,8 +270,10 @@ router.post('/send-otp', async (req, res) => {
 });
 
 // Verify OTP: /api/verify-otp
-router.post('/verify-otp', (req, res) => {
+router.post('/verify-otp', async (req, res) => {
   const { email, otp } = req.body;
+  const ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'Unknown';
+  const userAgent = req.headers['user-agent'] || 'Unknown Device';
 
   if (!email || !otp) {
     return res.status(400).json({ message: 'Email and OTP are required' });
@@ -204,7 +295,33 @@ router.post('/verify-otp', (req, res) => {
   }
 
   delete otpStore[email];
+  
+  // Send login notification email (non-blocking)
+  const loginTime = Date.now();
+  sendLoginNotification(email, loginTime, ipAddress, userAgent).catch(err => {
+    console.error('Failed to send login notification:', err);
+  });
+
   return res.json({ message: 'OTP verified successfully' });
+});
+
+// Login confirmation endpoint: /api/login-confirmation
+router.post('/login-confirmation', async (req, res) => {
+  const { email } = req.body;
+  if (!email) {
+    return res.status(400).json({ message: 'Email is required' });
+  }
+
+  const ipAddress = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'Unknown';
+  const userAgent = req.headers['user-agent'] || 'Unknown Device';
+  const loginTime = Date.now();
+
+  try {
+    await sendLoginNotification(email, loginTime, ipAddress, userAgent);
+    return res.json({ message: 'Login notification sent successfully' });
+  } catch (err) {
+    return res.status(500).json({ message: 'Failed to send login notification', error: err.message });
+  }
 });
 
 // Mount everything under /api
