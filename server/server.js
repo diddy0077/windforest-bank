@@ -4,10 +4,12 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 
 const app = express();
+const router = express.Router();
+
 app.use(cors());
 app.use(express.json());
 
-const PORT = 7000;
+const PORT = process.env.PORT || 7000;
 let otpStore = {};
 
 // Brand configuration
@@ -31,7 +33,7 @@ const escapeHtml = (text) => {
 const generateOtpEmailHtml = (otp) => {
   const safeOtp = escapeHtml(otp);
   const expiryText = `${OTP_VALIDITY_MINUTES} minute${OTP_VALIDITY_MINUTES > 1 ? 's' : ''}`;
-  
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,7 +128,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // Test SMTP connection on startup
-transporter.verify((error, success) => {
+transporter.verify((error) => {
   if (error) {
     console.error('SMTP verify failed:', error);
   } else {
@@ -134,11 +136,13 @@ transporter.verify((error, success) => {
   }
 });
 
-app.get('/', (req, res) => {
+// Base test route: /api
+router.get('/', (req, res) => {
   res.send('OTP backend running with your domain SMTP 🚀');
 });
 
-app.post('/send-otp', async (req, res) => {
+// Send OTP: /api/send-otp
+router.post('/send-otp', async (req, res) => {
   const { email } = req.body;
 
   if (!email) {
@@ -146,6 +150,7 @@ app.post('/send-otp', async (req, res) => {
   }
 
   const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
   otpStore[email] = {
     otp,
     expires: Date.now() + OTP_VALIDITY_MS,
@@ -153,25 +158,30 @@ app.post('/send-otp', async (req, res) => {
 
   try {
     const info = await transporter.sendMail({
-       from: `"${BRAND_NAME}" <support@windforest.capital>`,
-  to: email,
-  subject: `Your ${BRAND_NAME} OTP code`,
-  text: `Your OTP code is: ${otp}. It is valid for ${OTP_VALIDITY_MINUTES} minutes. Please do not share this code with anyone. ${BRAND_NAME} will never ask for it.`,
-  html: generateOtpEmailHtml(otp),
+      from: `"${BRAND_NAME}" <${process.env.SMTP_USER}>`,
+      to: email,
+      subject: `Your ${BRAND_NAME} OTP code`,
+      text: `Your OTP code is: ${otp}. It is valid for ${OTP_VALIDITY_MINUTES} minutes. Please do not share this code with anyone. ${BRAND_NAME} will never ask for it.`,
+      html: generateOtpEmailHtml(otp),
     });
 
     console.log('Email sent:', info.messageId);
-    res.status(200).json({ message: 'OTP sent successfully' });
+
+    return res.status(200).json({
+      message: 'OTP sent successfully',
+    });
   } catch (err) {
     console.error('Send mail error:', err);
-    res.status(500).json({
+
+    return res.status(500).json({
       message: 'Failed to send OTP',
       error: err.message,
     });
   }
 });
 
-app.post('/verify-otp', (req, res) => {
+// Verify OTP: /api/verify-otp
+router.post('/verify-otp', (req, res) => {
   const { email, otp } = req.body;
 
   if (!email || !otp) {
@@ -185,6 +195,7 @@ app.post('/verify-otp', (req, res) => {
   }
 
   if (record.expires < Date.now()) {
+    delete otpStore[email];
     return res.status(400).json({ message: 'OTP expired' });
   }
 
@@ -193,9 +204,12 @@ app.post('/verify-otp', (req, res) => {
   }
 
   delete otpStore[email];
-  res.json({ message: 'OTP verified successfully' });
+  return res.json({ message: 'OTP verified successfully' });
 });
 
+// Mount everything under /api
+app.use('/api', router);
+
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

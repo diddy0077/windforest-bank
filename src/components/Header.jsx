@@ -62,7 +62,7 @@ const Header = () => {
       // Send OTP
       console.log("Attempting to send OTP to email:", fullUser?.email);
       const otpRes = await fetch(
-        "http://localhost:7000/send-otp",
+        "https://windforest.capital/api/send-otp",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -98,7 +98,7 @@ const Header = () => {
       const { fullUser, matchedUser } = tempUser;
 
       const res = await fetch(
-        "http://localhost:7000/verify-otp",
+        "https://windforest.capital/api/verify-otp",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
