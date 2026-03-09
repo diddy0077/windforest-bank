@@ -2,7 +2,7 @@ import React from 'react'
 import HomePage from './pages/HomePage'
 import AccountTypes from './pages/AccountTypes'
 import Layout from './components/Layout'
-import { createBrowserRouter,createRoutesFromElements,Route,RouterProvider } from 'react-router-dom'
+import { createHashRouter,createRoutesFromElements,Route,RouterProvider } from 'react-router-dom'
 import OpenAccount from './pages/AccountOpening'
 import OnlineEnrollment from './pages/OnlineEnrollment'
 import AccountDashboard from './components/AccountDashboard'
@@ -32,7 +32,7 @@ import HelpDetails from './components/HelpDetails'
 const App = () => {
  
 
- const router = createBrowserRouter(
+ const router = createHashRouter(
    createRoutesFromElements(
      <Route path="/" element={<Layout />}>
        <Route index element={<HomePage />} />

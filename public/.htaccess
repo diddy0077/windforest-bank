@@ -1,12 +1,37 @@
+# Force MIME types for JavaScript and CSS
+<IfModule mod_mime.c>
+  AddType application/javascript .js
+  AddType text/css .css
+  AddType application/json .json
+</IfModule>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+  
+  # Force correct MIME types for static files
+  RewriteCond %{REQUEST_URI} \.js$
+  RewriteRule ^.*$ - [T=application/javascript,E=noescape]
+  
+  RewriteCond %{REQUEST_URI} \.css$
+  RewriteRule ^.*$ - [T=text/css,E=noescape]
+  
+  # Serve existing files directly
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+  
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  
+  # Handle SPA routing
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-l
-  RewriteRule . /index.html [L]
+  RewriteRule ^ /index.html [L]
 </IfModule>
+
+# Disable directory listing
+Options -Indexes
 
 # Gzip Compression
 <IfModule mod_deflate.c>
@@ -20,11 +45,15 @@
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/gif "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType text/css "access plus 1 month"
-  ExpiresByType application/pdf "access plus 1 month"
-  ExpiresByType text/x-javascript "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
-  ExpiresByType application/x-shockwave-flash "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
   ExpiresByType image/x-icon "access plus 1 year"
-  ExpiresDefault "access plus 2 days"
 </IfModule>
+
+# Protect sensitive files
+<FilesMatch "^\.">
+  Order allow,deny
+  Deny from all
+</FilesMatch>

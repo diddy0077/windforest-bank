@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [tailwindcss(), react()],
-  base: './',  // Use relative paths for cPanel deployment
+  base: '/',  // Use absolute paths from root
   build: {
     outDir: 'dist',
     emptyOutDir: true
