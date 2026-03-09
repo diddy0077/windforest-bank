@@ -66,7 +66,7 @@ const OpenAccountInfoPage = () => {
             <div className="bg-gray-900 text-white py-20 px-6 sm:px-10">
                 <div className="max-w-4xl mx-auto text-center">
                     <h1 className="text-5xl font-extrabold tracking-tight mb-4">
-                        Open Your Account with WindForest Bank
+                        Open Your Account with WindForest Capital
                     </h1>
                     <p className="text-xl text-gray-300 max-w-2xl mx-auto">
                         Your journey to smarter, more secure banking starts here. Simple setup, instant benefits.

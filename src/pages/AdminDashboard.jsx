@@ -286,7 +286,7 @@ const AdminDashboard = () => {
         <div>
           <h1 className="text-2xl md:text-4xl font-extrabold text-red-700 flex items-center">
             <Shield className="w-8 h-8 mr-3 text-red-600" />
-            WindForest Bank Admin Panel
+            WindForest Capital Admin Panel
           </h1>
           <p className="mt-2 text-lg text-gray-600">
             Managing all users and performing actions.

@@ -74,7 +74,7 @@ const ConfirmMicroDepositsCard = ({ microDepositOne, microDepositTwo, setStep, e
         {/* Instructions/Guidance */}
         <div className="p-8 pb-4 space-y-4">
           <p className="text-gray-700 text-md font-medium">
-            **Check your external bank statement** for two small deposits (less than $1.00 each) sent by WindForest Bank.
+            **Check your external bank statement** for two small deposits (less than $1.00 each) sent by WindForest Capital.
           </p>
           <p className="text-sm text-gray-500 border-l-4 border-red-300 pl-4 py-2 bg-red-50 rounded-md">
             Enter the exact dollar and cent amounts below to verify your account and complete the linking process.

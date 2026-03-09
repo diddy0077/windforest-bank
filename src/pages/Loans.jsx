@@ -375,7 +375,7 @@ const LoanProductsPage = () => {
             Find the Right Loan for You
           </h1>
           <p className="text-xl text-gray-300">
-            Competitive rates and flexible terms from WindForest Bank to help
+            Competitive rates and flexible terms from WindForest Capital to help
             you achieve your goals.
           </p>
         </div>

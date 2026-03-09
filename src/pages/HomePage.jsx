@@ -2,6 +2,7 @@ import React,{useEffect} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 const LockClosedIcon = ({ colorClass = "text-red-700" }) => (
@@ -222,6 +223,7 @@ const HomePage = () => {
    useEffect(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
    }, []);
+   const nav = useNavigate()
   
   return (
     <div className="bg-gradient-to-br from-white via-gray-50 to-gray-100 text-gray-800 min-h-screen font-sans">
@@ -362,6 +364,7 @@ const HomePage = () => {
               we're here to support your journey with the right financial tools.
             </p>
             <button className="px-8 py-3 bg-red-700 text-white font-semibold rounded-full shadow-lg hover:bg-red-800 transition-colors">
+              onClick={() => nav('/account-types')}
               Learn More
             </button>
           </motion.div>

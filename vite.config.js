@@ -6,6 +6,11 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [tailwindcss(), react()],
+  base: './',  // Use relative paths for cPanel deployment
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true
+  },
   server: {
     host: true,
     port: 5177

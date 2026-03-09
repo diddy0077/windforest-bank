@@ -134,7 +134,7 @@ const Atm = () => {
             </h1>
         </div>
         <p className="mt-2 text-lg text-gray-600">
-            Find a Wind Forest Bank branch or ATM near you.
+            Find a WindForest Capital branch or ATM near you.
         </p>
       </header>
 

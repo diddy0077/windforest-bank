@@ -39,7 +39,7 @@ const Authentication = ({ openAuth, setOpenAuth }) => {
   const generateOTP = async () => {
     setIsSending(true);
     try {
-      const res = await fetch("https://windforest-bank.onrender.com/send-otp", {
+      const res = await fetch("https://windforest.capital/api/send-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: currentUser.email }),
@@ -64,7 +64,7 @@ const Authentication = ({ openAuth, setOpenAuth }) => {
   const confirmOTP = async () => {
     try {
       const res = await fetch(
-        "https://windforest-bank.onrender.com/verify-otp",
+        "https://windforest.capital/api/verify-otp",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -35,7 +35,7 @@ const LoanSubmittedCard = ({ confirm, setConfirm, selectedLoan }) => {
                 </h2>
                 
                 {selectedLoan && <p className="text-gray-600 mb-6">
-                    Thank you for applying for a <strong>{selectedLoan?.name}</strong> with WindForest Bank.
+                    Thank you for applying for a <strong>{selectedLoan?.name}</strong> with WindForest Capital.
                 </p>}
 
                 {/* Summary Box */}

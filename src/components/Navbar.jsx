@@ -2,6 +2,7 @@
 import { Link,useLocation,useNavigate,NavLink } from 'react-router-dom';
 import React, { useState, useContext, use } from 'react';
 import { UserContext } from './UserContext';
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +23,9 @@ const Navbar = () => {
       <nav className="w-full z-20 bg-white bg-opacity-90 backdrop-blur-sm border-b border-gray-200 shadow-sm sticky top-0">
           <div className="container px-6 mx-auto py-4 flex justify-between items-center">
             <div className="flex items-center space-x-8">
-              <Link to='/' className="text-xl font-bold text-red-700">WindForest Bank</Link>
+              <Link to='/' className="text-xl font-bold text-red-700">
+                <img src={logo} alt=" WindForest Capital Logo" className='w-25 h-25'/>
+              </Link>
               <ul className="hidden md:flex space-x-6">
                 <Link to='atm-locations' className="font-semibold text-gray-700 hover:text-red-700 transition-colors cursor-pointer">
                   ATMs/Locations

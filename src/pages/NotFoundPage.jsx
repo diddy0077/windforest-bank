@@ -14,7 +14,7 @@ const AlertTriangleIcon = ({ className = "w-16 h-16" }) => (
 
 
 /**
- * Wind Forest Bank Custom 404 Error Page
+ * WindForest Capital Custom 404 Error Page
  * Uses a light theme (white/gray) with red-600 accents.
  */
 const NotFoundPage = () => {

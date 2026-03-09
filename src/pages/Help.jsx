@@ -58,7 +58,7 @@ export const categories = [
       
       <section class="mb-10">
         <h3 class="text-2xl font-bold text-gray-900 mb-3 border-b border-red-100 pb-2">High-Yield Savings Accounts</h3>
-        <p class="text-gray-700 leading-relaxed mb-4">Build your future with our competitive savings accounts. We offer high-yield rates with minimal restrictions, making it easy for you to grow your wealth over time. Easily transfer funds between your Wind Forest Bank accounts instantly.</p>
+        <p class="text-gray-700 leading-relaxed mb-4">Build your future with our competitive savings accounts. We offer high-yield rates with minimal restrictions, making it easy for you to grow your wealth over time. Easily transfer funds between your WindForest Capital accounts instantly.</p>
       </section>
 
       <section class="mb-6">
@@ -118,7 +118,7 @@ export const categories = [
       
       <section class="mb-10">
         <h3 class="text-2xl font-bold text-gray-900 mb-3 border-b border-red-100 pb-2">Fraud Protection</h3>
-        <p class="text-gray-700 leading-relaxed mb-4">Be vigilant against phishing scams, which often arrive via email or text message requesting urgent account verification or login details. Wind Forest Bank will **never** ask for your password or PIN via email or unsolicited calls. If you receive a suspicious communication, do not click any links or download attachments. Report it immediately.</p>
+        <p class="text-gray-700 leading-relaxed mb-4">Be vigilant against phishing scams, which often arrive via email or text message requesting urgent account verification or login details. WindForest Capital will **never** ask for your password or PIN via email or unsolicited calls. If you receive a suspicious communication, do not click any links or download attachments. Report it immediately.</p>
         <div class="mt-4 p-4 bg-red-50 border-l-4 border-red-600 text-red-800 rounded-md shadow-sm">
             <strong class="font-bold">Urgent Action:</strong> To report suspected fraud on your account, please call us directly at <a href="tel:1-800-555-9325" class="underline hover:text-red-900">1-800-555-WFBK</a>.
         </div>
@@ -297,7 +297,7 @@ const Help = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">Visit a Branch</h3>
-                    <p className="text-gray-600 text-sm mb-4">Get face-to-face assistance at any Wind Forest Bank location.</p>
+                    <p className="text-gray-600 text-sm mb-4">Get face-to-face assistance at any WindForest Capital location.</p>
                     <Link to="/atm-locations" className="text-red-600 font-semibold hover:text-red-700 transition duration-150">
                         Find a Location &rarr;
                     </Link>

@@ -89,7 +89,7 @@ const AccountLinkingSuccess = ({ externalUser, setNotifications }) => {
           </h2>
           <p className="text-lg text-gray-600">
             Congratulations! Your external account is now fully verified and
-            linked to your WindForest Bank profile. You can start transfers
+            linked to your WindForest Capital profile. You can start transfers
             immediately.
           </p>
 

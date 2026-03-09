@@ -37,7 +37,7 @@ const About = () => {
             {/* Red accent for the subtitle */}
             <p className="text-lg font-medium tracking-widest uppercase text-red-400 mb-2">Our Foundation, Your Future</p>
             <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-4 drop-shadow-lg">
-              Welcome to WindForest Bank
+              Welcome to WindForest Capital
             </h1>
             <p className="text-xl md:text-2xl font-light max-w-2xl mx-auto drop-shadow-md text-gray-200">
               Rooted in security, driven by innovation, and committed to your financial prosperity.
@@ -53,7 +53,7 @@ const About = () => {
             {/* Image Placeholder changed to reflect the red/gray theme */}
             <img 
               src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-              alt="WindForest Bank Team" 
+              alt="WindForest Capital Team" 
               className="w-full h-full object-cover"
             />
             {/* Design addition: corner accent in Red-600 */}
@@ -65,7 +65,7 @@ const About = () => {
               Building Trust, Growing Wealth.
             </h2>
             <p className="text-lg mb-6 text-gray-600 leading-relaxed">
-              WindForest Bank was founded on the simple premise that modern banking should be both **secure and accessible**. We blend the stability of traditional finance with the agility of digital technology to provide a seamless, reliable experience for every client.
+              WindForest Capital was founded on the simple premise that modern banking should be both **secure and accessible**. We blend the stability of traditional finance with the agility of digital technology to provide a seamless, reliable experience for every client.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
               We empower individuals and businesses with the **tools, advice, and financial security** they need to navigate their journey with confidence.

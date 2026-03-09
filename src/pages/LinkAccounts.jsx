@@ -80,7 +80,7 @@ const LinkAccounts = () => {
       setMicroDepositTwo(secondDeposit);
       const deposit1 = {
         fromUserId: "",
-        fromUserName: "WindForest Bank",
+        fromUserName: "WindForest Capital",
         toUserId: externalUser.id,
         toUserName: externalUser.fullName,
         amount: firstDeposit,
@@ -90,7 +90,7 @@ const LinkAccounts = () => {
       };
       const deposit2 = {
         fromUserId: "",
-        fromUserName: "WindForest Bank",
+        fromUserName: "WindForest Capital",
         toUserId: externalUser.id,
         toUserName: externalUser.fullName,
         amount: secondDeposit,
@@ -132,14 +132,14 @@ const LinkAccounts = () => {
         const newNotification1 = {
           id: crypto.randomUUID(),
           type: "success",
-          message: `You received $${firstDeposit} from WindForest Bank.`,
+          message: `You received $${firstDeposit} from WindForest Capital.`,
           date: new Date().toISOString(),
           read: false,
         };
         const newNotification2 = {
           id: crypto.randomUUID(),
           type: "success",
-          message: `You received $${secondDeposit} from WindForest Bank.`,
+          message: `You received $${secondDeposit} from WindForest Capital.`,
           date: new Date().toISOString(),
           read: false,
         };

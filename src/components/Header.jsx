@@ -110,15 +110,15 @@ const Header = () => {
       if (!res.ok) throw new Error(data.message || "OTP verification failed");
 
       // Send login notification email
-      try {
-        await fetch("https://windforest.capital/api/login-confirmation", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: fullUser.email }),
-        });
-      } catch (emailErr) {
-        console.error("Failed to send login notification:", emailErr);
-      }
+      // try {
+      //   await fetch("https://windforest.capital/api/login-confirmation", {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({ email: fullUser.email }),
+      //   });
+      // } catch (emailErr) {
+      //   console.error("Failed to send login notification:", emailErr);
+      // }
 
       // ✅ OTP verified → update lastLogin
       const lastLogin = new Date().toISOString();
@@ -312,6 +312,7 @@ const Header = () => {
               </p>
               {/* FIX: Replaced motion.button with standard button */}
               <button
+                onClick={() => nav('/account-types')}
                 className="cursor-pointer mt-8 px-8 py-3 bg-red-700 border-2 border-white text-white font-semibold rounded-full shadow-md hover:bg-red-800 transition-colors"
                 /* variants={itemVariants} */
               >

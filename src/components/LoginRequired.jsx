@@ -36,7 +36,7 @@ const LoginRequiredCard = ({isOpen,setIsOpen}) => {
                 </h2>
                 
                 <p className="text-gray-600 mb-6">
-                    To proceed with a loan application, please sign in to your WindForest Bank account first.
+                    To proceed with a loan application, please sign in to your WindForest Capital account first.
                 </p>
 
                 {/* Action Buttons */}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import logo from '../assets/logo.png';
 
 const Footer = () => {
   return (
@@ -8,8 +9,10 @@ const Footer = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-lg font-bold text-white mb-4">WIND FOREST BANK</h3>
-              <p className="text-sm">© 2025 Wind Forest Bank. All rights reserved.</p>
+              <h3 className="text-lg font-bold text-white mb-4">
+                <img src={logo} alt="WindForest Capital Logo" className='w-25 h-25'/>
+              </h3>
+              <p className="text-sm">© 2026 WindForest Capital. All rights reserved.</p>
             </div>
             <div>
               <h4 className="text-md font-semibold text-white mb-2">Accounts</h4>
@@ -45,7 +48,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className="hover:text-red-400">
+                  <Link to="/help-center" className="hover:text-red-400">
                     Contact Us
                   </Link>
                 </li>
@@ -69,16 +72,7 @@ const Footer = () => {
                     About Us
                   </Link>
                 </li>
-                <li>
-                  <Link to="" className="hover:text-red-400">
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link to="" className="hover:text-red-400">
-                    Press
-                  </Link>
-                </li>
+               
                 <li>
                   <Link to="terms-of-service" className="hover:text-red-400">
                     Terms of Service

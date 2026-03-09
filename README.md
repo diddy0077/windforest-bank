@@ -1,4 +1,4 @@
-# WindForest Bank
+# WindForest Capital
 
 ## Description
 

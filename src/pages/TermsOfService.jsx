@@ -8,7 +8,7 @@ const termsContent = [
     color: "text-red-600",
     content: (
       <p>
-        By accessing or using the services provided by **Wind Forest Bank** ("the Bank," "we," "us," or "our"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of the terms, then you do not have permission to access the Service. These Terms apply to all visitors, users, and others who access or use the Service.
+        By accessing or using the services provided by **WindForest Capital** ("the Bank," "we," "us," or "our"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of the terms, then you do not have permission to access the Service. These Terms apply to all visitors, users, and others who access or use the Service.
       </p>
     )
   },
@@ -18,7 +18,7 @@ const termsContent = [
     content: (
       <>
         <p className="mb-4">
-          To open an account with Wind Forest Bank, you must be at least 18 years old and capable of forming a binding contract.
+          To open an account with WindForest Capital, you must be at least 18 years old and capable of forming a binding contract.
         </p>
         <ul className="list-disc list-inside space-y-2 ml-4 text-gray-300">
           <li>You are responsible for maintaining the confidentiality of your account information, including your password.</li>
@@ -49,7 +49,7 @@ const termsContent = [
     color: "text-red-600",
     content: (
       <p>
-        You acknowledge that certain services provided by Wind Forest Bank may be subject to fees and charges. Details of all applicable fees are outlined in our separate Fee Schedule document, available on our website. Continued use of the Service constitutes your agreement to such fees.
+        You acknowledge that certain services provided by WindForest Capital may be subject to fees and charges. Details of all applicable fees are outlined in our separate Fee Schedule document, available on our website. Continued use of the Service constitutes your agreement to such fees.
       </p>
     )
   },
@@ -84,7 +84,7 @@ const termsContent = [
 
 
 /**
- * Terms of Service Page for Wind Forest Bank
+ * Terms of Service Page for WindForest Capital
  * Styled with Brand Colors: Red-600 (Accents), White (Text), and various Grays (Backgrounds).
  */
 const TermsOfService = () => {
@@ -106,14 +106,14 @@ const TermsOfService = () => {
             Terms of Service
           </h1>
           <p className="mt-2 text-lg text-gray-400">
-            Wind Forest Bank – Effective Date: October 25, 2023
+            WindForest Capital – Effective Date: October 25, 2023
           </p>
         </header>
 
         {/* Content Body */}
         <div className="space-y-10">
           <p className="text-gray-300 leading-relaxed">
-            Welcome to Wind Forest Bank. Please read these Terms of Service carefully before using our services. These Terms govern your use of the website, mobile applications, and financial services provided by Wind Forest Bank.
+            Welcome to WindForest Capital. Please read these Terms of Service carefully before using our services. These Terms govern your use of the website, mobile applications, and financial services provided by WindForest Capital.
           </p>
 
           {termsContent.map((section, index) => (
@@ -136,7 +136,7 @@ const TermsOfService = () => {
               Questions about these Terms should be sent to us at:
             </p>
             <p className="text-gray-300 font-medium mt-1">
-              Legal Department, Wind Forest Bank
+              Legal Department, WindForest Capital
               <br />
               <span className="text-red-400">support@windforestbank.com</span>
             </p>
