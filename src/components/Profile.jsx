@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { UserContext } from "./UserContext";
 import EditProfileForm from "./EditProfileForm";
@@ -9,6 +9,9 @@ import Authentication from "./Authentication";
 import { toast } from "react-toastify";
 
 const Profile = () => {
+  useEffect(() => {
+    document.title = "Profile | WindForest Capital";
+  }, []);
   const [activeTab, setActiveTab] = useState("profile");
   const context = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);

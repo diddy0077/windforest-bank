@@ -58,6 +58,7 @@ const OpenAccountInfoPage = () => {
 
    useEffect(() => {
      window.scrollTo({ top: 0, behavior: "smooth" });
+     document.title = "Learn More | WindForest Capital";
    }, []);
 
     return (

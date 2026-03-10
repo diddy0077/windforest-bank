@@ -318,6 +318,7 @@ const LoanProductsPage = () => {
 
     useEffect(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      document.title = "Loans & Credit | WindForest Capital";
     }, []);
 
   useEffect(() => {

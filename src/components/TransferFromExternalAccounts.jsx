@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { UserContext } from "./UserContext";
 import { toast } from "react-toastify";
@@ -60,6 +60,9 @@ const TransferFromExternalAccounts = ({
   externalTransfer,
   setExternalTransfer,
 }) => {
+  useEffect(() => {
+    document.title = "External Transfer | WindForest Capital";
+  }, []);
   const [transferAmount, setTransferAmount] = useState("");
   const [selectedFrom, setSelectedFrom] = useState("external-1234");
   const [selectedTo, setSelectedTo] = useState("checking-5678");

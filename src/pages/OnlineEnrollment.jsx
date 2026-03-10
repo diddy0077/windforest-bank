@@ -28,6 +28,7 @@ const OnlineEnrollment = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+    document.title = "Online Enrollment | WindForest Capital";
   }, []);
 
   const steps = [

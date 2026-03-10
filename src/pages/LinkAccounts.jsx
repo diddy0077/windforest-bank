@@ -38,6 +38,7 @@ const LinkAccounts = () => {
 
   useEffect(() => {
     setError("");
+    document.title = "Link Accounts | WindForest Capital";
     const fetchUser = async () => {
       const res = await fetch(
         "https://windforest-json-server.onrender.com/users"

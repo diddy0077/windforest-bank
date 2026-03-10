@@ -91,6 +91,7 @@ const TermsOfService = () => {
 
     useEffect(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      document.title = "Terms of Service | WindForest Capital";
     }, []);
   
   

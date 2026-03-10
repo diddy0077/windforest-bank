@@ -126,6 +126,9 @@ const Transactions = () => {
 
   console.log(transactions);
   useEffect(() => {
+    document.title = "Transactions | WindForest Capital";
+  }, []);
+  useEffect(() => {
     const fetchTransactions = async () => {
       try {
         const res = await fetch(

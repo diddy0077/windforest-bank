@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 /**
  * Custom SVG Icon (Simulating Lucide Icon for Alert)
@@ -18,6 +19,9 @@ const AlertTriangleIcon = ({ className = "w-16 h-16" }) => (
  * Uses a light theme (white/gray) with red-600 accents.
  */
 const NotFoundPage = () => {
+  useEffect(() => {
+    document.title = "Page Not Found | WindForest Capital";
+  }, []);
   return (
     // Light Theme Background
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4 sm:p-8">

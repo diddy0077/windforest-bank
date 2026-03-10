@@ -112,6 +112,7 @@ const AccountOpening = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+    document.title = "Open Account | WindForest Capital";
   }, []);
 
   function generateAccountNumber(prefix = "10") {

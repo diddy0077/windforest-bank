@@ -1,9 +1,12 @@
-import React, { useState,useContext } from 'react';
+import React, { useState,useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { UserContext } from '../components/UserContext';
 
 const AdminLogin = () => {
+  useEffect(() => {
+    document.title = "Admin Login | WindForest Capital";
+  }, []);
   // State to manage input values and UI submission feedback
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

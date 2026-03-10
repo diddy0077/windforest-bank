@@ -140,6 +140,9 @@ const UserLoanDashboard = () => {
   }, [loans]);
 
   useEffect(() => {
+    document.title = "My Loans | WindForest Capital";
+  }, []);
+  useEffect(() => {
     const fetchLoans = async () => {
       const res = await fetch(
         `https://windforest-json-server.onrender.com/users/${currentUser.id}`

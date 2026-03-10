@@ -69,6 +69,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    document.title = "Admin Dashboard | WindForest Capital";
     const fetchUsers = async () => {
       try {
         const res = await fetch(

@@ -222,6 +222,7 @@ const HomePage = () => {
   const [openFAQ, setOpenFAQ] = React.useState(null);
    useEffect(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      document.title = "WindForest Capital | Online Banking & Financial Services";
    }, []);
    const nav = useNavigate()
   

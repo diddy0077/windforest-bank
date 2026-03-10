@@ -200,6 +200,9 @@ const Transfer = () => {
   }, [recentTransfers]);
 
   useEffect(() => {
+    document.title = "Transfer | WindForest Capital";
+  }, []);
+  useEffect(() => {
     const fetchBeneficary = async () => {
       try {
         const res = await fetch(

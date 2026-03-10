@@ -9,6 +9,7 @@ const HelpDetails = () => {
  
   useEffect(() => {
     console.log(slug);
+    document.title = "Help Article | WindForest Capital";
   },[slug])
 
   return (

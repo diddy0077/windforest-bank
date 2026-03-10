@@ -13,6 +13,7 @@ const Icon = ({ path, className = "w-6 h-6" }) => (
 const About = () => {
   useEffect(() => {
      window.scrollTo({top: 0, behavior: 'smooth'})
+     document.title = "About Us | WindForest Capital";
     }, [])
 
 

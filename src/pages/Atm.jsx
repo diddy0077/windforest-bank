@@ -105,6 +105,7 @@ const Atm = () => {
   const [searchTerm, setSearchTerm] = useState('');
     useEffect(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      document.title = "ATM Locations | WindForest Capital";
     }, []);
 
 

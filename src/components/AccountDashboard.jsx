@@ -116,6 +116,10 @@ const AccountDashboard = () => {
   ];
 
   useEffect(() => {
+    document.title = "Account Dashboard | WindForest Capital";
+  }, []);
+
+  useEffect(() => {
     const threshold = 100;
     if (currentUser.accountBalance < threshold) {
       // Prevent duplicate low-balance notifications

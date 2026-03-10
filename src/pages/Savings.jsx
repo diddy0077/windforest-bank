@@ -7,6 +7,7 @@ const Savings = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+    document.title = "Savings Account | WindForest Capital";
   }, []);
 
   useEffect(() => {

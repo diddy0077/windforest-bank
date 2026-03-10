@@ -9,6 +9,7 @@ const AccountTypes = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+    document.title = "Account Types | WindForest Capital";
   }, []);
 
   useEffect(() => {

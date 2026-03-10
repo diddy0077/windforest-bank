@@ -187,6 +187,7 @@ const Help = () => {
   const [searchTerm, setSearchTerm] = useState('');
   useEffect(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      document.title = "Help Center | WindForest Capital";
   }, []);
   const filteredCategories = categories.filter(c =>
   c.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

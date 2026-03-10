@@ -15,6 +15,7 @@ const ForgotPassword = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+    document.title = "Forgot Password | WindForest Capital";
   }, []);
 
   const handleStep1 = async () => {
