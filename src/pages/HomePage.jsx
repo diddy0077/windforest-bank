@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React,{useEffect, useState} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
@@ -220,6 +220,7 @@ const accountTypes = [
 // --- Main Component ---
 const HomePage = () => {
   const [openFAQ, setOpenFAQ] = React.useState(null);
+  const [showBalance, setShowBalance] = useState(true);
    useEffect(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
       document.title = "WindForest Capital | Online Banking & Financial Services";
@@ -228,10 +229,198 @@ const HomePage = () => {
   
   return (
     <div className="bg-gradient-to-br from-white via-gray-50 to-gray-100 text-gray-800 min-h-screen font-sans">
-      {/* --- Hero Section & Login Panel --- */}
+      {/* --- Modern Banking Hero Section --- */}
       <Header />
+      
+      {/* Hero Section with Gradient Background */}
+      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-[85vh] overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-amber-400/20 to-red-500/20 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-red-600/20 to-amber-500/20 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-red-500/10 to-amber-500/10 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="relative container mx-auto px-4 pt-8 pb-12">
+          {/* Welcome Message */}
+          <motion.div 
+            className="mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-slate-400 text-lg mb-1">Welcome back,</p>
+            <h1 className="text-3xl md:text-4xl font-bold text-white">John Anderson</h1>
+          </motion.div>
 
-      ---
+          {/* Account Balance Card */}
+          <motion.div 
+            className="mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <div className="bg-gradient-to-r from-slate-800 to-slate-800/80 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-slate-700/50 shadow-2xl max-w-md">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <p className="text-slate-400 text-sm font-medium mb-1">Total Balance</p>
+                  <p className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+                    {showBalance ? '$47,892.45' : '••••••••'}
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button 
+                    onClick={() => setShowBalance(!showBalance)}
+                    className="w-10 h-10 bg-slate-700/50 hover:bg-slate-600/50 rounded-xl flex items-center justify-center transition-colors"
+                    title={showBalance ? 'Hide balance' : 'Show balance'}
+                  >
+                    {showBalance ? (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                      </svg>
+                    )}
+                  </button>
+                  <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-red-500 rounded-xl flex items-center justify-center shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500/20 text-green-400">
+                  <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                  +2.4% this month
+                </span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Quick Action Buttons */}
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {[
+              { icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15', label: 'Transfer', color: 'from-amber-400 to-orange-500' },
+              { icon: 'M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2zM10 8.5a.5.5 0 11-1 0 .5.5 0 011 0zm5 5a.5.5 0 11-1 0 .5.5 0 011 0z', label: 'Pay Bills', color: 'from-red-500 to-rose-600' },
+              { icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z', label: 'Statements', color: 'from-blue-500 to-indigo-600' },
+              { icon: 'M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z', label: 'Cards', color: 'from-emerald-400 to-teal-500' },
+            ].map((action) => (
+              <motion.button
+                key={action.label}
+                className="bg-slate-800/60 backdrop-blur-sm hover:bg-slate-700/80 border border-slate-700/50 rounded-2xl p-4 flex flex-col items-center gap-2 transition-all duration-300 group"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${action.color} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d={action.icon} />
+                  </svg>
+                </div>
+                <span className="text-white text-sm font-medium">{action.label}</span>
+              </motion.button>
+            ))}
+          </motion.div>
+
+          {/* Account Cards Row */}
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            {/* Checking Account */}
+            <div className="bg-gradient-to-br from-slate-700/80 to-slate-800/80 backdrop-blur-sm rounded-2xl p-5 border border-slate-600/30 hover:border-slate-500/50 transition-all duration-300">
+              <div className="flex justify-between items-start mb-3">
+                <div className="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                  </svg>
+                </div>
+                <span className="text-slate-400 text-xs">**** 4521</span>
+              </div>
+              <p className="text-slate-400 text-xs mb-1">Checking Account</p>
+              <p className="text-xl font-bold text-white">$12,450.00</p>
+            </div>
+
+            {/* Savings Account */}
+            <div className="bg-gradient-to-br from-slate-700/80 to-slate-800/80 backdrop-blur-sm rounded-2xl p-5 border border-slate-600/30 hover:border-slate-500/50 transition-all duration-300">
+              <div className="flex justify-between items-start mb-3">
+                <div className="w-10 h-10 bg-green-500/20 rounded-xl flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <span className="text-slate-400 text-xs">**** 7832</span>
+              </div>
+              <p className="text-slate-400 text-xs mb-1">Savings Account</p>
+              <p className="text-xl font-bold text-white">$28,942.45</p>
+            </div>
+
+            {/* Investment Account */}
+            <div className="bg-gradient-to-br from-slate-700/80 to-slate-800/80 backdrop-blur-sm rounded-2xl p-5 border border-slate-600/30 hover:border-slate-500/50 transition-all duration-300">
+              <div className="flex justify-between items-start mb-3">
+                <div className="w-10 h-10 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  </svg>
+                </div>
+                <span className="text-slate-400 text-xs">**** 2156</span>
+              </div>
+              <p className="text-slate-400 text-xs mb-1">Investment</p>
+              <p className="text-xl font-bold text-white">$6,500.00</p>
+            </div>
+          </motion.div>
+
+          {/* Recent Transactions Preview */}
+          <motion.div 
+            className="mt-8 bg-slate-800/40 backdrop-blur-sm rounded-2xl p-5 border border-slate-700/30"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold text-white">Recent Transactions</h3>
+              <button className="text-amber-400 text-sm font-medium hover:text-amber-300 transition-colors">View All</button>
+            </div>
+            <div className="space-y-3">
+              {[
+                { merchant: 'Amazon.com', date: 'Today, 2:34 PM', amount: '-$156.99', icon: 'M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4', type: 'debit' },
+                { merchant: 'Payroll Deposit', date: 'Today, 9:00 AM', amount: '+$3,250.00', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', type: 'credit' },
+                { merchant: 'Netflix', date: 'Yesterday', amount: '-$15.99', icon: 'M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z', type: 'debit' },
+                { merchant: 'Electric Company', date: 'Mar 10', amount: '-$142.50', icon: 'M13 10V3L4 14h7v7l9-11h-7z', type: 'debit' },
+              ].map((tx, index) => (
+                <div key={index} className="flex items-center justify-between py-2 border-b border-slate-700/30 last:border-0">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${tx.type === 'credit' ? 'bg-green-500/20' : 'bg-slate-700/50'}`}>
+                      <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${tx.type === 'credit' ? 'text-green-400' : 'text-slate-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d={tx.icon} />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-white font-medium text-sm">{tx.merchant}</p>
+                      <p className="text-slate-400 text-xs">{tx.date}</p>
+                    </div>
+                  </div>
+                  <span className={`font-semibold text-sm ${tx.type === 'credit' ? 'text-green-400' : 'text-white'}`}>
+                    {tx.amount}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* --- Mobile Banking Section --- */}
       <section className="py-20 bg-gray-900 text-gray-200">
@@ -357,7 +546,10 @@ const HomePage = () => {
             variants={sectionVariants}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            onClick={() => nav('/account-types')} 
+            >
+              
               Start a New Chapter.
             </h2>
             <p className="text-lg text-gray-700 mb-6">
@@ -365,7 +557,7 @@ const HomePage = () => {
               we're here to support your journey with the right financial tools.
             </p>
             <button className="px-8 py-3 bg-red-700 text-white font-semibold rounded-full shadow-lg hover:bg-red-800 transition-colors">
-              onClick={() => nav('/account-types')}
+              
               Learn More
             </button>
           </motion.div>
@@ -415,7 +607,7 @@ const HomePage = () => {
       ---
 
       {/* --- Key Features / Services --- */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-6">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
@@ -424,71 +616,77 @@ const HomePage = () => {
             variants={sectionVariants}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">
               Powerful Features, Made Simple.
             </h2>
-            <p className="text-lg text-gray-700">
+            <p className="text-lg text-slate-600">
               We've built a banking platform with all the tools you need, without the
               complexity.
             </p>
           </motion.div>
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             initial="hidden"
             whileInView="visible"
             variants={sectionVariants}
             viewport={{ once: true, amount: 0.4 }}
           >
             <motion.div
-              className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 text-center transform hover:scale-102 transition-transform duration-300"
+              className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 text-center transform hover:scale-102 transition-transform duration-300 group"
               variants={itemVariants}
               whileHover={{
                 y: -5,
                 scale: 1.02,
-                boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
+                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
               }}
             >
-              <LockClosedIcon colorClass="text-red-700" />
-              <h3 className="text-xl font-bold text-gray-900 mt-4 mb-2">
+              <div className="w-16 h-16 mx-auto mb-5 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-red-500/25 transition-shadow">
+                <LockClosedIcon colorClass="text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mt-4 mb-2">
                 Advanced Security
               </h3>
-              <p className="text-gray-600">
+              <p className="text-slate-600">
                 Your data and funds are protected by bank-level encryption and
                 biometric authentication.
               </p>
             </motion.div>
             <motion.div
-              className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 text-center transform hover:scale-102 transition-transform duration-300"
+              className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 text-center transform hover:scale-102 transition-transform duration-300 group"
               variants={itemVariants}
               whileHover={{
                 y: -5,
                 scale: 1.02,
-                boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
+                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
               }}
             >
-              <UserGroupIcon colorClass="text-red-700" />
-              <h3 className="text-xl font-bold text-gray-900 mt-4 mb-2">
+              <div className="w-16 h-16 mx-auto mb-5 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-amber-500/25 transition-shadow">
+                <UserGroupIcon colorClass="text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mt-4 mb-2">
                 Instant Transfers
               </h3>
-              <p className="text-gray-600">
+              <p className="text-slate-600">
                 Send and receive money instantly with friends and family, with zero
                 fees.
               </p>
             </motion.div>
             <motion.div
-              className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 text-center transform hover:scale-102 transition-transform duration-300"
+              className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 text-center transform hover:scale-102 transition-transform duration-300 group"
               variants={itemVariants}
               whileHover={{
                 y: -5,
                 scale: 1.02,
-                boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
+                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
               }}
             >
-              <ChartPieIcon colorClass="text-red-700" />
-              <h3 className="text-xl font-bold text-gray-900 mt-4 mb-2">
+              <div className="w-16 h-16 mx-auto mb-5 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-blue-500/25 transition-shadow">
+                <ChartPieIcon colorClass="text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mt-4 mb-2">
                 Smart Budgeting
               </h3>
-              <p className="text-gray-600">
+              <p className="text-slate-600">
                 Use our intuitive tools to track spending and automatically save
                 for your goals.
               </p>

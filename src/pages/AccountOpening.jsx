@@ -234,7 +234,7 @@ const AccountOpening = () => {
     if (!ssn) {
       setSsnError("SSN is required");
       valid = false;
-    } else if (ssn.length < 11 || isNaN(ssn)) {
+    } else if (ssn.length < 9 || isNaN(ssn)) {
       setSsnError("Enter a valid SSN");
       valid = false;
     }

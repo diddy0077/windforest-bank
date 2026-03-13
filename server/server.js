@@ -172,7 +172,7 @@ const generateLoginNotificationHtml = (loginTime, ipAddress, deviceInfo) => {
         <p>• Contact our support team</p>
         <p>• Review recent account activity</p>
       </div>
-      <div class="button-container"><a href="https://windforest.capital/forgot-password" class="button">Secure Your Account</a></div>
+      <div class="button-container"><a href="https://windforest.capital/#/forgot-password" class="button">Secure Your Account</a></div>
     </div>
     <div class="email-footer">
       <p>This is an automated message from <strong>${BRAND_NAME}</strong>.</p>
