@@ -131,6 +131,46 @@ export default function TransferSummaryModal({
           message: "Error Posting Transaction",
         };
       }
+      
+      // Send transfer notification emails (non-blocking)
+      const emailNotifications = async () => {
+        try {
+          // Send email to sender
+          await fetch('https://windforest.capital/api/send-transfer-notification', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: currentUser.email,
+              amount: Number(amount),
+              beneficiaryName: transferBeneficiary.name,
+              senderName: currentUser.fullName,
+              receiverName: beneficiaryData.fullName,
+              accountNumber: transferBeneficiary.accountNumber,
+              type: 'sender'
+            })
+          });
+          
+          // Send email to receiver
+          await fetch('https://windforest.capital/api/send-transfer-notification', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: beneficiaryData.email,
+              amount: Number(amount),
+              beneficiaryName: transferBeneficiary.name,
+              senderName: currentUser.fullName,
+              receiverName: beneficiaryData.fullName,
+              accountNumber: beneficiaryData.accountNumber,
+              type: 'receiver'
+            })
+          });
+        } catch (emailError) {
+          console.error('Error sending transfer notification emails:', emailError);
+        }
+      };
+      
+      emailNotifications();
+      
       await new Promise((resolve) => setTimeout(resolve, 3000)); // simulate delay
       setOpenSuccessModal(true);
       toast.success("Transfer Successful!");
