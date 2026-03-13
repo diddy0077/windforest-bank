@@ -43,7 +43,7 @@ const AccountLinkingSuccess = ({ externalUser, setNotifications }) => {
       linkedDate: new Date().toISOString(),
     };
     const res = await fetch(
-      `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+      `https://windforest.capital/api/users/${currentUser.id}`,
       {
         method: "PATCH",
         headers: {

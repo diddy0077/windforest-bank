@@ -117,7 +117,7 @@ const TransferFromExternalAccounts = ({
       return;
     }
     const res = await fetch(
-      "https://windforest-json-server.onrender.com/users"
+      "https://windforest.capital/api/users"
     );
     const users = await res.json();
     const accountToTransferFrom = users.find(
@@ -177,7 +177,7 @@ const TransferFromExternalAccounts = ({
         currentUser.accountBalance + Number(transferAmount),
       };
       const response = await fetch(
-        "https://windforest-json-server.onrender.com/transactions",
+        "https://windforest.capital/api/transactions",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -188,7 +188,7 @@ const TransferFromExternalAccounts = ({
         throw { message: "Error posting transaction" };
       }
       const res = await fetch(
-        `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+        `https://windforest.capital/api/users/${currentUser.id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -201,7 +201,7 @@ const TransferFromExternalAccounts = ({
       const data = await res.json();
       setCurrentUser(data);
       const res2 = await fetch(
-        `https://windforest-json-server.onrender.com/users/${external.id}`,
+        `https://windforest.capital/api/users/${external.id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

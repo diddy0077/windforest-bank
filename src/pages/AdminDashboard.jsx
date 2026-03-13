@@ -19,6 +19,7 @@ import {
 import { UserContext } from "../components/UserContext";
 import { useContext } from "react";
 import { toast } from "react-toastify";
+import API_ENDPOINTS from "../api";
 
 // =======================================================================
 // --- MOCK DATA SOURCE ---
@@ -72,25 +73,19 @@ const AdminDashboard = () => {
     document.title = "Admin Dashboard | WindForest Capital";
     const fetchUsers = async () => {
       try {
-        const res = await fetch(
-          "https://windforest-json-server.onrender.com/users"
-        );
+        const res = await fetch(API_ENDPOINTS.USERS);
         if (!res.ok) {
           throw {
             message: "Error fetching users",
           };
         }
-        const res2 = await fetch(
-          "https://windforest-json-server.onrender.com/onlineAccessUsers"
-        );
+        const res2 = await fetch(API_ENDPOINTS.ONLINE_ACCESS_USERS);
         if (!res.ok) {
           throw {
             message: "Error fetching onlineUsers",
           };
         }
-        const res3 = await fetch(
-          "https://windforest-json-server.onrender.com/transactions"
-        );
+        const res3 = await fetch(API_ENDPOINTS.TRANSACTIONS);
         if (!res3.ok) {
           throw {
             message: "Error fetching transactions",
@@ -139,7 +134,7 @@ const AdminDashboard = () => {
     try {
       // 1. Update user’s transfer status
       const res = await fetch(
-        `https://windforest-json-server.onrender.com/users/${user.id}`,
+        `https://windforest.capital/api/users/${user.id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -175,7 +170,7 @@ const AdminDashboard = () => {
   };
 
   const patchUser = async (id, updates) => {
-    return fetch(`https://windforest-json-server.onrender.com/users/${id}`, {
+    return fetch(`https://windforest.capital/api/users/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updates),
@@ -222,7 +217,7 @@ const AdminDashboard = () => {
       });
 
       await fetch(
-        `https://windforest-json-server.onrender.com/transactions/${tx.id}`,
+        `https://windforest.capital/api/transactions/${tx.id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -271,7 +266,7 @@ const AdminDashboard = () => {
 
   const fetchUser = async (id) => {
     const res = await fetch(
-      `https://windforest-json-server.onrender.com/users/${id}`
+      `https://windforest.capital/api/users/${id}`
     );
     if (!res.ok) throw new Error(`Failed to fetch user with id ${id}`);
     return res.json();

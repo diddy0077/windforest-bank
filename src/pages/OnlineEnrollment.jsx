@@ -46,7 +46,7 @@ const OnlineEnrollment = () => {
     const fetchUsers = async () => {
       try {
         const res = await fetch(
-          "https://windforest-json-server.onrender.com/users"
+          "https://windforest.capital/api/users"
         );
         if (!res.ok) {
           throw {
@@ -159,7 +159,7 @@ const OnlineEnrollment = () => {
         return;
       }
       const res = await fetch(
-        "https://windforest-json-server.onrender.com/onlineAccessUsers"
+        "https://windforest.capital/api/onlineAccessUsers"
       );
       const onlineUsers = await res.json();
 
@@ -198,7 +198,7 @@ const OnlineEnrollment = () => {
       };
 
       const createRes = await fetch(
-        "https://windforest-json-server.onrender.com/onlineAccessUsers",
+        "https://windforest.capital/api/onlineAccessUsers",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

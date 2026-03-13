@@ -7,6 +7,7 @@ import TransferSummaryModal from "./TransferSummaryModal";
 import { useOutletContext } from "react-router-dom";
 import { addNotification } from "./utils";
 import TransferFromExternalAccounts from "./TransferFromExternalAccounts";
+import API_ENDPOINTS from "../api";
 import {
   Clock,
   DollarSign,
@@ -127,7 +128,7 @@ const Transfer = () => {
 
     try {
       const res = await fetch(
-        `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+        API_ENDPOINTS.USER_BY_ID(currentUser.id),
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -206,7 +207,7 @@ const Transfer = () => {
     const fetchBeneficary = async () => {
       try {
         const res = await fetch(
-          `https://windforest-json-server.onrender.com/users/${currentUser.id}`
+          API_ENDPOINTS.USER_BY_ID(currentUser.id)
         );
         if (!res.ok) {
           throw {
@@ -225,7 +226,7 @@ const Transfer = () => {
     const fetchRecentTransfers = async () => {
       try {
         const res = await fetch(
-          "https://windforest-json-server.onrender.com/transactions"
+          API_ENDPOINTS.TRANSACTIONS
         );
         if (!res.ok) {
           throw {

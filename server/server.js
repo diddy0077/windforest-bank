@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
+const { readData, writeData } = require('./data');
 
 const app = express();
 const router = express.Router();
@@ -518,6 +519,317 @@ router.post('/send-transfer-notification', async (req, res) => {
     return res.json({ message: 'Transfer notification sent successfully' });
   } catch (err) {
     return res.status(500).json({ message: 'Failed to send transfer notification', error: err.message });
+  }
+});
+
+// ==================== Database API Routes ====================
+
+// GET all users or filter by query
+router.get('/users', (req, res) => {
+  try {
+    const data = readData();
+    const { accountNumber, email, fullName } = req.query;
+    let users = data.users;
+
+    if (accountNumber) {
+      users = users.filter(u => u.accountNumber === accountNumber);
+    }
+    if (email) {
+      users = users.filter(u => u.email === email);
+    }
+    if (fullName) {
+      users = users.filter(u => u.fullName.toLowerCase().includes(fullName.toLowerCase()));
+    }
+
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching users', error: err.message });
+  }
+});
+
+// GET single user by ID
+router.get('/users/:id', (req, res) => {
+  try {
+    const data = readData();
+    const user = data.users.find(u => u.id === req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching user', error: err.message });
+  }
+});
+
+// POST create new user
+router.post('/users', (req, res) => {
+  try {
+    const data = readData();
+    const newUser = {
+      id: String(data.users.length + 8000),
+      ...req.body,
+      notifications: req.body.notifications || [],
+      loans: req.body.loans || []
+    };
+    data.users.push(newUser);
+    writeData(data);
+    res.status(201).json(newUser);
+  } catch (err) {
+    res.status(500).json({ message: 'Error creating user', error: err.message });
+  }
+});
+
+// PATCH update user
+router.patch('/users/:id', (req, res) => {
+  try {
+    const data = readData();
+    const userIndex = data.users.findIndex(u => u.id === req.params.id);
+    if (userIndex === -1) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    data.users[userIndex] = { ...data.users[userIndex], ...req.body };
+    writeData(data);
+    res.json(data.users[userIndex]);
+  } catch (err) {
+    res.status(500).json({ message: 'Error updating user', error: err.message });
+  }
+});
+
+// DELETE user
+router.delete('/users/:id', (req, res) => {
+  try {
+    const data = readData();
+    const userIndex = data.users.findIndex(u => u.id === req.params.id);
+    if (userIndex === -1) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    const deletedUser = data.users.splice(userIndex, 1)[0];
+    writeData(data);
+    res.json(deletedUser);
+  } catch (err) {
+    res.status(500).json({ message: 'Error deleting user', error: err.message });
+  }
+});
+
+// GET all transactions
+router.get('/transactions', (req, res) => {
+  try {
+    const data = readData();
+    const { fromUserId, toUserId } = req.query;
+    let transactions = data.transactions;
+
+    if (fromUserId) {
+      transactions = transactions.filter(t => t.fromUserId === fromUserId);
+    }
+    if (toUserId) {
+      transactions = transactions.filter(t => t.toUserId === toUserId);
+    }
+
+    res.json(transactions);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching transactions', error: err.message });
+  }
+});
+
+// GET single transaction by ID
+router.get('/transactions/:id', (req, res) => {
+  try {
+    const data = readData();
+    const transaction = data.transactions.find(t => t.id === req.params.id);
+    if (!transaction) {
+      return res.status(404).json({ message: 'Transaction not found' });
+    }
+    res.json(transaction);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching transaction', error: err.message });
+  }
+});
+
+// POST create new transaction
+router.post('/transactions', (req, res) => {
+  try {
+    const data = readData();
+    const newTransaction = {
+      id: `txn${String(data.transactions.length + 1).padStart(3, '0')}`,
+      ...req.body
+    };
+    data.transactions.push(newTransaction);
+    writeData(data);
+    res.status(201).json(newTransaction);
+  } catch (err) {
+    res.status(500).json({ message: 'Error creating transaction', error: err.message });
+  }
+});
+
+// PATCH update transaction
+router.patch('/transactions/:id', (req, res) => {
+  try {
+    const data = readData();
+    const txnIndex = data.transactions.findIndex(t => t.id === req.params.id);
+    if (txnIndex === -1) {
+      return res.status(404).json({ message: 'Transaction not found' });
+    }
+    data.transactions[txnIndex] = { ...data.transactions[txnIndex], ...req.body };
+    writeData(data);
+    res.json(data.transactions[txnIndex]);
+  } catch (err) {
+    res.status(500).json({ message: 'Error updating transaction', error: err.message });
+  }
+});
+
+// GET all onlineAccessUsers
+router.get('/onlineAccessUsers', (req, res) => {
+  try {
+    const data = readData();
+    const { userId, username } = req.query;
+    let users = data.onlineAccessUsers;
+
+    if (userId) {
+      users = users.filter(u => u.userId === userId);
+    }
+    if (username) {
+      users = users.filter(u => u.username === username);
+    }
+
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching online access users', error: err.message });
+  }
+});
+
+// GET single onlineAccessUser by ID
+router.get('/onlineAccessUsers/:id', (req, res) => {
+  try {
+    const data = readData();
+    const user = data.onlineAccessUsers.find(u => u.id === req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: 'Online access user not found' });
+    }
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching online access user', error: err.message });
+  }
+});
+
+// POST create new onlineAccessUser
+router.post('/onlineAccessUsers', (req, res) => {
+  try {
+    const data = readData();
+    const newUser = {
+      id: `oa${String(data.onlineAccessUsers.length + 1).padStart(3, '0')}`,
+      ...req.body
+    };
+    data.onlineAccessUsers.push(newUser);
+    writeData(data);
+    res.status(201).json(newUser);
+  } catch (err) {
+    res.status(500).json({ message: 'Error creating online access user', error: err.message });
+  }
+});
+
+// PATCH update onlineAccessUser
+router.patch('/onlineAccessUsers/:id', (req, res) => {
+  try {
+    const data = readData();
+    const userIndex = data.onlineAccessUsers.findIndex(u => u.id === req.params.id);
+    if (userIndex === -1) {
+      return res.status(404).json({ message: 'Online access user not found' });
+    }
+    data.onlineAccessUsers[userIndex] = { ...data.onlineAccessUsers[userIndex], ...req.body };
+    writeData(data);
+    res.json(data.onlineAccessUsers[userIndex]);
+  } catch (err) {
+    res.status(500).json({ message: 'Error updating online access user', error: err.message });
+  }
+});
+
+// GET all accountTypes
+router.get('/accountTypes', (req, res) => {
+  try {
+    const data = readData();
+    res.json(data.accountTypes);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching account types', error: err.message });
+  }
+});
+
+// GET single accountType by ID
+router.get('/accountTypes/:id', (req, res) => {
+  try {
+    const data = readData();
+    const accountType = data.accountTypes.find(a => a.id === req.params.id);
+    if (!accountType) {
+      return res.status(404).json({ message: 'Account type not found' });
+    }
+    res.json(accountType);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching account type', error: err.message });
+  }
+});
+
+// GET all loans
+router.get('/loans', (req, res) => {
+  try {
+    const data = readData();
+    const { userId, status } = req.query;
+    let loans = data.loans;
+
+    if (userId) {
+      loans = loans.filter(l => l.userId === userId);
+    }
+    if (status) {
+      loans = loans.filter(l => l.status === status);
+    }
+
+    res.json(loans);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching loans', error: err.message });
+  }
+});
+
+// GET single loan by ID
+router.get('/loans/:id', (req, res) => {
+  try {
+    const data = readData();
+    const loan = data.loans.find(l => l.id === req.params.id);
+    if (!loan) {
+      return res.status(404).json({ message: 'Loan not found' });
+    }
+    res.json(loan);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching loan', error: err.message });
+  }
+});
+
+// POST create new loan
+router.post('/loans', (req, res) => {
+  try {
+    const data = readData();
+    const newLoan = {
+      id: `loan${String(data.loans.length + 1).padStart(3, '0')}`,
+      ...req.body
+    };
+    data.loans.push(newLoan);
+    writeData(data);
+    res.status(201).json(newLoan);
+  } catch (err) {
+    res.status(500).json({ message: 'Error creating loan', error: err.message });
+  }
+});
+
+// PATCH update loan
+router.patch('/loans/:id', (req, res) => {
+  try {
+    const data = readData();
+    const loanIndex = data.loans.findIndex(l => l.id === req.params.id);
+    if (loanIndex === -1) {
+      return res.status(404).json({ message: 'Loan not found' });
+    }
+    data.loans[loanIndex] = { ...data.loans[loanIndex], ...req.body };
+    writeData(data);
+    res.json(data.loans[loanIndex]);
+  } catch (err) {
+    res.status(500).json({ message: 'Error updating loan', error: err.message });
   }
 });
 

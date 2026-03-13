@@ -41,7 +41,7 @@ const LinkAccounts = () => {
     document.title = "Link Accounts | WindForest Capital";
     const fetchUser = async () => {
       const res = await fetch(
-        "https://windforest-json-server.onrender.com/users"
+        "https://windforest.capital/api/users"
       );
       const users = await res.json();
       const matchedUser = users.find(
@@ -101,7 +101,7 @@ const LinkAccounts = () => {
       };
       try {
         const res = await fetch(
-          "https://windforest-json-server.onrender.com/transactions",
+          "https://windforest.capital/api/transactions",
           {
             method: "POST",
             headers: {
@@ -116,7 +116,7 @@ const LinkAccounts = () => {
           };
         }
         const res2 = await fetch(
-          "https://windforest-json-server.onrender.com/transactions",
+          "https://windforest.capital/api/transactions",
           {
             method: "POST",
             headers: {
@@ -145,7 +145,7 @@ const LinkAccounts = () => {
           read: false,
         };
         const res3 = await fetch(
-          `https://windforest-json-server.onrender.com/users/${externalUser.id}`,
+          `https://windforest.capital/api/users/${externalUser.id}`,
           {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },

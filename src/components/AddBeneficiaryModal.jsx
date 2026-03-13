@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { UserContext } from "./UserContext";
 import { toast } from "react-toastify";
 import { addNotification } from "./utils";
+import API_ENDPOINTS from "../api";
 
 export default function AddBeneficiaryModal({
   beneficiaryForm,
@@ -23,9 +24,7 @@ export default function AddBeneficiaryModal({
 
     if (value.length >= 6) {
       try {
-        const res = await fetch(
-          "https://windforest-json-server.onrender.com/users"
-        );
+        const res = await fetch(API_ENDPOINTS.USERS);
         const users = await res.json();
         const found = users.find((u) => u.accountNumber === value);
 
@@ -68,7 +67,7 @@ export default function AddBeneficiaryModal({
 
       const updatedArray = [...beneficiaries, newBeneficiary];
       const res = await fetch(
-        `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+        API_ENDPOINTS.USER_BY_ID(currentUser.id),
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

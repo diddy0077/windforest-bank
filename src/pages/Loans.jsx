@@ -5,6 +5,7 @@ import LoginRequiredCard from "../components/LoginRequired";
 import { useLocation } from "react-router-dom";
 import LoanSubmittedCard from "../components/LoanSubmittedCard";
 import { Link } from "react-router-dom";
+import API_ENDPOINTS from "../api";
 
 // --- Mock Icons (for single-file environment) ---
 const CalculatorIcon = () => (
@@ -183,7 +184,7 @@ const LoanCalculator = ({ selectedLoan, setIsOpen, setConfirm }) => {
 
       // Get current user
       const res = await fetch(
-        `https://windforest-json-server.onrender.com/users/${currentUser.id}`
+        API_ENDPOINTS.USER_BY_ID(currentUser.id)
       );
       if (!res.ok) throw new Error("User not found");
       const user = await res.json();
@@ -195,7 +196,7 @@ const LoanCalculator = ({ selectedLoan, setIsOpen, setConfirm }) => {
       };
 
       await fetch(
-        `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+        API_ENDPOINTS.USER_BY_ID(currentUser.id),
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -335,9 +336,7 @@ const LoanProductsPage = () => {
   useEffect(() => {
     setLoading(true);
     const fetchLoans = async () => {
-      const res = await fetch(
-        "https://windforest-json-server.onrender.com/loans"
-      );
+      const res = await fetch(API_ENDPOINTS.LOANS);
       if (!res.ok) throw { message: "Error fetching loans" };
       const data = await res.json();
       setTimeout(() => {

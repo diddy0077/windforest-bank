@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "./UserContext";
 import { toast } from "react-toastify";
 import TransferSuccessModal from "./TransferSuccessModal";
+import API_ENDPOINTS from "../api";
 
 export default function TransferSummaryModal({
   isOpen,
@@ -34,11 +35,11 @@ export default function TransferSummaryModal({
   const confirmTransfer = async () => {
     setLoading(true);
     const res = await fetch(
-      `https://windforest-json-server.onrender.com/users/${currentUser.id}`
+      API_ENDPOINTS.USER_BY_ID(currentUser.id)
     );
     const currentUserData = await res.json();
     const res2 = await fetch(
-      `https://windforest-json-server.onrender.com/users/?accountNumber=${transferBeneficiary.accountNumber}`
+      API_ENDPOINTS.USER_BY_ACCOUNT(transferBeneficiary.accountNumber)
     );
     const beneficiaryDataArray = await res2.json();
     const beneficiaryData = beneficiaryDataArray[0];
@@ -53,7 +54,7 @@ export default function TransferSummaryModal({
     setCurrentUser(updatedCurrentUser);
     try {
       const response = await fetch(
-        `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+        API_ENDPOINTS.USER_BY_ID(currentUser.id),
         {
           method: "PATCH",
           headers: {
@@ -69,7 +70,7 @@ export default function TransferSummaryModal({
       }
       console.log(beneficiaryData.id);
       const response2 = await fetch(
-        `https://windforest-json-server.onrender.com/users/${beneficiaryData.id}`,
+        API_ENDPOINTS.USER_BY_ID(beneficiaryData.id),
         {
           method: "PATCH",
           headers: {
@@ -119,7 +120,7 @@ export default function TransferSummaryModal({
         reversed: false,
       };
       const res3 = await fetch(
-        "https://windforest-json-server.onrender.com/transactions",
+        API_ENDPOINTS.TRANSACTIONS,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -136,7 +137,7 @@ export default function TransferSummaryModal({
       const emailNotifications = async () => {
         try {
           // Send email to sender
-          await fetch('https://windforest.capital/api/send-transfer-notification', {
+          await fetch(API_ENDPOINTS.SEND_TRANSFER_NOTIFICATION, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -151,7 +152,7 @@ export default function TransferSummaryModal({
           });
           
           // Send email to receiver
-          await fetch('https://windforest.capital/api/send-transfer-notification', {
+          await fetch(API_ENDPOINTS.SEND_TRANSFER_NOTIFICATION, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

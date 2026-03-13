@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "./UserContext";
 import { Link, useNavigate } from "react-router-dom";
+import API_ENDPOINTS from "../api";
 
 const Header = () => {
   const [userName, setUserName] = useState("");
@@ -35,7 +36,7 @@ const Header = () => {
 
     try {
       const res = await fetch(
-        "https://windforest-json-server.onrender.com/onlineAccessUsers"
+        API_ENDPOINTS.ONLINE_ACCESS_USERS
       );
       if (!res.ok) throw new Error("Error fetching online users");
       const onlineUsers = await res.json();
@@ -54,7 +55,7 @@ const Header = () => {
       }
 
       const usersRes = await fetch(
-        "https://windforest-json-server.onrender.com/users"
+        API_ENDPOINTS.USERS
       );
       const users = await usersRes.json();
       const fullUser = users.find((u) => u.id === matchedUser.userId);
@@ -123,7 +124,7 @@ const Header = () => {
       // ✅ OTP verified → update lastLogin
       const lastLogin = new Date().toISOString();
       await fetch(
-        `https://windforest-json-server.onrender.com/onlineAccessUsers/${matchedUser.id}`,
+        API_ENDPOINTS.ONLINE_ACCESS_USER_BY_ID(matchedUser.id),
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

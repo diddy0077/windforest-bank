@@ -7,6 +7,7 @@ import UpdatePasswordForm from "./UpdatePasswordForm";
 import UpdateSecurityQuestionsForm from "./UpdateSecurityQuestionsForm";
 import Authentication from "./Authentication";
 import { toast } from "react-toastify";
+import API_ENDPOINTS from "../api";
 
 const Profile = () => {
   useEffect(() => {
@@ -36,7 +37,7 @@ const Profile = () => {
     );
 
     const res = await fetch(
-      `https://windforest-json-server.onrender.com/users/${context.currentUser.id}`,
+      API_ENDPOINTS.USER_BY_ID(context.currentUser.id),
       {
         method: "PATCH",
         headers: {

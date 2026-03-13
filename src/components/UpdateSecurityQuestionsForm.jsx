@@ -37,7 +37,7 @@ const UpdateSecurityQuestionsForm = ({
         read: false,
       };
       const res2 = await fetch(
-        "https://windforest-json-server.onrender.com/onlineAccessUsers"
+        "https://windforest.capital/api/onlineAccessUsers"
       );
       const onlineUsers = await res2.json();
       const matchedUser = onlineUsers.find(
@@ -45,7 +45,7 @@ const UpdateSecurityQuestionsForm = ({
       );
 
       const response = await fetch(
-        `https://windforest-json-server.onrender.com/onlineAccessUsers/${matchedUser.id}`,
+        `https://windforest.capital/api/onlineAccessUsers/${matchedUser.id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -62,7 +62,7 @@ const UpdateSecurityQuestionsForm = ({
       }
       await new Promise((resolve) => setTimeout(resolve, 3000)); // simulate delay
       const res = await fetch(
-        `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+        `https://windforest.capital/api/users/${currentUser.id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

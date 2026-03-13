@@ -17,7 +17,7 @@ const AccountTypes = () => {
     const fetchAccounts = async () => {
       try {
         const res = await fetch(
-          "https://windforest-json-server.onrender.com/accountTypes"
+          "https://windforest.capital/api/accountTypes"
         );
         if (!res.ok) {
           throw {

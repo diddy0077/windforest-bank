@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { UserContext } from "./UserContext";
 import { toast } from "react-toastify";
+import API_ENDPOINTS from "../api";
 
 const EditProfileForm = ({ isOpen, setIsOpen, setNotifications }) => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -40,9 +41,7 @@ const EditProfileForm = ({ isOpen, setIsOpen, setNotifications }) => {
 
     try {
       // Get online access users
-      const res = await fetch(
-        `https://windforest-json-server.onrender.com/onlineAccessUsers`
-      );
+      const res = await fetch(API_ENDPOINTS.ONLINE_ACCESS_USERS);
       if (!res.ok) throw new Error("Error fetching online users.");
       const onlineUsers = await res.json();
 
@@ -75,7 +74,7 @@ const EditProfileForm = ({ isOpen, setIsOpen, setNotifications }) => {
       setNotifications((prev) => [...prev, newNotification]);
       // Update in users DB
       const response = await fetch(
-        `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+        API_ENDPOINTS.USER_BY_ID(currentUser.id),
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

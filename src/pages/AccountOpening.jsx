@@ -154,7 +154,7 @@ const AccountOpening = () => {
     const fetchAccount = async () => {
       try {
         const res = await fetch(
-          `https://windforest-json-server.onrender.com/accountTypes/?name=${params.name}`
+          `https://windforest.capital/api/accountTypes/?name=${params.name}`
         );
         if (!res.ok) {
           throw {
@@ -257,7 +257,7 @@ const AccountOpening = () => {
 
     // ✅ Check if email exists
     const res = await fetch(
-      "https://windforest-json-server.onrender.com/users"
+      "https://windforest.capital/api/users"
     );
     const users = await res.json();
     const matchedUser = users.find(
@@ -363,7 +363,7 @@ const AccountOpening = () => {
         card: [generateCard()],
       };
       const res = await fetch(
-        "https://windforest-json-server.onrender.com/users",
+        "https://windforest.capital/api/users",
         {
           method: "POST",
           headers: {

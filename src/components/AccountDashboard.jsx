@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import { useOutletContext, Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { UserContext } from "./UserContext";
+import API_ENDPOINTS from "../api";
 import {
   BarChart,
   Bar,
@@ -137,7 +138,7 @@ const AccountDashboard = () => {
         setNotifications((prev) => [...prev, lowBalanceNotification]);
 
         fetch(
-          `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+          API_ENDPOINTS.USER_BY_ID(currentUser.id),
           {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
@@ -166,7 +167,7 @@ const AccountDashboard = () => {
     const fetchNotifications = async () => {
       try {
         const res = await fetch(
-          `https://windforest-json-server.onrender.com/users/${currentUser.id}`
+          API_ENDPOINTS.USER_BY_ID(currentUser.id)
         );
         const data = await res.json();
         setNotifications(data.notifications || []);

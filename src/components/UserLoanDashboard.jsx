@@ -145,7 +145,7 @@ const UserLoanDashboard = () => {
   useEffect(() => {
     const fetchLoans = async () => {
       const res = await fetch(
-        `https://windforest-json-server.onrender.com/users/${currentUser.id}`
+        `https://windforest.capital/api/users/${currentUser.id}`
       );
       const data = await res.json();
       setLoans(data.loans || []);

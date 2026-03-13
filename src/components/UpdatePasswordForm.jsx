@@ -48,7 +48,7 @@ const UpdatePasswordForm = ({
     }
     try {
       const res = await fetch(
-        "https://windforest-json-server.onrender.com/onlineAccessUsers"
+        "https://windforest.capital/api/onlineAccessUsers"
       );
       if (!res.ok) {
         throw { message: "Error fetching online users!" };
@@ -69,7 +69,7 @@ const UpdatePasswordForm = ({
       }
       const updatedUser = { ...matchedUser, password: newPassword };
       const response = await fetch(
-        `https://windforest-json-server.onrender.com/onlineAccessUsers/${matchedUser.id}`,
+        `https://windforest.capital/api/onlineAccessUsers/${matchedUser.id}`,
         {
           method: "PATCH",
           headers: {
@@ -92,7 +92,7 @@ const UpdatePasswordForm = ({
         read: false,
       };
       const response2 = await fetch(
-        `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+        `https://windforest.capital/api/users/${currentUser.id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

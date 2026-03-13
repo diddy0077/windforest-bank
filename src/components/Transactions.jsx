@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState, useMemo } from "react";
 import { UserContext } from "./UserContext";
 import { useOutletContext } from "react-router-dom";
+import API_ENDPOINTS from "../api";
 import {
   ArrowUpRight,
   ArrowDownLeft,
@@ -132,7 +133,7 @@ const Transactions = () => {
     const fetchTransactions = async () => {
       try {
         const res = await fetch(
-          "https://windforest-json-server.onrender.com/transactions"
+          API_ENDPOINTS.TRANSACTIONS
         );
         if (!res.ok) {
           throw {

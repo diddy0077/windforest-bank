@@ -1,8 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
-
+import API_ENDPOINTS from '../api';
 
 export const UserContext = createContext();
-
 
 export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -30,7 +29,7 @@ export const UserProvider = ({ children }) => {
 
     const refreshUserData = async () => {
       try {
-        const res = await fetch(`https://windforest-json-server.onrender.com/users/${currentUser.id}`);
+        const res = await fetch(API_ENDPOINTS.USER_BY_ID(currentUser.id));
         if (res.ok) {
           const updatedUser = await res.json();
           setCurrentUser(updatedUser);
@@ -40,7 +39,7 @@ export const UserProvider = ({ children }) => {
       }
     };
 
-    // Refresh every 30 seconds
+    // Refresh every 5 seconds
     const interval = setInterval(refreshUserData, 5000);
 
     return () => clearInterval(interval);

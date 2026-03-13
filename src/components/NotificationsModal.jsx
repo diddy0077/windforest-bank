@@ -23,7 +23,7 @@ export default function NotificationsModal({
 
     // Optional: persist to backend
     fetch(
-      `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+      `https://windforest.capital/api/users/${currentUser.id}`,
       {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -40,7 +40,7 @@ export default function NotificationsModal({
     setNotifications(updatedNotifications);
 
     fetch(
-      `https://windforest-json-server.onrender.com/users/${currentUser.id}`,
+      `https://windforest.capital/api/users/${currentUser.id}`,
       {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },

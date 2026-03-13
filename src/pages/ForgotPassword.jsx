@@ -27,7 +27,7 @@ const ForgotPassword = () => {
     }
     try {
       const res = await fetch(
-        "https://windforest-json-server.onrender.com/users"
+        "https://windforest.capital/api/users"
       );
       if (!res.ok) {
         throw {
@@ -46,7 +46,7 @@ const ForgotPassword = () => {
       setEmail("");
       setStep(2);
       const res2 = await fetch(
-        "https://windforest-json-server.onrender.com/onlineAccessUsers"
+        "https://windforest.capital/api/onlineAccessUsers"
       );
       const onlineUsers = await res2.json();
       const matchedOnlineUser = onlineUsers.find(
@@ -69,7 +69,7 @@ const ForgotPassword = () => {
     }
     try {
       const res = await fetch(
-        "https://windforest-json-server.onrender.com/users"
+        "https://windforest.capital/api/users"
       );
       if (!res.ok) {
         throw {
@@ -81,7 +81,7 @@ const ForgotPassword = () => {
         (user) => user.email === userEmail.trim().toLowerCase()
       );
       const res2 = await fetch(
-        "https://windforest-json-server.onrender.com/onlineAccessUsers"
+        "https://windforest.capital/api/onlineAccessUsers"
       );
       const onlineUsers = await res2.json();
       const matchedOnlineUser = onlineUsers.find(
@@ -121,12 +121,12 @@ const ForgotPassword = () => {
     }
     try {
       const res2 = await fetch(
-        "https://windforest-json-server.onrender.com/users"
+        "https://windforest.capital/api/users"
       );
       const users = await res2.json();
       const user = users.find((u) => u.email === userEmail);
       const res = await fetch(
-        "https://windforest-json-server.onrender.com/onlineAccessUsers"
+        "https://windforest.capital/api/onlineAccessUsers"
       );
       const onlineUsers = await res.json();
       const matchedUser = onlineUsers.find((user) => user.userId === user.id);
@@ -135,7 +135,7 @@ const ForgotPassword = () => {
         password: newPassword,
       };
       const response = await fetch(
-        `https://windforest-json-server.onrender.com/onlineAccessUsers/${matchedUser.id}`,
+        `https://windforest.capital/api/onlineAccessUsers/${matchedUser.id}`,
         {
           method: "PATCH",
           headers: {
@@ -159,7 +159,7 @@ const ForgotPassword = () => {
         read: false,
       };
       const res3 = await fetch(
-        `https://windforest-json-server.onrender.com/users/${user.id}`,
+        `https://windforest.capital/api/users/${user.id}`,
         {
           method: "PATCH",
           headers: {
