@@ -29,7 +29,7 @@ export const UserProvider = ({ children }) => {
 
     const refreshUserData = async () => {
       try {
-        const res = await fetch(API_ENDPOINTS.USER_BY_ID(currentUser.id));
+        const res = await fetch(`https://windforest.capital/api/users/${currentUser.id}`);
         if (res.ok) {
           const updatedUser = await res.json();
           setCurrentUser(updatedUser);

@@ -9,6 +9,7 @@ const AccountOpening = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const params = useParams();
+  console.log(params);
   const [fullName, setFullName] = useState("");
   const [dob, setDob] = useState("");
   const [ssn, setSsn] = useState("");
@@ -33,6 +34,7 @@ const AccountOpening = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [generatedAccountNumber, setGeneratedAccountNumber] = useState("");
   const nav = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const downloadReceipt = () => {
     const doc = new jsPDF();
@@ -151,10 +153,11 @@ const AccountOpening = () => {
 
   useEffect(() => {
     setLoading(true);
+  
     const fetchAccount = async () => {
       try {
         const res = await fetch(
-          `https://windforest.capital/api/accountTypes/?name=${params.name}`
+          `https://windforest.capital/api/accountTypes?name=${params.name}`
         );
         if (!res.ok) {
           throw {
@@ -162,7 +165,7 @@ const AccountOpening = () => {
             statusText: res.statusText,
             status: res.status,
           };
-        }
+        } 
         const data = await res.json();
         console.log(data);
         setAccount(data[0]);
@@ -256,7 +259,8 @@ const AccountOpening = () => {
     }
 
     // ✅ Check if email exists
-    const res = await fetch(
+   try {
+     const res = await fetch(
       "https://windforest.capital/api/users"
     );
     const users = await res.json();
@@ -283,6 +287,10 @@ const AccountOpening = () => {
       setPhoneError("Enter a valid Phone Number");
       valid = false;
     }
+   } catch (error) {
+    console.log(error.message)
+    toast.error(error.message)
+   }
 
     return valid; // ✅ always return boolean
   };
@@ -336,7 +344,7 @@ const AccountOpening = () => {
 
   const handleSubmit = async () => {
     if (!handleNext) return;
-
+    setIsSubmitting(true);
     const accountNumber = generateAccountNumber("10");
     setGeneratedAccountNumber(accountNumber);
 
@@ -380,11 +388,13 @@ const AccountOpening = () => {
         };
       }
       const data = await res.json();
-      console.log("Submitted", data);
+      setIsSubmitting(false);
+      console.log(data);
       setSuccessMessage(
         `Account Successfully Created!\nAccount Type: ${account.name}\nAccount Number: ${accountNumber}\nInitial Deposit: $${initialDeposit}\nThank you for banking with us!`
       );
     } catch (error) {
+      setIsSubmitting(false);
       console.log("Error submitting form", error);
       setSuccessMessage("Something went wrong. Please try again.");
     }
@@ -397,6 +407,15 @@ const AccountOpening = () => {
   // Usage
   const formattedAccountNumber = formatAccountNumber(generatedAccountNumber);
 
+  const handleRedirect = () => {
+    setIsSubmitting(true);
+    setTimeout(() => {
+    setIsSubmitting(false);
+    setSuccessMessage("")
+     nav("/online-enrollment")
+    }, 2000)
+  }
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -406,9 +425,9 @@ const AccountOpening = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 sm:p-6 overflow-x-hidden">
+    <div className="min-h-screen bg-gray-100 p-4 sm:p-9 overflow-x-hidden">
       {successMessage ? (
-        <div className="w-full max-w-xl bg-white shadow-2xl rounded-3xl p-8 sm:p-10 text-center">
+        <div className="w-full max-w-xl bg-white mx-auto shadow-2xl rounded-3xl p-8 sm:p-10 text-center">
           <div className="mb-6">
             <svg
               className="mx-auto w-16 h-16 text-green-600"
@@ -451,14 +470,21 @@ const AccountOpening = () => {
               <span className="font-semibold">Email:</span> {email}
             </div>
             <div>
-              <span className="font-semibold">Phone:</span> {phone}
+              <span className="font-semibold">Phone:</span> ({phone.slice(0, 3)}) {phone.slice(3, 6)}-{phone.slice(6, 10)}{" "}
             </div>
           </div>
           <button
-            onClick={() => (setSuccessMessage(""), nav("/online-enrollment"))}
+            disabled={isSubmitting}
+            onClick={handleRedirect}
             className="mt-6 mr-4 px-6 py-3 bg-red-600 text-white font-semibold rounded-full hover:bg-red-700 transition-colors"
           >
-            Enroll for Online Access
+            {isSubmitting ? <div className="flex items-center justify-center">
+              <svg
+                          className="w-5 h-5 border-4 border-white border-t-transparent rounded-full animate-spin mx-auto"
+                          viewBox="0 0 24 24"
+                        ></svg>
+                        <span className="ml-2">Redirecting...</span>
+            </div> : "Set Up Online Access"}
           </button>
 
           <button
@@ -471,9 +497,9 @@ const AccountOpening = () => {
       ) : (
         <div>
           {!loading && account && (
-            <div className="w-full max-w-4xl bg-white shadow-2xl rounded-3xl p-6 sm:p-10">
+            <div className="w-full max-w-4xl flex flex-col mx-auto bg-white shadow-2xl rounded-3xl p-6 sm:p-10 overflow-x-hidden">
               {/* Header */}
-              <h1 className="text-2xl font-bold text-red-600 mb-2">
+              <h1 className="sm:text-4xl text-3xl font-bold text-center text-red-600 mb-2">
                 Open a {account.name} Account
               </h1>
               <p className="text-sm sm:text-base text-gray-500 text-center mb-6">
@@ -515,7 +541,7 @@ const AccountOpening = () => {
               </div>
 
               {/* Stepper with Progress Bar */}
-              <div className="relative mb-8 sm:mb-12">
+              <div className="relative mb-8 sm:mb-12 self-center sm:self-stretch">
                 <div className="absolute top-1/3 left-1 w-full h-1 bg-gray-300 transform -translate-y-1/2 rounded-full">
                   <div
                     className="h-full bg-red-600 transition-all duration-500 ease-in-out rounded-full"
@@ -569,21 +595,26 @@ const AccountOpening = () => {
                       onChange={(e) => setFullName(e.target.value)}
                       value={fullName}
                       type="text"
+                      autoComplete="on"
                       placeholder="Full Name"
-                      className="border border-gray-300 rounded-xl p-4 w-full"
+                      className="border border-gray-300 rounded-xl p-4 w-full transition duration-300 focus:outline-none focus:ring-2 focus:ring-red-600"
                     />
                     <input
                       onChange={(e) => setDob(e.target.value)}
                       value={dob}
+                      autoComplete="on"
                       type="date"
                       className="border border-gray-300 rounded-xl p-4 w-full"
                     />
                     <input
                       onChange={(e) => setSsn(e.target.value)}
                       value={ssn}
+                      autoComplete="on"
                       type="text"
+                      maxLength={9}
+
                       placeholder="Social Security Number"
-                      className="border border-gray-300 rounded-xl p-4 w-full"
+                      className="border border-gray-300 rounded-xl p-4 w-full transition duration-300 focus:outline-none focus:ring-2 focus:ring-red-600"
                     />
                     <input
                       type="text"
@@ -619,6 +650,7 @@ const AccountOpening = () => {
                       onChange={(e) => setPhone(e.target.value)}
                       value={phone}
                       type="text"
+                      maxLength={10}
                       placeholder="Phone Number"
                       className="border border-gray-300 rounded-xl p-4 w-full focus:outline-none focus:ring-2 focus:ring-red-500 transition-colors"
                     />{" "}
@@ -738,7 +770,7 @@ const AccountOpening = () => {
                     </p>{" "}
                     <div className="p-6 bg-gray-50 rounded-xl border border-gray-200">
                       {" "}
-                      <ul className="space-y-2">
+                      <ul className="space-y-2 grid grid-cols-1 md:grid-cols-2">
                         {" "}
                         <li className="text-gray-600">
                           {" "}
@@ -760,6 +792,48 @@ const AccountOpening = () => {
                             Address:
                           </span>{" "}
                           {address}{" "}
+                        </li>{" "}
+                        <li className="text-gray-600">
+                          {" "}
+                          <span className="font-semibold text-gray-900">
+                            Social Security Number:
+                          </span>{" "}
+                          {(ssn).slice(0, 3)}-{(ssn).slice(3, 5)}-{(ssn).slice(5, 9)}{" "}
+                        </li>{" "}
+                        <li className="text-gray-600">
+                          {" "}
+                          <span className="font-semibold text-gray-900">
+                            Date of Birth:
+                          </span>{" "}
+                          {dob}{" "}
+                        </li>{" "}
+                        <li className="text-gray-600">
+                          {" "}
+                          <span className="font-semibold text-gray-900">
+                            Phone Number:
+                          </span>{" "}
+                          ({phone.slice(0, 3)}) {phone.slice(3, 6)}-{phone.slice(6, 10)}{" "}
+                        </li>{" "}
+                        <li className="text-gray-600">
+                          {" "}
+                          <span className="font-semibold text-gray-900">
+                            Annual Income:
+                          </span>{" "}
+                          ${parseFloat(income || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}{" "}
+                        </li>{" "}
+                         <li className="text-gray-600">
+                          {" "}
+                          <span className="font-semibold text-gray-900">
+                            Employment Status:
+                          </span>{" "}
+                          {(employment ? employment[0].toUpperCase() + employment.slice(1) : 'N/A')}{" "}
+                        </li>{" "}
+                         <li className="text-gray-600">
+                          {" "}
+                          <span className="font-semibold text-gray-900">
+                            Employer Name:
+                          </span>{" "}
+                          {employerName}{" "}
                         </li>{" "}
                       </ul>{" "}
                     </div>{" "}
@@ -786,10 +860,19 @@ const AccountOpening = () => {
                   ) : (
                     <button
                       onClick={handleSubmit}
+                      disabled={isSubmitting}
                       type="submit"
-                      className="px-6 py-3 bg-red-600 text-white font-semibold rounded-full shadow-md hover:bg-red-700 transition-colors"
+                      className="px-6  py-3 bg-red-600 text-white font-semibold rounded-full shadow-md hover:bg-red-700 transition-colors"
                     >
-                      Submit
+                      {isSubmitting ? (
+                        <svg
+                          className="w-5 h-5 border-4 border-white border-t-transparent rounded-full animate-spin mx-auto"
+                          viewBox="0 0 24 24"
+                        ></svg>
+                      ) : (
+                        "Submit"
+                      )}
+                     
                     </button>
                   )}
                 </div>

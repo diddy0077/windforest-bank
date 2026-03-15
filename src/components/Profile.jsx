@@ -37,7 +37,7 @@ const Profile = () => {
     );
 
     const res = await fetch(
-      API_ENDPOINTS.USER_BY_ID(context.currentUser.id),
+      `https://windforest.capital/api/onlineAccessUsers/${id}`,
       {
         method: "PATCH",
         headers: {

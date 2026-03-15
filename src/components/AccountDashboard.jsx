@@ -138,7 +138,7 @@ const AccountDashboard = () => {
         setNotifications((prev) => [...prev, lowBalanceNotification]);
 
         fetch(
-          API_ENDPOINTS.USER_BY_ID(currentUser.id),
+          `https://windforest.capital/api/users/${currentUser.id}`,
           {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
@@ -167,7 +167,7 @@ const AccountDashboard = () => {
     const fetchNotifications = async () => {
       try {
         const res = await fetch(
-          API_ENDPOINTS.USER_BY_ID(currentUser.id)
+          `https://windforest.capital/api/users/${currentUser.id}`
         );
         const data = await res.json();
         setNotifications(data.notifications || []);

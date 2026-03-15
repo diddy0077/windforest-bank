@@ -532,7 +532,7 @@ router.get('/users', (req, res) => {
     let users = data.users;
 
     if (accountNumber) {
-      users = users.filter(u => u.accountNumber === accountNumber);
+      users = users.filter(u => Number(u.accountNumber) === Number(accountNumber));
     }
     if (email) {
       users = users.filter(u => u.email === email);
@@ -747,6 +747,14 @@ router.patch('/onlineAccessUsers/:id', (req, res) => {
 router.get('/accountTypes', (req, res) => {
   try {
     const data = readData();
+    const { name } = req.query;
+
+    if (name) {
+      data.accountTypes = data.accountTypes.filter(
+        a => a.name.toLowerCase() === name.toLowerCase()
+      );
+    }
+
     res.json(data.accountTypes);
   } catch (err) {
     res.status(500).json({ message: 'Error fetching account types', error: err.message });

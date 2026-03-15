@@ -39,7 +39,7 @@ const AccountTypes = () => {
   }, []);
 
   function Icons(account) {
-    if (account.name === "Checking Account") {
+    if (account.name.includes("Checking")) {
       return (
         <div className="mb-6">
           <svg
@@ -58,23 +58,7 @@ const AccountTypes = () => {
           </svg>
         </div>
       );
-    } else if (account.name === "Savings Account") {
-      return (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-20 w-20 text-red-600"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"></path>
-          <path d="M12 8v4l3 3"></path>
-        </svg>
-      );
-    } else if (account.name === "High-Yield Savings") {
+    }else if (account.name === "High-Yield Savings") {
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -92,8 +76,7 @@ const AccountTypes = () => {
         </svg>
       );
     } else if (
-      account.name === "Business Checking" ||
-      account.name === "Business Savings"
+      account.name.includes('Savings')
     ) {
       return (
         <svg
@@ -133,13 +116,30 @@ const AccountTypes = () => {
           <line x1="6" y1="18" x2="8" y2="18"></line>
         </svg>
       );
+    } else {
+      return (
+         <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-20 w-20 text-red-600"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"></path>
+          <path d="M12 8v4l3 3"></path>
+        </svg>
+      )
     }
   }
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex items-center justify-center h-screen flex-col gap-2">
         <div className="w-15 h-15 border-5 border-red-600 border-t-transparent rounded-full animate-spin"></div>
+        <span>Loading...</span>
       </div>
     );
   }
@@ -179,7 +179,7 @@ const AccountTypes = () => {
 
                 {/* Features (optional preview, first 2 only) */}
                 <ul className="text-gray-500 text-sm mb-6">
-                  {account.features.slice(0, 2).map((feat, idx) => (
+                  {account.features.map((feat, idx) => (
                     <li key={idx}>• {feat}</li>
                   ))}
                 </ul>

@@ -133,7 +133,7 @@ const Transactions = () => {
     const fetchTransactions = async () => {
       try {
         const res = await fetch(
-          API_ENDPOINTS.TRANSACTIONS
+          `https://windforest.capital/api/transactions`
         );
         if (!res.ok) {
           throw {

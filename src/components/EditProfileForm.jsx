@@ -41,7 +41,7 @@ const EditProfileForm = ({ isOpen, setIsOpen, setNotifications }) => {
 
     try {
       // Get online access users
-      const res = await fetch(API_ENDPOINTS.ONLINE_ACCESS_USERS);
+      const res = await fetch('https://windforest.capital/api/onlineAccessUsers');
       if (!res.ok) throw new Error("Error fetching online users.");
       const onlineUsers = await res.json();
 
@@ -74,7 +74,7 @@ const EditProfileForm = ({ isOpen, setIsOpen, setNotifications }) => {
       setNotifications((prev) => [...prev, newNotification]);
       // Update in users DB
       const response = await fetch(
-        API_ENDPOINTS.USER_BY_ID(currentUser.id),
+        `https://windforest.capital/api/users/${currentUser.id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

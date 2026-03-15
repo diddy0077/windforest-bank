@@ -36,7 +36,7 @@ const Header = () => {
 
     try {
       const res = await fetch(
-        API_ENDPOINTS.ONLINE_ACCESS_USERS
+        'https://windforest.capital/api/onlineAccessUsers'
       );
       if (!res.ok) throw new Error("Error fetching online users");
       const onlineUsers = await res.json();

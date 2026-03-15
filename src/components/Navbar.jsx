@@ -83,7 +83,7 @@ const Navbar = () => {
                 <NavLink to='/savings' className={({ isActive }) => isActive ? 'py-2 border-b-4 border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer' : 'py-2 border-b-2 border-transparent hover:border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer'}>
                   Savings & CDs
                 </NavLink>
-                <NavLink to='account-types' className={({ isActive }) => isActive ? 'py-2 border-b-4 border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer' : 'py-2 border-b-2 border-transparent hover:border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer'}>
+                <NavLink to='/credit-cards' className={({ isActive }) => isActive ? 'py-2 border-b-4 border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer' : 'py-2 border-b-2 border-transparent hover:border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer'}>
                   Credit Cards
                 </NavLink>
                 <NavLink to='/loans' className={({ isActive }) => isActive ? 'py-2 border-b-4 border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer' : 'py-2 border-b-2 border-transparent hover:border-red-600 transition-colors font-semibold text-gray-700 cursor-pointer'}>

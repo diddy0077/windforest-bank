@@ -128,7 +128,7 @@ const Transfer = () => {
 
     try {
       const res = await fetch(
-        API_ENDPOINTS.USER_BY_ID(currentUser.id),
+        `https://windforest.capital/api/users/${currentUser.id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -207,7 +207,7 @@ const Transfer = () => {
     const fetchBeneficary = async () => {
       try {
         const res = await fetch(
-          API_ENDPOINTS.USER_BY_ID(currentUser.id)
+          `https://windforest.capital/api/users/${currentUser.id}`
         );
         if (!res.ok) {
           throw {
@@ -226,7 +226,7 @@ const Transfer = () => {
     const fetchRecentTransfers = async () => {
       try {
         const res = await fetch(
-          API_ENDPOINTS.TRANSACTIONS
+          'https://windforest.capital/api/transactions'
         );
         if (!res.ok) {
           throw {

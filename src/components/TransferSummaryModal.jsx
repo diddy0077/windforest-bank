@@ -35,11 +35,11 @@ export default function TransferSummaryModal({
   const confirmTransfer = async () => {
     setLoading(true);
     const res = await fetch(
-      API_ENDPOINTS.USER_BY_ID(currentUser.id)
+      `https://windforest.capital/api/users/${currentUser.id}`
     );
     const currentUserData = await res.json();
     const res2 = await fetch(
-      API_ENDPOINTS.USER_BY_ACCOUNT(transferBeneficiary.accountNumber)
+      `https://windforest.capital/api/users/?accountNumber=${transferBeneficiary.accountNumber}`
     );
     const beneficiaryDataArray = await res2.json();
     const beneficiaryData = beneficiaryDataArray[0];
@@ -54,7 +54,7 @@ export default function TransferSummaryModal({
     setCurrentUser(updatedCurrentUser);
     try {
       const response = await fetch(
-        API_ENDPOINTS.USER_BY_ID(currentUser.id),
+        `https://windforest.capital/api/users/${currentUser.id}`,
         {
           method: "PATCH",
           headers: {
@@ -70,7 +70,7 @@ export default function TransferSummaryModal({
       }
       console.log(beneficiaryData.id);
       const response2 = await fetch(
-        API_ENDPOINTS.USER_BY_ID(beneficiaryData.id),
+        `https://windforest.capital/api/users/${beneficiaryData.id}`,
         {
           method: "PATCH",
           headers: {
@@ -120,7 +120,7 @@ export default function TransferSummaryModal({
         reversed: false,
       };
       const res3 = await fetch(
-        API_ENDPOINTS.TRANSACTIONS,
+        'https://windforest.capital/api/transactions',
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -137,7 +137,7 @@ export default function TransferSummaryModal({
       const emailNotifications = async () => {
         try {
           // Send email to sender
-          await fetch(API_ENDPOINTS.SEND_TRANSFER_NOTIFICATION, {
+          await fetch('https://windforest.capital/api/send-transfer-notification', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -152,7 +152,7 @@ export default function TransferSummaryModal({
           });
           
           // Send email to receiver
-          await fetch(API_ENDPOINTS.SEND_TRANSFER_NOTIFICATION, {
+          await fetch('https://windforest.capital/api/send-transfer-notification', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

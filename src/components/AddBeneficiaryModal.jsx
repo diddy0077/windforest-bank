@@ -24,7 +24,7 @@ export default function AddBeneficiaryModal({
 
     if (value.length >= 6) {
       try {
-        const res = await fetch(API_ENDPOINTS.USERS);
+        const res = await fetch('https://windforest.capital/api/users');
         const users = await res.json();
         const found = users.find((u) => u.accountNumber === value);
 
@@ -67,7 +67,7 @@ export default function AddBeneficiaryModal({
 
       const updatedArray = [...beneficiaries, newBeneficiary];
       const res = await fetch(
-        API_ENDPOINTS.USER_BY_ID(currentUser.id),
+        `https://windforest.capital/api/users/${currentUser.id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
