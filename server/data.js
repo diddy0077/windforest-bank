@@ -358,6 +358,61 @@ const defaultData = {
       features: ["Travel Points", "No Foreign Fees", "Airport Lounge"],
       transactions: "Unlimited",
       overdraft: 500
+    },
+    {
+      id: "acc016",
+      name: "Basic Credit Card",
+      description: "Simple credit card for everyday purchases",
+      minimumDeposit: 0,
+      monthlyFee: 0,
+      interestRate: 18.99,
+      features: ["No Annual Fee", "Online Banking", "Fraud Protection"],
+      transactions: "Unlimited",
+      overdraft: 0
+    },
+    {
+      id: "acc017",
+      name: "Cash Back Credit Card",
+      description: "Earn cash back on all purchases",
+      minimumDeposit: 0,
+      monthlyFee: 25,
+      interestRate: 16.99,
+      features: ["3% Cash Back", "No Foreign Fees", "Travel Insurance"],
+      transactions: "Unlimited",
+      overdraft: 0
+    },
+    {
+      id: "acc018",
+      name: "Platinum Credit Card",
+      description: "Premium credit card with exclusive benefits",
+      minimumDeposit: 0,
+      monthlyFee: 150,
+      interestRate: 14.99,
+      features: ["5% Points", "Concierge Service", "Airport Lounge Access"],
+      transactions: "Unlimited",
+      overdraft: 0
+    },
+    {
+      id: "acc019",
+      name: "Secured Credit Card",
+      description: "Build or rebuild your credit score",
+      minimumDeposit: 200,
+      monthlyFee: 10,
+      interestRate: 24.99,
+      features: ["No Credit Check", "Credit Building", "Online Banking"],
+      transactions: "Unlimited",
+      overdraft: 0
+    },
+    {
+      id: "acc020",
+      name: "Business Credit Card",
+      description: "Credit card designed for business expenses",
+      minimumDeposit: 0,
+      monthlyFee: 50,
+      interestRate: 17.99,
+      features: ["Employee Cards", "Expense Tracking", "Cash Flow Management"],
+      transactions: "Unlimited",
+      overdraft: 0
     }
   ],
   loans: [

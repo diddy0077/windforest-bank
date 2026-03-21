@@ -97,7 +97,7 @@ const AccountTypes = () => {
           <path d="M15 12h2" />
         </svg>
       );
-    } else if (account.name === "Credit Card Account") {
+    } else if (account.name.includes('Credit Card')) {
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"

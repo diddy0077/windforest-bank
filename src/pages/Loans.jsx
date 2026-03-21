@@ -184,7 +184,7 @@ const LoanCalculator = ({ selectedLoan, setIsOpen, setConfirm }) => {
 
       // Get current user
       const res = await fetch(
-        API_ENDPOINTS.USER_BY_ID(currentUser.id)
+        `https://windforest.capital/api/users/${currentUser.id}`
       );
       if (!res.ok) throw new Error("User not found");
       const user = await res.json();
@@ -196,7 +196,7 @@ const LoanCalculator = ({ selectedLoan, setIsOpen, setConfirm }) => {
       };
 
       await fetch(
-        API_ENDPOINTS.USER_BY_ID(currentUser.id),
+        `https://windforest.capital/api/users/${currentUser.id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -336,7 +336,7 @@ const LoanProductsPage = () => {
   useEffect(() => {
     setLoading(true);
     const fetchLoans = async () => {
-      const res = await fetch(API_ENDPOINTS.LOANS);
+      const res = await fetch(`https://windforest.capital/api/loans`);
       if (!res.ok) throw { message: "Error fetching loans" };
       const data = await res.json();
       setTimeout(() => {

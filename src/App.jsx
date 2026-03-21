@@ -28,6 +28,7 @@ import Atm from './pages/Atm'
 import NotFoundPage from './pages/NotFoundPage'
 import Help from './pages/Help'
 import HelpDetails from './components/HelpDetails'
+import CreditCards from './pages/CreditCards'
 
 const App = () => {
  
@@ -41,6 +42,7 @@ const App = () => {
        <Route path="online-enrollment" element={<OnlineEnrollment />} />
        <Route path="about-us" element={<About />} />
        <Route path="savings" element={<Savings />} />
+       <Route path="credit-cards" element={<CreditCards />} />
        <Route path="checking" element={<Checking />} />
        <Route path="loans" element={<LoanProductsPage />} />
        <Route path="terms-of-service" element={<TermsOfService />} />
