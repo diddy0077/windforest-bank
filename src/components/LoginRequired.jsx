@@ -51,7 +51,7 @@ const LoginRequiredCard = ({isOpen,setIsOpen}) => {
                         to="/account-types"
                         className="block w-full py-3 border border-gray-300 text-gray-800 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
                     >
-                        New User? Enroll Here
+                        New here? Explore Accounts
                     </Link>
                 </div>
             </div>

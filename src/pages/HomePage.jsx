@@ -233,7 +233,7 @@ const HomePage = () => {
       <Header />
       
       {/* Hero Section with Gradient Background */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-[85vh] overflow-hidden">
+      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-[85vh] overflow-hidden mt-12">
         {/* Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-amber-400/20 to-red-500/20 rounded-full blur-3xl"></div>
