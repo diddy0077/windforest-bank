@@ -423,103 +423,170 @@ const HomePage = () => {
       </section>
 
       {/* --- Mobile Banking Section --- */}
-      <section className="py-20 bg-gray-900 text-gray-200">
-  <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
-    <div className="w-full md:w-1/2 flex justify-center">
-      <div className="relative w-full max-w-xs h-[550px] md:h-[600px] bg-gray-900 rounded-[4rem] p-2 shadow-[0_20px_40px_rgba(0,0,0,0.3)] transform transition-transform duration-500 hover:scale-105">
-        {/* Phone Frame */}
-        <div className="absolute inset-0 border-[8px] border-black rounded-[4rem] pointer-events-none z-10"></div>
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-20"></div>
-        {/* App Screen Content */}
-        <div className="relative w-full h-full rounded-[3.5rem] overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1726065235203-4368c41c6f19?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Mobile banking app screen"
-            className="w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-950 to-transparent"></div>
-          {/* Fargo logo and text overlay */}
-          <div className="absolute top-0 w-full p-4 flex justify-between items-center text-white">
-            <div className="flex items-center space-x-2">
-              <div className="text-lg font-bold">WindForest</div>
-              <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse"></div>
+      <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              Bank Anywhere, Anytime
+            </h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Experience seamless banking with our powerful mobile app. Track spending, 
+              transfer funds, pay bills, and manage your finances right from your phone.
+            </p>
+          </div>
+
+          {/* Feature Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-2xl p-8 text-center hover:bg-gray-700 transition-colors">
+              <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Instant Transfers</h3>
+              <p className="text-gray-400">Send money to anyone, anywhere instantly with zero fees.</p>
             </div>
-            <span className="text-sm">9:41 AM</span>
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse"></div>
+            <div className="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-2xl p-8 text-center hover:bg-gray-700 transition-colors">
+              <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Smart Budgeting</h3>
+              <p className="text-gray-400">Track expenses and set budgets with AI-powered insights.</p>
+            </div>
+            <div className="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-2xl p-8 text-center hover:bg-gray-700 transition-colors">
+              <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Bank-Level Security</h3>
+              <p className="text-gray-400">24/7 fraud protection and biometric login for your peace of mind.</p>
             </div>
           </div>
-          {/* Spending Insights Section */}
-          <div className="absolute bottom-0 w-full p-6 text-white">
-            <h3 className="text-xl font-semibold mb-2">
-              Here's insights into your spending
-            </h3>
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-4 mb-4">
-              <div className="flex items-center justify-between">
-                <div className="flex flex-col items-center">
-                  <div className="w-24 h-24 bg-gray-800 rounded-full flex items-center justify-center">
-                    {/* Placeholder for spending chart */}
-                    <div className="w-20 h-20 bg-red-500 rounded-full"></div>
+
+          {/* App Preview and Download */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+            <div className="relative">
+              {/* Phone Mockup */}
+              <div className="w-64 md:w-72 bg-gray-800 rounded-[3rem] p-3 shadow-2xl border-4 border-gray-700">
+                <div className="bg-gradient-to-br from-red-600 to-red-700 rounded-[2.5rem] h-[500px] overflow-hidden relative">
+                  {/* Status Bar */}
+                  <div className="absolute top-0 left-0 right-0 h-8 bg-black bg-opacity-30 flex justify-between items-center px-6 text-white text-xs z-10">
+                    <span>9:41</span>
+                    <div className="flex gap-1">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17 5H7c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 12H7V7h10v10z"/></svg>
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                    </div>
                   </div>
-                  <p className="text-xs text-gray-300 mt-2">
-                    March 1 - Mar 31, 2024
-                  </p>
-                  <div className="w-3 h-3 bg-red-600 rounded-full animate-pulse"></div>
-                </div>
-                <div className="flex-1 ml-6 text-sm">
-                  <p className="text-gray-300">Total Spending</p>
-                  <p className="font-bold text-lg text-white">
-                    $1,725.34
-                  </p>
-                  <p className="text-gray-300">-$1,100.66 from Feb</p>
+                  {/* App Header */}
+                  <div className="mt-10 px-4 text-white">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                          <span className="text-red-600 font-bold text-sm">W</span>
+                        </div>
+                        <span className="font-semibold">WindForest</span>
+                      </div>
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                      </svg>
+                    </div>
+                    {/* Account Card */}
+                    <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-2xl p-4 mb-4">
+                      <p className="text-xs opacity-70">Total Balance</p>
+                      <p className="text-2xl font-bold">$24,589.00</p>
+                      <p className="text-xs opacity-70 mt-1">•••• 4521</p>
+                    </div>
+                    {/* Quick Actions */}
+                    <div className="flex justify-between gap-2 mb-4">
+                      <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-xl p-3 flex-1 text-center">
+                        <svg className="w-6 h-6 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                        <span className="text-xs">Send</span>
+                      </div>
+                      <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-xl p-3 flex-1 text-center">
+                        <svg className="w-6 h-6 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                        <span className="text-xs">Request</span>
+                      </div>
+                      <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-xl p-3 flex-1 text-center">
+                        <svg className="w-6 h-6 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <span className="text-xs">Pay</span>
+                      </div>
+                      <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-xl p-3 flex-1 text-center">
+                        <svg className="w-6 h-6 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                        <span className="text-xs">More</span>
+                      </div>
+                    </div>
+                    {/* Recent Transactions */}
+                    <div className="bg-white bg-opacity-10 rounded-2xl p-4">
+                      <p className="text-sm font-semibold mb-3">Recent Transactions</p>
+                      <div className="space-y-3">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <div>
+                              <p className="text-sm font-medium">Salary Deposit</p>
+                              <p className="text-xs opacity-60">Today</p>
+                            </div>
+                          </div>
+                          <span className="text-green-400 font-semibold">+$3,200</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
+                              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                            </div>
+                            <div>
+                              <p className="text-sm font-medium">Amazon</p>
+                              <p className="text-xs opacity-60">Yesterday</p>
+                            </div>
+                          </div>
+                          <span className="text-white font-semibold">-$89.99</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="flex justify-around text-sm font-medium">
-              <button className="text-red-400 border-b-2 border-red-400 pb-1">
-                Summary
-              </button>
-              <button className="text-white hover:text-red-400">
-                Category
-              </button>
-              <button className="text-white hover:text-red-400">
-                Merchant
-              </button>
+
+            {/* Download Section */}
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl font-bold mb-4">Download Our App</h3>
+              <p className="text-gray-400 mb-6">
+                Get the WindForest mobile app and take control of your finances.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <button className="flex items-center justify-center gap-3 bg-white text-gray-900 px-6 py-3 rounded-xl hover:bg-gray-100 transition-colors">
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                  </svg>
+                  <div className="text-left">
+                    <p className="text-xs">Download on the</p>
+                    <p className="text-sm font-semibold">App Store</p>
+                  </div>
+                </button>
+                <button className="flex items-center justify-center gap-3 bg-white text-gray-900 px-6 py-3 rounded-xl hover:bg-gray-100 transition-colors">
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.3,10.84L17.53,12.74L15.28,10.5L17.53,8.26L20.3,10.16M16.81,8.88L14.54,11.15L6.05,2.66L16.81,8.88Z"/>
+                  </svg>
+                  <div className="text-left">
+                    <p className="text-xs">Get it on</p>
+                    <p className="text-sm font-semibold">Google Play</p>
+                  </div>
+                </button>
+              </div>
+              <p className="mt-6 text-sm text-gray-500">
+                <span className="inline-block w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                Rated 4.8/5 by 50K+ users
+              </p>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div
-      className="w-full md:w-1/2 text-center md:text-left"
-      initial="hidden"
-      whileInView="visible"
-      variants={sectionVariants}
-      viewport={{ once: true }}
-    >
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">
-        Powerful Mobile Banking, At Your Fingertips.
-      </h2>
-      <p className="text-lg mb-6">
-        Our mobile app, featuring **WindForest**, gives you valuable insights like a
-        **summary of your spending by category** and retailer, across all your
-        accounts. Manage your money anytime, anywhere.
-      </p>
-      <div className="flex flex-wrap justify-center md:justify-start gap-4">
-        <img
-          src="https://placehold.co/150x50/000000/ffffff?text=Download+on+the+App+Store"
-          alt="Download on the App Store"
-          className="h-12 cursor-pointer"
-        />
-        <img
-          src="https://placehold.co/150x50/000000/ffffff?text=Get+it+on+Google+Play"
-          alt="Get it on Google Play"
-          className="h-12 cursor-pointer"
-        />
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       ---
 

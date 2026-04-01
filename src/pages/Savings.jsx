@@ -88,7 +88,7 @@ const Savings = () => {
 
               {/* Features (optional preview, first 2 only) */}
               <ul className="text-gray-500 text-sm mb-6">
-                {account.features.slice(0, 2).map((feat, idx) => (
+                {account?.features?.map((feat, idx) => (
                   <li key={idx}>• {feat}</li>
                 ))}
               </ul>

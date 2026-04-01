@@ -83,12 +83,10 @@ const Checking = () => {
                 {account.name}
               </h3>
 
-              {/* Description */}
               <p className="text-gray-600 mb-6">{account.description}</p>
 
-              {/* Features (optional preview, first 2 only) */}
               <ul className="text-gray-500 text-sm mb-6">
-                {account.features.slice(0, 2).map((feat, idx) => (
+                {account?.features?.map((feat, idx) => (
                   <li key={idx}>• {feat}</li>
                 ))}
               </ul>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
+
 const ForgotPassword = () => {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -124,12 +125,14 @@ const ForgotPassword = () => {
         "https://windforest.capital/api/users"
       );
       const users = await res2.json();
-      const user = users.find((u) => u.email === userEmail);
+      const foundUser = users.find((u) => u.email === userEmail);
+      console.log(foundUser)
       const res = await fetch(
         "https://windforest.capital/api/onlineAccessUsers"
       );
       const onlineUsers = await res.json();
-      const matchedUser = onlineUsers.find((user) => user.userId === user.id);
+      const matchedUser = onlineUsers.find((user) => user.userId === foundUser.id);
+      console.log(matchedUser)
       const updatedUser = {
         ...matchedUser,
         password: newPassword,
@@ -159,14 +162,14 @@ const ForgotPassword = () => {
         read: false,
       };
       const res3 = await fetch(
-        `https://windforest.capital/api/users/${user.id}`,
+        `https://windforest.capital/api/users/${foundUser.id}`,
         {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            notifications: [...user.notifications, newNotification],
+            notifications: [...foundUser.notifications, newNotification],
           }),
         }
       );
@@ -217,9 +220,11 @@ const ForgotPassword = () => {
               <button
                 type="button"
                 onClick={handleStep1}
-                className="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-md text-lg font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 transition-colors cursor-pointer"
+                className="w-full flex justify-center items-center gap-1 py-2 px-4 border border-transparent rounded-xl shadow-md text-lg font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 transition-colors cursor-pointer"
               >
-                Continue
+                {loading ? (<div className="w-5 h-5 my-1 border-4 border-t-transparent border-white rounded-full animate-spin"></div>) : (<span>Continue</span>)}
+                
+                
               </button>
             </form>
           </>
@@ -256,9 +261,17 @@ const ForgotPassword = () => {
               <button
                 type="button"
                 onClick={handleStep2}
-                className="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-md text-lg font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 transition-colors cursor-pointer"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-xl shadow-md text-lg font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 transition-colors cursor-pointer"
               >
-                Verify
+                {loading ? (<div className="w-5 h-5 my-1 border-4 border-t-transparent border-white rounded-full animate-spin"></div>) : (<span>Verify</span>)}
+              </button>
+              <button
+                type="button"
+                onClick={() => setStep(1)}
+                className="text-sm flex items-center justify-center gap-1 font-medium transition-colors cursor-pointer hover:underline self-center mx-auto"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
+                Go Back
               </button>
             </form>
           </>
@@ -310,11 +323,20 @@ const ForgotPassword = () => {
               <button
                 onClick={handleStep3}
                 type="submit"
-                className="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-md text-lg font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 transition-colors cursor-pointer duration-300"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-xl shadow-md text-lg font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 transition-colors cursor-pointer duration-300"
               >
-                {loading ? "Resetting" : "Reset Password"}
+                {loading ? (<div className="w-5 h-5 my-1 border-4 border-t-transparent border-white rounded-full animate-spin"></div>) : (<span>Reset Password</span>)}
               </button>
+
             </form>
+            
+              <button
+                onClick={() => nav('/forgot-password')}
+                type="button"
+                className="text-sm w-full py-2 bg-gray-800 text-white font-bold rounded-lg hover:bg-gray-700 transition-colors shadow-xl cursor-pointer"
+              >
+                Cancel
+              </button>
           </>
         );
       default:
@@ -327,8 +349,8 @@ const ForgotPassword = () => {
       {/* Form Container */}
       <div className="w-full max-w-lg bg-white rounded-3xl shadow-2xl p-8 mx-4">
         {/* Header Icon */}
-        <div className="flex flex-col items-center mb-8">
-          <div className="w-24 h-24 rounded-full bg-red-600 text-white flex items-center justify-center text-4xl font-bold mb-4 border-4 border-red-600 shadow-md">
+        <div className="flex flex-col mb-8">
+          <div className="w-24 h-24 rounded-full self-center bg-red-600 text-white flex items-center justify-center text-4xl font-bold mb-4 border-4 border-red-600 shadow-md">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-12 h-12"
