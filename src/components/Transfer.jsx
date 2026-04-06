@@ -10,6 +10,7 @@ import TransferFromExternalAccounts from "./TransferFromExternalAccounts";
 import API_ENDPOINTS from "../api";
 import {
   Clock,
+
   DollarSign,
   TrendingUp,
   Star,
@@ -111,6 +112,8 @@ const Transfer = () => {
   const [recentTransfers, setRecentTransfers] = useState([]);
   const [transferTemplates, setTransferTemplates] = useState([]);
   const [showScheduleModal, setShowScheduleModal] = useState(false);
+
+  
   const deleteBeneficiary = async (accountNumber) => {
     const newBeneficiaries = beneficiaries.filter((b) => {
       return b.accountNumber !== accountNumber;
@@ -343,7 +346,7 @@ const Transfer = () => {
               className="w-[100%] p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500"
             >
               <option value="">Select an account or beneficiary</option>
-              {beneficiaries.map((b) => (
+              {beneficiaries && beneficiaries?.map((b) => (
                 <option
                   className="w-full whitespace-wrap"
                   key={b.accountNumber}
@@ -416,7 +419,7 @@ const Transfer = () => {
       <div className="bg-gray-50 p-4 rounded-lg mb-6">
         <h3 className="text-lg font-semibold mb-3">Quick Actions</h3>
         <div className="flex flex-wrap gap-3">
-          {beneficiaries.slice(0, 3).map((beneficiary) => (
+          {beneficiaries?.slice(0, 3).map((beneficiary) => (
             <button
               key={beneficiary.accountNumber}
               onClick={() => {
@@ -475,7 +478,7 @@ const Transfer = () => {
         />
       )}
       <section className="mt-6">
-        {beneficiaries.length > 0 ? (
+        {beneficiaries?.length > 0 ? (
           <div>
             <h2 className="text-lg font-semibold mb-4">My Beneficiaries</h2>
 

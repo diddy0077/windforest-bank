@@ -40,12 +40,13 @@ export default function AddBeneficiaryModal({
   };
 
   const handleSubmit = async (e) => {
+    console.log(beneficiaries)
     e.preventDefault();
     if (!beneficiaryName) {
       setError("Please enter a valid account.");
       return;
     }
-    const exists = beneficiaries.some((b) => b.accountNumber === accountNumber);
+    const exists = beneficiaries?.some((b) => b.accountNumber === accountNumber);
     if (exists) {
       toast.error("Beneficiary already exists!");
       return;

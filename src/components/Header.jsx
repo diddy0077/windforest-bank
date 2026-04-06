@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "./UserContext";
 import { Link, useNavigate } from "react-router-dom";
-import API_ENDPOINTS from "../api";
+
 
 const Header = () => {
   const [userName, setUserName] = useState("");
@@ -55,7 +55,7 @@ const Header = () => {
       }
 
       const usersRes = await fetch(
-        API_ENDPOINTS.USERS
+        'https://windforest.capital/api/users'
       );
       const users = await usersRes.json();
       const fullUser = users.find((u) => u.id === matchedUser.userId);
@@ -124,7 +124,7 @@ const Header = () => {
       // ✅ OTP verified → update lastLogin
       const lastLogin = new Date().toISOString();
       await fetch(
-        API_ENDPOINTS.ONLINE_ACCESS_USER_BY_ID(matchedUser.id),
+          `https://windforest.capital/api/${matchedUser.id}` ,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -216,10 +216,15 @@ const Header = () => {
                   {error && <p className="text-red-600">{error}</p>}
                   <div className="flex space-x-4">
                     <button
+                      disabled={loading}
                       type="submit"
-                      className="cursor-pointer w-full py-2 bg-red-700 text-white font-semibold rounded-md shadow-md hover:bg-red-800 transition-colors"
+                      className="cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed disabled:opacity-60 w-full py-2 bg-red-700 text-white font-semibold rounded-md shadow-md hover:bg-red-800 transition-colors"
                     >
-                      {loading ? "Signing in..." : "Sign On"}
+                      {loading ? <div className="flex justify-center items-center">
+                        <div className="border-white border-4 border-t-transparent rounded-full w-5 h-5 animate-spin inline-block mr-2">                          
+                        </div>
+                        <span>Signing in...</span>
+                      </div> : "Sign On"}
                     </button>
                     <Link
                       to="/online-enrollment"

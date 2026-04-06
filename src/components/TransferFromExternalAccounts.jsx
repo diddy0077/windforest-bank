@@ -64,8 +64,8 @@ const TransferFromExternalAccounts = ({
     document.title = "External Transfer | WindForest Capital";
   }, []);
   const [transferAmount, setTransferAmount] = useState("");
-  const [selectedFrom, setSelectedFrom] = useState("external-1234");
-  const [selectedTo, setSelectedTo] = useState("checking-5678");
+  const [selectedFrom, setSelectedFrom] = useState("");
+  const [selectedTo, setSelectedTo] = useState("");
   const [isTransferring, setIsTransferring] = useState(false);
   const { currentUser, setCurrentUser } = useContext(UserContext);
   const [external, setExternal] = useState(null);
@@ -112,10 +112,28 @@ const TransferFromExternalAccounts = ({
   const openTransferSummary = async (e) => {
     e.preventDefault();
     setIsTransferring(true);
+
+    // Validate from account
+    if (!selectedFrom) {
+      setIsTransferring(false);
+      toast.error("Please select an account to transfer from.");
+      return;
+    }
+
+    // Validate to account
+    if (!selectedTo) {
+      setIsTransferring(false);
+      toast.error("Please select an account to transfer to.");
+      return;
+    }
+
+    // Validate amount
     if (parseFloat(transferAmount) <= 0 || !transferAmount) {
+      setIsTransferring(false);
       toast.error("Please enter a valid amount.");
       return;
     }
+
     const res = await fetch(
       "https://windforest.capital/api/users"
     );
@@ -342,8 +360,10 @@ const TransferFromExternalAccounts = ({
               type="submit"
               disabled={
                 isTransferring ||
-                parseFloat(transferAmount) <= 0 ||
-                !transferAmount
+                !selectedFrom ||
+                !selectedTo ||
+                !transferAmount ||
+                parseFloat(transferAmount) <= 0
               }
               className="w-full flex items-center justify-center px-4 py-3 border border-transparent rounded-lg shadow-lg text-base font-semibold text-white bg-red-600 hover:bg-red-700 disabled:bg-red-400 transition duration-150 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
             >

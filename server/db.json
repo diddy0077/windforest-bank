@@ -20,73 +20,982 @@
       "accountBalance": 10030.999999999996,
       "role": "user",
       "loans": [],
-      "notifications": []
+      "notifications": [
+        {
+          "id": "09f5e218-7b06-4307-9efb-6895f8a30bdf",
+          "type": "success",
+          "message": "You successfully transferred $100 to DANIEL UDEH",
+          "date": "2025-10-01T02:15:03.474Z",
+          "read": true
+        },
+        {
+          "id": "6a06cb69-47d2-41d8-bfbe-8479cff02b7d",
+          "type": "success",
+          "message": "You successfully transferred $100 to undefined",
+          "date": "2025-10-01T02:12:42.474Z",
+          "read": true
+        },
+        {
+          "id": "97e57b94-b45d-4b65-842b-f79ce294ed40",
+          "type": "success",
+          "message": "Beneficiary DANIEL UDEH added successfully!",
+          "date": "2025-10-01T02:12:29.632Z",
+          "read": true
+        },
+        {
+          "id": "b88f8d32-09eb-4eae-b407-7822fbc82039",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T02:30:46.890Z",
+          "read": true
+        },
+        {
+          "id": "02b4b59b-a51b-4d72-8bf6-9368e3527bc4",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T02:26:25.368Z",
+          "read": true
+        },
+        {
+          "id": "f1cc81ca-5e82-4ba1-8030-95595b970f21",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T02:20:00.638Z",
+          "read": true
+        },
+        {
+          "id": "0233dbcf-3afd-4368-816a-0bd0aaf816ef",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T02:00:22.610Z",
+          "read": true
+        },
+        {
+          "id": "967377da-79eb-4b7b-8a07-817377c95cca",
+          "type": "success",
+          "message": "You received $500 from DYLAN MASON",
+          "date": "2025-09-29T01:59:54.619Z",
+          "read": true
+        },
+        {
+          "id": "f1accaa0-8a04-4d7d-8d87-a1e80a22ff16",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T01:55:01.319Z",
+          "read": true
+        },
+        {
+          "id": "881b9389-07a9-4b91-8a77-a0bccd498458",
+          "type": "success",
+          "message": "You received $100 from DYLAN MASON",
+          "date": "2025-09-29T01:53:59.779Z",
+          "read": true
+        },
+        {
+          "id": "d056e118-2a1c-42fc-9c9f-ed1aab10ba5f",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T01:52:41.719Z",
+          "read": true
+        },
+        {
+          "id": "a932ae3a-0633-4c1e-8e5d-767c2a196a91",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T01:50:04.950Z",
+          "read": true
+        },
+        {
+          "id": "7bdd306a-5632-4401-9665-c1ab3f5453a7",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T01:49:27.283Z",
+          "read": true
+        },
+        {
+          "id": "69a13c87-ceb8-4c2e-af3b-666383e59322",
+          "type": "success",
+          "message": "You successfully made an external transfer of $1 to DYLAN MASON",
+          "date": "2025-09-29T01:27:17.893Z",
+          "read": true
+        },
+        {
+          "id": "e4dfc1e8-69d8-439d-bf9a-56d16bef14a8",
+          "type": "success",
+          "message": "You received $0.24 from WindForest Capital.",
+          "date": "2025-09-28T22:44:35.646Z",
+          "read": true
+        },
+        {
+          "id": "434108ce-c40e-49e8-94b9-2f8ab95b85f9",
+          "type": "success",
+          "message": "You received $0.53 from WindForest Capital.",
+          "date": "2025-09-28T22:44:35.646Z",
+          "read": true
+        },
+        {
+          "id": "e77e7989-5bf6-4db7-abc2-82ac99e2ddf0",
+          "type": "success",
+          "message": "You received $0.03 from WindForest Capital.",
+          "date": "2025-09-28T21:08:25.165Z",
+          "read": true
+        },
+        {
+          "id": "b32e95d3-82ca-4e73-bf22-6d0ca1e3dce5",
+          "type": "success",
+          "message": "You received $0.09 from WindForest Capital.",
+          "date": "2025-09-28T21:08:25.165Z",
+          "read": true
+        },
+        {
+          "id": "eca9301e-749c-4cf8-aa4f-2c3d4ad115a8",
+          "type": "success",
+          "message": "You received $0.5 from WindForest Capital.",
+          "date": "2025-09-28T21:08:14.586Z",
+          "read": true
+        },
+        {
+          "id": "40ac4d9f-ea6d-473e-b54d-fee82240b0f8",
+          "type": "success",
+          "message": "You received $0.87 from WindForest Capital.",
+          "date": "2025-09-28T21:08:14.586Z",
+          "read": true
+        },
+        {
+          "id": "a3f6f7b0-ed05-415b-ba13-187000a140fd",
+          "type": "success",
+          "message": "You received $0.34 from WindForest Capital.",
+          "date": "2025-09-28T21:08:03.662Z",
+          "read": true
+        },
+        {
+          "id": "937c7aae-f492-42b6-b406-b42880df0cf4",
+          "type": "success",
+          "message": "You received $0.36 from WindForest Capital.",
+          "date": "2025-09-28T21:08:03.662Z",
+          "read": true
+        },
+        {
+          "id": "d92d9288-361e-4ae4-bae6-d6178936a3c7",
+          "type": "success",
+          "message": "You received $0.19 from WindForest Capital.",
+          "date": "2025-09-28T20:46:46.074Z",
+          "read": true
+        },
+        {
+          "id": "e3112db1-3d43-4932-a5ad-fad0c7abcf2f",
+          "type": "success",
+          "message": "You received $0.11 from WindForest Capital.",
+          "date": "2025-09-28T20:46:46.074Z",
+          "read": true
+        },
+        {
+          "id": "3bcf1c3c-5201-447e-be1b-1e5fca2e04f3",
+          "type": "success",
+          "message": "You received $0.56 from WindForest Capital.",
+          "date": "2025-09-28T20:46:35.174Z",
+          "read": true
+        },
+        {
+          "id": "8f9ce177-9514-4a1d-920f-5bca3538c100",
+          "type": "success",
+          "message": "You received $0.32 from WindForest Capital.",
+          "date": "2025-09-28T20:46:35.174Z",
+          "read": true
+        },
+        {
+          "id": "8b6eee06-5c07-438b-a952-0a663fc3a0ce",
+          "type": "success",
+          "message": "You received $0.44 from WindForest Capital.",
+          "date": "2025-09-28T20:46:21.182Z",
+          "read": true
+        },
+        {
+          "id": "c80bc41c-0946-472b-bf8a-70633d40aeae",
+          "type": "success",
+          "message": "You received $0.73 from WindForest Capital.",
+          "date": "2025-09-28T20:46:21.182Z",
+          "read": true
+        },
+        {
+          "id": 1759286492772,
+          "type": "success",
+          "message": "Your account is now unrestricted and you can make transfers again.",
+          "read": false,
+          "date": "2025-10-01T02:41:32.772Z"
+        },
+        {
+          "id": 1759286504686,
+          "type": "alert",
+          "message": "Your account has been restricted from making transfers by admin.",
+          "read": false,
+          "date": "2025-10-01T02:41:44.686Z"
+        },
+        {
+          "id": 1759286511134,
+          "type": "success",
+          "message": "Your account is now unrestricted and you can make transfers again.",
+          "read": false,
+          "date": "2025-10-01T02:41:51.134Z"
+        },
+        {
+          "id": 1759286696100,
+          "type": "success",
+          "message": "Your account is now unrestricted and you can make transfers again.",
+          "read": false,
+          "date": "2025-10-01T02:44:56.100Z"
+        },
+        {
+          "id": 1759287146338,
+          "type": "alert",
+          "message": "Your account has been restricted from making transfers by admin.",
+          "read": false,
+          "date": "2025-10-01T02:52:26.338Z"
+        },
+        {
+          "id": "616a6567-a4a6-45ce-9c22-186522523849",
+          "type": "info",
+          "message": "A reversal of $100 has been debited from your account and returned to DANIEL UDEH.",
+          "date": "2025-10-02T21:45:25.327Z",
+          "read": false
+        },
+        {
+          "id": "6cb58c06-50b2-4927-afd8-91918ca0e671",
+          "type": "info",
+          "message": "A reversal of $120 has been debited from your account and returned to DANIEL UDEH.",
+          "date": "2025-10-02T21:53:46.533Z",
+          "read": false
+        },
+        {
+          "id": "195efc83-c730-4be2-ad49-fd9c514b2ad3",
+          "type": "info",
+          "message": "A reversal of $3000 has been debited from your account and returned to DANIEL UDEH.",
+          "date": "2025-10-02T21:54:01.587Z",
+          "read": false
+        },
+        {
+          "id": "ae9bdd0e-07f2-4376-9c47-76f168d8c70c",
+          "type": "success",
+          "message": "A reversal of $10000 has been credited back to your account from DANIEL UDEH.",
+          "date": "2025-10-02T21:55:41.359Z",
+          "read": false
+        }
+      ],
+      "linkedAccounts": [],
+      "beneficiaries": [
+        {
+          "accountNumber": "1009633753",
+          "name": "darren smith",
+          "addedAt": "2025-09-25T05:03:11.103Z"
+        },
+        {
+          "accountNumber": "1066747311",
+          "name": "Jane Doe",
+          "addedAt": "2025-10-01T02:08:27.139Z"
+        },
+        {
+          "accountNumber": "1068397691",
+          "name": "DANIEL UDEH",
+          "addedAt": "2025-10-01T02:12:29.632Z"
+        }
+      ],
+      "card": [
+        {
+          "cardId": 1758722961424,
+          "cardNumber": "7868799586222421",
+          "cardType": "Visa",
+          "expiryDate": "11/30",
+          "createdAt": "2025-09-24T14:09:21.424Z"
+        }
+      ]
     },
     {
-      "id": "8017",
+      "id": "bb46",
       "isTransferEnabled": true,
-      "fullName": "John Smith",
-      "dob": "1985-05-15",
+      "fullName": "DANIEL UDEH",
+      "dob": "1998-09-09",
       "ssn": "22222222222",
-      "email": "john.smith@email.com",
-      "phone": "5551234567",
-      "address": "123 Main St, New York, NY",
-      "employment": "employed",
-      "income": "75000",
-      "employerName": "ABC Corp",
-      "initialDeposit": 500,
+      "email": "danieludeh007@yahoo.com",
+      "phone": "09048947208",
+      "address": "20 bale Street, Orile iganmu",
+      "employment": "self-employed",
+      "income": "1000000",
+      "employerName": "DANIEL",
+      "initialDeposit": 100000,
+      "role": "user",
       "debitCard": true,
       "onlineBanking": true,
-      "accountType": "Savings Account",
-      "accountNumber": "1066747312",
-      "accountBalance": 25000,
-      "role": "user",
-      "loans": [],
-      "notifications": []
+      "accountType": "High-Yield Savings",
+      "accountNumber": "1068397691",
+      "accountBalance": 82606.73999999999,
+      "linkedAccounts": [],
+      "loans": [
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:00:30.686Z"
+        },
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:05:57.188Z"
+        },
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:36:01.173Z"
+        },
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:48:36.113Z"
+        },
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:49:52.411Z"
+        },
+        {
+          "loanId": 1,
+          "loanName": "Personal Loan",
+          "amount": 20000,
+          "years": 19,
+          "monthlyPayment": 169.67493251746004,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:54:10.766Z"
+        },
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:55:27.683Z"
+        },
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:56:49.341Z"
+        },
+        {
+          "loanId": 2,
+          "loanName": "Education Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 191.01162171782062,
+          "status": "pending",
+          "appliedAt": "2025-09-30T11:58:25.595Z"
+        },
+        {
+          "loanId": 10,
+          "loanName": "Green Loan",
+          "amount": 10000,
+          "years": 5,
+          "monthlyPayment": 186.43019241516996,
+          "status": "pending",
+          "appliedAt": "2025-09-30T21:16:14.734Z"
+        }
+      ],
+      "beneficiaries": [
+        {
+          "accountNumber": "1066747311",
+          "name": "Jane Doe",
+          "addedAt": "2025-09-25T02:22:06.299Z"
+        },
+        {
+          "accountNumber": "1009633753",
+          "name": "darren smith",
+          "addedAt": "2025-09-30T23:45:46.390Z"
+        }
+      ],
+      "card": [
+        {
+          "cardId": 1758728994039,
+          "cardNumber": "1765330406447991",
+          "cardType": "Mastercard",
+          "expiryDate": "12/30",
+          "createdAt": "2025-09-24T15:49:54.039Z"
+        }
+      ],
+      "notifications": [
+        {
+          "id": "f140c2b9-7b5c-42ba-bbe1-cacca38a4438",
+          "type": "success",
+          "message": "Your transfer access has been restored!",
+          "date": "2025-10-02T23:19:13.880Z",
+          "read": true
+        },
+        {
+          "id": "29d81e0a-77f6-4bb9-b48a-bf1f73578650",
+          "type": "info",
+          "message": "A reversal of $10000 has been debited from your account and returned to Jane Doe.",
+          "date": "2025-10-02T21:55:41.359Z",
+          "read": true
+        },
+        {
+          "id": "4702b229-ccf7-49be-af57-704335cec05a",
+          "type": "success",
+          "message": "A reversal of $3000 has been credited back to your account from Jane Doe.",
+          "date": "2025-10-02T21:54:01.587Z",
+          "read": true
+        },
+        {
+          "id": "f8842092-61e7-4ae0-b331-64f858aaf307",
+          "type": "success",
+          "message": "A reversal of $120 has been credited back to your account from Jane Doe.",
+          "date": "2025-10-02T21:53:46.533Z",
+          "read": true
+        },
+        {
+          "id": "f77f96b2-62aa-4673-9c62-f5a75f31b77e",
+          "type": "success",
+          "message": "A reversal of $100 has been credited back to your account from Jane Doe.",
+          "date": "2025-10-02T21:45:25.327Z",
+          "read": true
+        },
+        {
+          "id": "f677d3d3-920a-4a94-a5e1-41949dd22468",
+          "type": "warning",
+          "message": "Your account balance is below $100!",
+          "date": "2025-10-02T16:32:26.171Z",
+          "read": true
+        },
+        {
+          "id": "953fc03f-161b-419a-bacd-115ef274d630",
+          "type": "success",
+          "message": "You successfully transferred $100 to Jane Doe",
+          "date": "2025-10-01T16:46:43.088Z",
+          "read": true
+        },
+        {
+          "id": 1759287477332,
+          "type": "alert",
+          "message": "Your account has been restricted from making transfers by admin.",
+          "read": true,
+          "date": "2025-10-01T02:57:57.332Z"
+        },
+        {
+          "id": "7ccb61c9-fdda-4a08-9be7-0b6a7156d076",
+          "type": "success",
+          "message": "Beneficiary darren smith added successfully!",
+          "date": "2025-09-30T23:45:46.391Z",
+          "read": true
+        },
+        {
+          "id": "628ee3a3-e0b2-47e9-8ed1-4d3b8a44078d",
+          "type": "success",
+          "message": "You received $0.89 from WindForest Capital.",
+          "date": "2025-09-29T02:16:05.470Z",
+          "read": true
+        },
+        {
+          "id": "e53d8d70-5537-4f43-a9e6-3ee548d2c9c4",
+          "type": "success",
+          "message": "You received $0.6 from WindForest Capital.",
+          "date": "2025-09-29T02:16:05.470Z",
+          "read": true
+        },
+        {
+          "id": "a9092035-c39c-41da-9336-ddc64c4cd97f",
+          "type": "success",
+          "message": "You successfully made an external transfer of $20 to DYLAN MASON",
+          "date": "2025-09-29T02:02:04.538Z",
+          "read": true
+        },
+        {
+          "id": "b9e4fcd6-6489-41d2-8e97-77068a4eea5d",
+          "type": "success",
+          "message": "You received $0.21 from WindForest Capital.",
+          "date": "2025-09-29T02:01:09.613Z",
+          "read": true
+        },
+        {
+          "id": "d191ebf0-96cd-4ab4-83e8-d677029cc4ba",
+          "type": "success",
+          "message": "You received $0.04 from WindForest Capital.",
+          "date": "2025-09-29T02:01:09.613Z",
+          "read": true
+        },
+        {
+          "id": "a59b47e0-feae-42e3-88c3-3eb268901968",
+          "type": "success",
+          "message": "You received $0.71 from WindForest Capital.",
+          "date": "2025-09-28T22:46:07.882Z",
+          "read": true
+        },
+        {
+          "id": "820c0a50-4798-493d-a5c1-af39787abbf6",
+          "type": "success",
+          "message": "You received $0.78 from WindForest Capital.",
+          "date": "2025-09-28T22:46:07.882Z",
+          "read": true
+        },
+        {
+          "id": "2148323f-e120-4316-9212-13ab09df2496",
+          "type": "success",
+          "message": "You received $80000 from Jane Doe",
+          "date": "2025-09-25T03:27:05.350Z",
+          "read": true
+        },
+        {
+          "id": "d75a4479-c407-4192-a621-4317dd6b5f0a",
+          "type": "warning",
+          "message": "Your account balance is below $100!",
+          "date": "2025-09-25T03:17:06.816Z",
+          "read": true
+        },
+        {
+          "id": "83050a25-c6b4-459f-a490-af1ace99cec0",
+          "type": "success",
+          "message": "You successfully transferred $100 to Jane Doe",
+          "date": "2025-09-25T02:44:50.773Z",
+          "read": true
+        },
+        {
+          "id": "3d7d9b4e-a84d-4481-ba7d-3fc6473635d1",
+          "type": "success",
+          "message": "You successfully transferred $120 to Jane Doe",
+          "date": "2025-09-25T02:41:34.506Z",
+          "read": true
+        },
+        {
+          "id": "955f9e9a-767b-4eb1-9e0e-13151ebe5586",
+          "type": "success",
+          "message": "You successfully transferred $3000 to Jane Doe",
+          "date": "2025-09-25T02:22:29.042Z",
+          "read": true
+        },
+        {
+          "id": "999d5934-694d-45d3-aca1-0175ac8960a0",
+          "type": "success",
+          "message": "You received $10000 from Jane Doe",
+          "date": "2025-09-25T02:19:32.411Z",
+          "read": true
+        },
+        {
+          "id": "1df3f207-355f-4b75-af99-d527c697b6ef",
+          "type": "success",
+          "message": "You successfully transferred $5000 to Jane Doe",
+          "date": "2025-09-25T02:18:14.437Z",
+          "read": true
+        },
+        {
+          "id": "15ba5d94-4973-4404-8e72-ce6b42cf380b",
+          "type": "success",
+          "message": "You successfully transferred $200 to Jane Doe",
+          "date": "2025-09-25T02:04:52.921Z",
+          "read": true
+        },
+        {
+          "id": "08616790-c147-4afa-a928-32b8db3ee7d5",
+          "type": "success",
+          "message": "You successfully transferred $10000 to Jane Doe",
+          "date": "2025-09-25T01:51:50.091Z",
+          "read": true
+        },
+        {
+          "id": "3a3a89ce-0604-4646-8f86-2c267c3c150a",
+          "type": "success",
+          "message": "You received $100 from Jane Doe",
+          "date": "2025-09-25T01:44:38.210Z",
+          "read": true
+        },
+        {
+          "id": "7443dc5b-cad7-4a7b-a461-d21dc1d40cdf",
+          "type": "success",
+          "message": "You successfully transferred $1000 to Jane Doe",
+          "date": "2025-09-25T01:40:46.156Z",
+          "read": true
+        },
+        {
+          "id": "f5d9f372-9e6e-41ca-8463-07ae2671135b",
+          "type": "success",
+          "message": "You successfully transferred $100 to Jane Doe",
+          "date": "2025-09-25T01:32:59.007Z",
+          "read": true
+        }
+      ]
     },
     {
-      "id": "8018",
+      "id": "546c",
       "isTransferEnabled": true,
-      "fullName": "Emily Johnson",
-      "dob": "1992-11-22",
-      "ssn": "33333333333",
-      "email": "emily.j@email.com",
-      "phone": "5559876543",
-      "address": "456 Oak Ave, Los Angeles, CA",
+      "fullName": "darren smith",
+      "dob": "1997-09-09",
+      "ssn": "22222222222",
+      "email": "danieludeh0077@yahoo.com",
+      "phone": "09048947208",
+      "address": "20 bale Street, Orile iganmu",
       "employment": "self-employed",
-      "income": "120000",
-      "employerName": "Self",
-      "initialDeposit": 1000,
+      "income": "1000000",
+      "employerName": "daniel",
+      "initialDeposit": 100,
+      "role": "user",
       "debitCard": true,
       "onlineBanking": true,
       "accountType": "Checking Account",
-      "accountNumber": "1066747313",
-      "accountBalance": 50000,
-      "role": "user",
+      "accountNumber": "1009633753",
+      "accountBalance": 100,
+      "linkedAccounts": [],
       "loans": [],
-      "notifications": []
+      "beneficiaries": [
+        {
+          "accountNumber": "1066747311",
+          "name": "Jane Doe",
+          "addedAt": "2025-09-25T05:11:43.190Z"
+        }
+      ],
+      "notifications": [
+        {
+          "id": "1f5e9602-18b6-4ef9-8870-07d956ce9208",
+          "type": "success",
+          "message": "You received $500 from Jane Doe",
+          "date": "2025-09-25T05:13:12.549Z",
+          "read": true
+        },
+        {
+          "id": "26ddd2c8-b908-4db5-b3ca-51cf58ae7e17",
+          "type": "warning",
+          "message": "Your account balance is below $100!",
+          "date": "2025-09-25T05:11:57.421Z",
+          "read": true
+        },
+        {
+          "id": "80484977-24a4-47b3-b2ae-3faaa61deec9",
+          "type": "success",
+          "message": "Beneficiary Jane Doe added successfully!",
+          "date": "2025-09-25T05:11:43.191Z",
+          "read": true
+        },
+        {
+          "id": "9ed4ce39-f34e-428a-a8d7-8467155046b3",
+          "type": "success",
+          "message": "You received $5000 from Jane Doe",
+          "date": "2025-09-25T05:03:35.777Z",
+          "read": true
+        },
+        {
+          "id": "8895990d-a6ea-4849-b7de-c5a2ff369c2f",
+          "type": "success",
+          "message": "You received $0.62 from WindForest Capital.",
+          "date": "2025-09-28T21:17:09.810Z",
+          "read": false
+        },
+        {
+          "id": "cf6bb946-3c16-450b-86a1-162fc633970d",
+          "type": "success",
+          "message": "You received $0.11 from WindForest Capital.",
+          "date": "2025-09-28T21:17:09.810Z",
+          "read": false
+        }
+      ],
+      "card": [
+        {
+          "cardId": 1758756828722,
+          "cardNumber": "1250527199031397",
+          "cardType": "Visa",
+          "expiryDate": "10/29",
+          "createdAt": "2025-09-24T23:33:48.722Z"
+        }
+      ]
     },
     {
-      "id": "8019",
+      "id": "913d",
       "isTransferEnabled": true,
-      "fullName": "Michael Brown",
-      "dob": "1988-03-30",
-      "ssn": "44444444444",
-      "email": "michael.b@email.com",
-      "phone": "5554567890",
-      "address": "789 Pine Rd, Chicago, IL",
+      "fullName": "DYLAN MASON",
+      "dob": "1998-09-09",
+      "ssn": "11111111111",
+      "email": "danieludeh007@yahoo.com",
+      "phone": "+2349048947208",
+      "address": "20 bale Street, Orile iganmu",
       "employment": "employed",
-      "income": "90000",
-      "employerName": "XYZ Inc",
-      "initialDeposit": 750,
-      "debitCard": true,
-      "onlineBanking": true,
-      "accountType": "Premium Account",
-      "accountNumber": "1066747314",
-      "accountBalance": 75000,
+      "income": "100000",
+      "employerName": "DYLAN",
+      "initialDeposit": 200,
       "role": "user",
+      "debitCard": "",
+      "onlineBanking": "",
+      "accountType": "Business Savings",
+      "accountNumber": "1081276232",
       "loans": [],
-      "notifications": []
+      "linkedAccounts": [
+        {
+          "id": "5f69ef3d-4ec9-408b-b9a2-74f2d1a531e7",
+          "linkedUserId": "bb46",
+          "linkedUserName": "DANIEL UDEH",
+          "accountNumber": "1068397691",
+          "status": "verified",
+          "linkedDate": "2025-09-29T02:01:34.943Z"
+        }
+      ],
+      "beneficiaries": [
+        {
+          "accountNumber": "1066747311",
+          "name": "Jane Doe",
+          "addedAt": "2025-09-25T08:14:24.672Z"
+        }
+      ],
+      "notifications": [
+        {
+          "id": "f3909a31-92e2-4465-a174-582a5a241a56",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(****7311) is successful.",
+          "date": "2025-09-29T02:30:46.890Z",
+          "read": true
+        },
+        {
+          "id": "377d98ee-7b31-4fbe-b1c3-43b70c3b6b67",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(****7311) is successful.",
+          "date": "2025-09-29T02:26:25.368Z",
+          "read": true
+        },
+        {
+          "id": "a326cd45-944f-4950-ad5d-e2e66f6dcabc",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(****7311) is successful.",
+          "date": "2025-09-29T02:20:00.638Z",
+          "read": true
+        },
+        {
+          "id": "21c23b53-bfe2-4660-8839-23537f6bee2c",
+          "type": "success",
+          "message": "Your incoming external transfer of $20 from DANIEL UDEH(****7691) is successful.",
+          "date": "2025-09-29T02:02:04.538Z",
+          "read": true
+        },
+        {
+          "id": "a5041b25-c3a6-4a9b-8dbc-4a883b92c7c7",
+          "type": "success",
+          "message": "External account linked successfully!",
+          "date": "2025-09-29T02:01:34.943Z",
+          "read": true
+        },
+        {
+          "id": "27777c75-cd0e-4cba-8a4f-43395f652c84",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(****7311) is successful.",
+          "date": "2025-09-29T02:00:22.610Z",
+          "read": true
+        },
+        {
+          "id": "80f09f75-6da2-4f57-adc7-2f5a59bf596d",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(****7311) is successful.",
+          "date": "2025-09-29T01:55:01.319Z",
+          "read": true
+        },
+        {
+          "id": "bb0a7226-b8d8-4802-b30a-01084a8dd69b",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(7311) is successful.",
+          "date": "2025-09-29T01:52:41.719Z",
+          "read": true
+        },
+        {
+          "id": "5b24a18f-9737-4c80-baf8-b8da2915797f",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(7311) is successful.",
+          "date": "2025-09-29T01:50:04.950Z",
+          "read": true
+        },
+        {
+          "id": "2ee1c0e2-24f7-4195-970e-7cdbb273b7d1",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(7311) is successful.",
+          "date": "2025-09-29T01:49:27.283Z",
+          "read": true
+        },
+        {
+          "id": "274ab3a9-041e-4b0c-9b29-0b0ebdad5dd2",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe(7311) is successful.",
+          "date": "2025-09-29T01:49:11.395Z",
+          "read": true
+        },
+        {
+          "id": "c5bf7a20-7dfc-441d-b548-d97a59492560",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe is successful.",
+          "date": "2025-09-29T01:27:17.893Z",
+          "read": true
+        },
+        {
+          "id": "120f20a4-a1c5-4f0b-b39a-dd706a779fed",
+          "type": "success",
+          "message": "Your incoming external transfer of $1 from Jane Doe is successful.",
+          "date": "2025-09-29T01:25:56.591Z",
+          "read": true
+        },
+        {
+          "id": "b5fad8d4-e0b0-4814-8cb3-1355e7dd8f63",
+          "type": "success",
+          "message": "External account linked successfully!",
+          "date": "2025-09-28T22:46:32.819Z",
+          "read": true
+        },
+        {
+          "id": "01369b69-f9ca-4d09-9d9e-41e8796c5649",
+          "type": "success",
+          "message": "External account linked successfully!",
+          "date": "2025-09-28T22:45:04.886Z",
+          "read": true
+        },
+        {
+          "id": "933ff8ee-196a-494a-a136-bbfefc90d67c",
+          "type": "success",
+          "message": "External account linked successfully!",
+          "date": "2025-09-28T21:17:34.317Z",
+          "read": true
+        },
+        {
+          "id": "61bb196b-4be7-4fe1-952b-4222a8e41850",
+          "type": "success",
+          "message": "External account linked successfully!",
+          "date": "2025-09-28T21:15:06.571Z",
+          "read": true
+        },
+        {
+          "id": "04f5dc5d-4e1d-41f4-ae46-d0c979d9a838",
+          "type": "success",
+          "message": "You received $0.03 as a micro deposit for external account linking.",
+          "date": "2025-09-28T04:20:01.215Z",
+          "read": true
+        },
+        {
+          "id": "6747e7c4-9a8d-416a-adbe-d831aef0846c",
+          "type": "success",
+          "message": "You received $0.02 as a micro deposit for external account linking.",
+          "date": "2025-09-28T04:20:01.215Z",
+          "read": true
+        },
+        {
+          "id": "21716650-1f7e-406a-a67f-3d75df1c5e1f",
+          "type": "success",
+          "message": "You received $0.07 as a micro deposit for external account linking.",
+          "date": "2025-09-28T04:17:31.370Z",
+          "read": true
+        },
+        {
+          "id": "98ca449f-8c1e-44d3-9d8d-bcee440eb06e",
+          "type": "success",
+          "message": "You received $0.05 as a micro deposit for external account linking.",
+          "date": "2025-09-28T04:17:31.370Z",
+          "read": true
+        },
+        {
+          "id": "bacaf617-2779-4318-8c62-4afe40889771",
+          "type": "success",
+          "message": "You received $500 from JOHN DOE",
+          "date": "2025-09-26T11:01:08.842Z",
+          "read": true
+        },
+        {
+          "id": "4cfdb234-2383-4d17-8eb1-80aeb2f4bbe0",
+          "type": "success",
+          "message": "You successfully transferred $100 to Jane Doe",
+          "date": "2025-09-26T10:56:59.471Z",
+          "read": true
+        },
+        {
+          "id": "1e7735fe-962d-48be-a8ed-d73001fe8df5",
+          "type": "success",
+          "message": "Your security question was changed. If you didn't recognize this change, please contact customer support immediately!",
+          "date": "2025-09-26T10:05:03.464Z",
+          "read": true
+        },
+        {
+          "id": "b499b39e-eb6e-4f90-a3ae-421571888807",
+          "type": "success",
+          "message": "You successfully transferred $100 to Jane Doe",
+          "date": "2025-09-26T08:02:39.347Z",
+          "read": true
+        },
+        {
+          "id": "5ac4597a-5613-4018-b607-21755841f107",
+          "type": "success",
+          "message": "Your password was changed. If you didn't recognize this change, please contact customer support immediately!",
+          "date": "2025-09-26T07:07:33.713Z",
+          "read": true
+        },
+        {
+          "id": "cf994c23-0654-4acc-a644-84bceb22439a",
+          "type": "success",
+          "message": "You successfully transferred $110.87 to Jane Doe",
+          "date": "2025-09-26T06:45:42.192Z",
+          "read": true
+        },
+        {
+          "id": "f01d23b8-ebf3-4877-a90d-ef5beb3aef81",
+          "type": "success",
+          "message": "A change was made to your profile. If you didn't recognize this change, please contact customer support immediately!",
+          "date": "2025-09-26T00:26:57.222Z",
+          "read": true
+        },
+        {
+          "id": "f2fd037b-9e91-4a46-b9c7-2c1b4f73e57f",
+          "type": "success",
+          "message": "You successfully transferred $100 to Jane Doe",
+          "date": "2025-09-25T08:14:39.231Z",
+          "read": true
+        },
+        {
+          "id": "2d2a9ab2-75d3-47c8-8f4f-40aa41b3c97e",
+          "type": "success",
+          "message": "Beneficiary Jane Doe added successfully!",
+          "date": "2025-09-25T08:14:24.672Z",
+          "read": true
+        },
+        {
+          "id": "2bf255be-de0b-4bb0-b6d8-0eadcc6a8e98",
+          "type": "success",
+          "message": "You successfully transferred $100 to undefined",
+          "date": "2025-10-01T00:05:40.678Z",
+          "read": false
+        },
+        {
+          "id": "a1990c50-4b6f-4fe7-b3ee-03d669e0aedc",
+          "type": "success",
+          "message": "You successfully transferred $100 to undefined",
+          "date": "2025-10-01T00:07:04.644Z",
+          "read": false
+        }
+      ],
+      "accountBalance": 5331.000000000001,
+      "card": [
+        {
+          "cardId": 1758787599197,
+          "cardNumber": "7123308669963043",
+          "cardType": "Mastercard",
+          "expiryDate": "06/28",
+          "createdAt": "2025-09-25T08:06:39.197Z"
+        }
+      ],
+      "lastLogin": "2025-09-25T22:51:32.492Z"
     }
   ],
   "transactions": [

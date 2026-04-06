@@ -3,7 +3,10 @@
 
 // For local development, use localhost:7000
 // For production, use your deployed server URL
-const API_BASE_URL = 'https://windforest.capital/api';
+const API_BASE_URL = 'http://localhost:7000/api';
+
+// For production, uncomment the line below and comment out the localhost line:
+// const API_BASE_URL = 'https://windforest.capital/api';
 
 // Export individual API endpoints for convenience
 export const API_ENDPOINTS = {
