@@ -251,7 +251,11 @@ const Header = () => {
                     onClick={handleOtpSubmit}
                     className="w-full py-2 bg-green-600 text-white font-semibold rounded-md shadow-md hover:bg-green-700 transition-colors cursor-pointer"
                   >
-                    {loading ? "Verifying..." : "Verify OTP"}
+                    {loading ? <div className="flex justify-center items-center">
+                        <div className="border-white border-4 border-t-transparent rounded-full w-5 h-5 animate-spin inline-block mr-2">                          
+                        </div>
+                        <span>Verifying...</span>
+                      </div> : "Verify OTP"}
                   </button>
                 </div>
               )}
